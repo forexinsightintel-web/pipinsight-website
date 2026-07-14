@@ -169,20 +169,39 @@ export default function Home() {
             </div>
             <div className="plan featured">
               <div className="plan-badge">MOST POPULAR</div>
-              <div className="plan-name">Premium</div>
+              <div className="plan-name">Full Access</div>
               <div className="plan-price">£9.99<span>/month</span></div>
-              <p className="plan-desc">The complete analysis: key zones, structure and the full calendar.</p>
+              <p className="plan-desc">The complete analysis: every instrument&apos;s Trading Desk, key zones and the full calendar.</p>
               <ul className="plan-features">
                 <li>✓ Everything in Free</li>
-                <li>✓ Key support &amp; resistance zones for all 9 pairs</li>
-                <li>✓ Multi-timeframe structure analysis</li>
-                <li>✓ Full economic calendar with impact</li>
-                <li>✓ Multi-timeframe chart analysis</li>
-                <li>✓ Key resistance &amp; support levels</li>
-                <li>✓ AI trade journal (coming soon)</li>
+                <li>✓ Every instrument unlocked in the Analysis Hub</li>
+                <li>✓ Full daily Trading Desk editorial per instrument</li>
+                <li>✓ Key reaction zones &amp; multi-timeframe structure</li>
+                <li>✓ Full economic calendar with impact ratings</li>
+                <li>✓ Journal Pro with AI insights included</li>
               </ul>
               <a href="https://buy.stripe.com/28EdR964Q0Za0U13YAebu00" className="btn btn-primary btn-full">Get Full Access — £9.99/mo</a>
               <div className="plan-note">Cancel anytime · No commitment</div>
+            </div>
+            <div className="plan plan-annual">
+              <div className="plan-badge badge-gold">FOUNDING RATE</div>
+              <div className="plan-name">Full Access — Annual</div>
+              <div className="plan-price">£6.58<span>/month</span></div>
+              <p className="plan-desc"><b>£79 billed yearly — 12 months for the price of 10.</b></p>
+              <ul className="plan-features">
+                <li>✓ Everything in Full Access</li>
+                <li>✓ 2 months free vs monthly</li>
+                <li>✓ Founding-member rate — locked in while you stay subscribed, even as prices rise</li>
+              </ul>
+              <button className="btn btn-primary btn-full" onClick={async () => {
+                const r = await fetch("/api/checkout", { method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ kind: "full-access-annual" }) });
+                const d = await r.json();
+                if (d.url) window.location.href = d.url;
+                else alert(d.error || "Checkout is not available right now.");
+              }}>Lock the Founding Rate — £79/yr</button>
+              <div className="plan-note">14-day money-back guarantee</div>
             </div>
           </div>
         </div>

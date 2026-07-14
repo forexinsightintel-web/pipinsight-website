@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   const { kind, slug } = await request.json();
   const origin = request.headers.get("origin") ?? "https://pip-insight.co.uk";
 
-  if (kind === "journal") {
+  if (kind === "journal" || kind === "full-access") {
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       line_items: [{
@@ -31,13 +31,39 @@ export async function POST(request: Request) {
           unit_amount: 999,
           recurring: { interval: "month" },
           product_data: {
-            name: "PIP:Insight Journal Pro",
-            description: "AI trade analysis, cloud sync, unlimited history.",
+            name: "PIP:Insight Full Access",
+            description: "Every instrument's daily Trading Desk analysis, " +
+              "Journal Pro with AI insights, full economic calendar.",
           },
         },
       }],
       success_url: `${origin}/journal?upgraded=1`,
       cancel_url: `${origin}/journal`,
+    });
+    return Response.json({ url: session.url });
+  }
+
+  if (kind === "full-access-annual") {
+    // £79/year — "2 months free" vs monthly; founding-member rate
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      line_items: [{
+        quantity: 1,
+        price_data: {
+          currency: "gbp",
+          unit_amount: 7900,
+          recurring: { interval: "year" },
+          product_data: {
+            name: "PIP:Insight Full Access — Annual (Founding Rate)",
+            description: "12 months for the price of 10. Every instrument's " +
+              "daily Trading Desk analysis, Journal Pro with AI insights, " +
+              "full economic calendar. Founding-member rate, locked in while " +
+              "you stay subscribed.",
+          },
+        },
+      }],
+      success_url: `${origin}/journal?upgraded=1`,
+      cancel_url: `${origin}/#pricing`,
     });
     return Response.json({ url: session.url });
   }

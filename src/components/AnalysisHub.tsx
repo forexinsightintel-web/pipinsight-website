@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import index from "../../content/analysis/index.json";
 
-type Card = { symbol: string; slug: string; free: boolean; bias: string; price: number; change_pct: number };
+type Card = { symbol: string; slug: string; free: boolean; free_today?: boolean; bias: string; price: number; change_pct: number };
 type Index = { date_str: string; sample?: boolean; categories: Record<string, Card[]> };
 
 const TABS: { key: string; label: string; soon?: boolean }[] = [
@@ -50,8 +50,10 @@ export default function AnalysisHub() {
       ) : (
         <>
           <div className="hub-grid">
-            {cards.map((c) => c.free ? (
-              <Link key={c.slug} href={`/analysis/${c.slug}`} className="hub-card">
+            {cards.map((c) => (c.free || c.free_today) ? (
+              <Link key={c.slug} href={`/analysis/${c.slug}`} className="hub-card"
+                style={{ position: "relative" }}>
+                {c.free_today && <span className="hub-free-today">FREE TODAY</span>}
                 <span className={`bias-pill ${pill(c.bias)}`}>{arrow(c.bias)} {c.bias}</span>
                 <div className="hub-sym">{c.symbol}</div>
                 <div className="hub-price">{fmt(c.price)}</div>
