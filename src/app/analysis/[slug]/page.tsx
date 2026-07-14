@@ -34,6 +34,27 @@ export default async function InstrumentPage({ params }: {
   const arrow = d.bias === "BULLISH" ? "▲" : d.bias === "BEARISH" ? "▼" : "◆";
   const fmt = (p: number) => p >= 100 ? p.toFixed(2) : p >= 10 ? p.toFixed(3) : p.toFixed(4);
 
+  // Forex traders talk in pips; metals in dollars; stocks (later) in percent.
+  const isMetal = /^X(AU|AG|PT|PD)\//.test(d.symbol);
+  const pipSize = /^[A-Z]{3}\/[A-Z]{3}$/.test(d.symbol) && !isMetal
+    ? (d.symbol.endsWith("/JPY") ? 0.01 : 0.0001)
+    : null;
+  const distance = (level: number) => {
+    const diff = level - d.price;
+    const above = diff >= 0;
+    const dir = above ? "above" : "below";
+    if (pipSize) {
+      const pips = Math.abs(diff) / pipSize;
+      const n = pips >= 100 ? Math.round(pips) : Math.round(pips * 10) / 10;
+      return { above, text: `${n.toLocaleString("en-GB")} pips ${dir}` };
+    }
+    if (isMetal) {
+      const usd = Math.abs(diff);
+      return { above, text: `$${usd >= 100 ? Math.round(usd).toLocaleString("en-GB") : usd.toFixed(2)} ${dir}` };
+    }
+    return { above, text: `${Math.abs((diff / d.price) * 100).toFixed(2)}% ${dir}` };
+  };
+
   return (
     <div>
       <nav className="nav">
@@ -84,8 +105,7 @@ export default async function InstrumentPage({ params }: {
                 </thead>
                 <tbody>
                   {[...d.zones].sort((a, b) => b.level - a.level).map((z, i) => {
-                    const pct = ((z.level - d.price) / d.price) * 100;
-                    const above = z.level >= d.price;
+                    const { above, text } = distance(z.level);
                     return (
                       <tr key={i}>
                         <td className="inst-lv-price">
@@ -98,7 +118,7 @@ export default async function InstrumentPage({ params }: {
                         <td>{z.touches} {z.touches === 1 ? "touch" : "touches"}
                           {z.touches >= 3 ? " · well-tested" : ""}</td>
                         <td className={above ? "inst-lv-above" : "inst-lv-below"}>
-                          {Math.abs(pct).toFixed(2)}% {above ? "above" : "below"}
+                          {text}
                         </td>
                       </tr>
                     );
