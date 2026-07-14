@@ -15,6 +15,7 @@ const TICKER = [
   { t: 'XAU/USD ▲ BULLISH · GOLD', c: 'gold' },
 ];
 
+import Link from "next/link";
 import dailyFeed from "../../content/daily/latest.json";
 import AnalysisHub from "../components/AnalysisHub";
 
@@ -99,7 +100,7 @@ export default function Home() {
             <p className="section-sub">Bias and direction free for all 9 pairs. Premium adds the full multi-timeframe level analysis, key zones and the complete economic calendar.</p>
           </div>
 
-          <div className="gold-card">
+          <Link href="/analysis/xau-usd" className="gold-card gold-card-link">
             <div className="gold-header">
               <div>
                 <div className="pair-name">XAU/USD <span className="pair-tag">GOLD</span></div>
@@ -114,8 +115,8 @@ export default function Home() {
               <div className="meta-item"><span className="meta-label">Session</span><span className="meta-val">{FEED_SESSION}</span></div>
               <div className="meta-item"><span className="meta-label">Strength</span><span className="meta-val">{GOLD.strength}</span></div>
             </div>
-            <div className="locked-notice">🔒 Full key-zone &amp; multi-timeframe analysis — <a href="#pricing">Premium</a></div>
-          </div>
+            <div className="locked-notice">📈 Today&apos;s full gold analysis — open the trading desk →</div>
+          </Link>
 
           <AnalysisHub />
         </div>

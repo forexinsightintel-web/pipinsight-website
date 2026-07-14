@@ -9,6 +9,7 @@ type Index = { date_str: string; sample?: boolean; categories: Record<string, Ca
 
 const TABS: { key: string; label: string; soon?: boolean }[] = [
   { key: "majors", label: "Majors" },
+  { key: "metals", label: "Metals" },
   { key: "crosses", label: "Cross Pairs" },
   { key: "exotics", label: "Exotics" },
   { key: "uk-stocks", label: "UK Stocks", soon: true },
@@ -55,7 +56,7 @@ export default function AnalysisHub() {
                 <div className="hub-sym">{c.symbol}</div>
                 <div className="hub-price">{fmt(c.price)}</div>
                 <div className="hub-chg" style={{ color: c.change_pct >= 0 ? "var(--teal-dk)" : "var(--red)" }}>
-                  {c.change_pct >= 0 ? "+" : ""}{c.change_pct}% today · Read the desk note →
+                  {c.change_pct >= 0 ? "+" : ""}{c.change_pct}% today · Open the trading desk →
                 </div>
               </Link>
             ) : (

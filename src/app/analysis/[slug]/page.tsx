@@ -72,15 +72,55 @@ export default async function InstrumentPage({ params }: {
 
           <InstrumentCharts d1={d.d1} h1={d.h1} zones={d.zones} />
 
+          {d.zones.length > 0 && (
+            <div className="inst-levels">
+              <div className="jr-card-title">Significant levels on the radar</div>
+              <table className="inst-levels-table">
+                <thead>
+                  <tr>
+                    <th>Level</th><th>Character</th><th>Prior reactions</th>
+                    <th>Versus current price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[...d.zones].sort((a, b) => b.level - a.level).map((z, i) => {
+                    const pct = ((z.level - d.price) / d.price) * 100;
+                    const above = z.level >= d.price;
+                    return (
+                      <tr key={i}>
+                        <td className="inst-lv-price">
+                          <span className="inst-zone-dot" style={{
+                            background: z.side === "resistance" ? "#E8476A" : "#1AAF8B",
+                          }} />
+                          {fmt(z.level)}
+                        </td>
+                        <td style={{ textTransform: "capitalize" }}>{z.label}</td>
+                        <td>{z.touches} {z.touches === 1 ? "touch" : "touches"}
+                          {z.touches >= 3 ? " · well-tested" : ""}</td>
+                        <td className={above ? "inst-lv-above" : "inst-lv-below"}>
+                          {Math.abs(pct).toFixed(2)}% {above ? "above" : "below"}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              <p className="inst-levels-note">
+                Zones where price has repeatedly reacted in prior sessions — context
+                for reading today&apos;s behaviour, not instructions to trade.
+              </p>
+            </div>
+          )}
+
           <div className="inst-grid">
             <article className="inst-editorial">
-              <h2>The Desk Note</h2>
+              <h2>The Trading Desk</h2>
               <div className="inst-byline">
                 PIP:Insight Analysis Desk · {d.date_str} · editorial market analysis
               </div>
               {d.editorial
                 ? d.editorial.split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)
-                : <p>Today&apos;s desk note publishes with the morning analysis run.</p>}
+                : <p>Today&apos;s trading desk analysis publishes with the morning run.</p>}
             </article>
 
             <aside>
