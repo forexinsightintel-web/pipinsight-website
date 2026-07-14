@@ -16,6 +16,7 @@ const TICKER = [
 ];
 
 import dailyFeed from "../../content/daily/latest.json";
+import AnalysisHub from "../components/AnalysisHub";
 
 type FeedPair = { pair: string; price: string; bias: string; strength: string };
 const _deco = (bias: string) => bias === "BULLISH"
@@ -116,43 +117,7 @@ export default function Home() {
             <div className="locked-notice">🔒 Full key-zone &amp; multi-timeframe analysis — <a href="#pricing">Premium</a></div>
           </div>
 
-          <div className="pairs-grid">
-            {FREE_PAIRS.map(p => (
-              <div key={p.pair} className="pair-card">
-                <div className={`pair-accent ${p.accent}`}></div>
-                <div className="pair-body">
-                  <div className="pair-header">
-                    <div className="pair-name">{p.pair}</div>
-                    <span className={`bias-pill ${p.pill}`}>{p.dir} {p.bias}</span>
-                  </div>
-                  <div className="pair-price">{p.price}</div>
-                  <div className="pair-strength">Strength: <strong>{p.strength}</strong></div>
-                  <div className="free-data">
-                    <div className="free-row"><span className="fl">Bias</span><span className={`fv ${p.pill}`}>{p.bias}</span></div>
-                    <div className="free-row"><span className="fl">Direction</span><span className="fv">{p.bias === 'BULLISH' ? 'Upside bias' : p.bias === 'BEARISH' ? 'Downside bias' : 'No clear bias'}</span></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-            {LOCKED_PAIRS.map(p => (
-              <div key={p.pair} className="pair-card locked">
-                <div className="lock-overlay">
-                  <span className="lock-icon">🔒</span>
-                  <span className="lock-label">Premium</span>
-                  <a href="#pricing" className="btn btn-primary btn-xs">Unlock</a>
-                </div>
-                <div className={`pair-accent ${p.accent}`}></div>
-                <div className="pair-body">
-                  <div className="pair-header">
-                    <div className="pair-name">{p.pair}</div>
-                    <span className={`bias-pill ${p.pill}`}>{p.dir} {p.bias}</span>
-                  </div>
-                  <div className="pair-price">{p.price}</div>
-                  <div className="pair-strength">Strength: <strong>{p.strength}</strong></div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <AnalysisHub />
         </div>
       </section>
 
