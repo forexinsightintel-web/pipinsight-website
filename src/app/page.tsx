@@ -195,7 +195,7 @@ export default function Home() {
               <p className="plan-desc">Everything you need to follow the market each morning.</p>
               <ul className="plan-features">
                 <li>✓ Daily bias for all 9 pairs</li>
-                <li>✓ Market direction signals</li>
+                <li>✓ Daily market bias &amp; direction analysis</li>
                 <li>✓ PDF reports on X @Forexxinsight</li>
                 <li>✓ Economic calendar highlights</li>
               </ul>
