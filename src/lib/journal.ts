@@ -109,4 +109,73 @@ export const DEMO_TRADES: Trade[] = [
   { id: "d3", date: "2026-07-08", pair: "GBP/USD", direction: "long", session: "London", setup: "Trend pullback", riskR: 1, resultR: 1.6, emotion: "calm", planned: true, notes: "HL in uptrend, took partials at 1R." },
   { id: "d4", date: "2026-07-09", pair: "USD/JPY", direction: "short", session: "Asian", setup: "Range fade", riskR: 1, resultR: -1, emotion: "bored", planned: false, notes: "Wasn't in the plan. Chop." },
   { id: "d5", date: "2026-07-10", pair: "EUR/USD", direction: "long", session: "New York", setup: "S/R bounce", riskR: 1, resultR: 2.8, emotion: "calm", planned: true, notes: "News flush into weekly support." },
+  { id: "d6", date: "2026-06-29", pair: "GBP/JPY", direction: "short", session: "London", setup: "Break & retest", riskR: 1, resultR: 1.9, emotion: "calm", planned: true, notes: "Retest of broken range low." },
+  { id: "d7", date: "2026-06-30", pair: "EUR/USD", direction: "long", session: "London", setup: "Trend pullback", riskR: 1, resultR: -1, emotion: "confident", planned: true, notes: "HL failed, structure broke against." },
+  { id: "d8", date: "2026-07-01", pair: "XAU/USD", direction: "long", session: "New York", setup: "Supply/Demand zone", riskR: 1, resultR: 3.2, emotion: "calm", planned: true, notes: "Fresh demand zone, first return." },
+  { id: "d9", date: "2026-07-01", pair: "USD/CAD", direction: "short", session: "New York", setup: "Range fade", riskR: 1, resultR: -1, emotion: "fomo", planned: false, notes: "Chased after missing the entry." },
+  { id: "d10", date: "2026-07-02", pair: "GBP/USD", direction: "short", session: "London", setup: "Break & retest", riskR: 1, resultR: 0, emotion: "calm", planned: true, notes: "Scratched at breakeven, momentum faded." },
+  { id: "d11", date: "2026-07-03", pair: "USD/JPY", direction: "long", session: "Asian", setup: "Trend pullback", riskR: 1, resultR: 1.4, emotion: "calm", planned: true, notes: "Clean HL in Tokyo session." },
+  { id: "d12", date: "2026-07-03", pair: "EUR/USD", direction: "short", session: "New York", setup: "News momentum", riskR: 1, resultR: -1, emotion: "anxious", planned: false, notes: "NFP chop, shouldn't have been in it." },
+  { id: "d13", date: "2026-07-07", pair: "GBP/JPY", direction: "long", session: "London", setup: "S/R bounce", riskR: 1, resultR: 2.4, emotion: "calm", planned: true, notes: "Weekly support held, textbook." },
+  { id: "d14", date: "2026-07-09", pair: "XAU/USD", direction: "short", session: "London", setup: "Supply/Demand zone", riskR: 1, resultR: 1.1, emotion: "confident", planned: true, notes: "Supply zone rejection, partials early." },
 ];
+
+// ── chart data helpers ──────────────────────────────────────────────────────
+export function rHistogram(trades: Trade[], binSize = 0.5) {
+  if (!trades.length) return [] as { x0: number; x1: number; n: number }[];
+  const rs = trades.map((t) => t.resultR);
+  const lo = Math.floor(Math.min(...rs, -1) / binSize) * binSize;
+  const hi = Math.ceil(Math.max(...rs, 1) / binSize) * binSize;
+  const bins: { x0: number; x1: number; n: number }[] = [];
+  for (let x = lo; x < hi; x += binSize) {
+    bins.push({
+      x0: +x.toFixed(2), x1: +(x + binSize).toFixed(2),
+      n: rs.filter((r) => r >= x && r < x + binSize).length,
+    });
+  }
+  return bins;
+}
+
+export function netRByWeekday(trades: Trade[]) {
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  return days.map((d, i) => {
+    const g = trades.filter((t) => {
+      const wd = new Date(t.date + "T12:00:00Z").getUTCDay();
+      return wd === i + 1;
+    });
+    return {
+      day: d, n: g.length,
+      netR: g.reduce((s, t) => s + t.resultR, 0),
+      winRate: g.length ? (g.filter((t) => t.resultR > 0).length / g.length) * 100 : 0,
+    };
+  });
+}
+
+export function rollingWinRate(trades: Trade[], window = 10) {
+  const sorted = [...trades].sort((a, b) => a.date.localeCompare(b.date));
+  const out: { i: number; rate: number }[] = [];
+  for (let i = window - 1; i < sorted.length; i++) {
+    const slice = sorted.slice(i - window + 1, i + 1);
+    out.push({ i: i + 1, rate: (slice.filter((t) => t.resultR > 0).length / window) * 100 });
+  }
+  return out;
+}
+
+export function longShortSplit(trades: Trade[]) {
+  const mk = (dir: Trade["direction"]) => {
+    const g = trades.filter((t) => t.direction === dir);
+    return {
+      n: g.length,
+      netR: g.reduce((s, t) => s + t.resultR, 0),
+      winRate: g.length ? (g.filter((t) => t.resultR > 0).length / g.length) * 100 : 0,
+    };
+  };
+  return { long: mk("long"), short: mk("short") };
+}
+
+export function equityWithDates(trades: Trade[]) {
+  let eq = 0;
+  const sorted = [...trades].sort((a, b) => a.date.localeCompare(b.date));
+  return [{ i: 0, date: "", eq: 0 },
+    ...sorted.map((t, i) => ({ i: i + 1, date: t.date, eq: +(eq += t.resultR).toFixed(2) }))];
+}
