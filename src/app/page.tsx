@@ -95,7 +95,7 @@ export default function Home() {
           <div className="section-header">
             <div className="eyebrow">TODAY&apos;S ANALYSIS · {FEED_DATE}</div>
             <h2>9 Pairs. Real Analysis.</h2>
-            <p className="section-sub">Bias and direction free for all 9 pairs. Subscribe for entry, stop loss, take profit and the economic calendar.</p>
+            <p className="section-sub">Bias and direction free for all 9 pairs. Premium adds the full multi-timeframe level analysis, key zones and the complete economic calendar.</p>
           </div>
 
           <div className="gold-card">
@@ -108,12 +108,12 @@ export default function Home() {
             </div>
             <div className="gold-meta">
               <div className="meta-item"><span className="meta-label">Bias</span><span className="meta-val teal">{GOLD.bias}</span></div>
-              <div className="meta-item"><span className="meta-label">Direction</span><span className="meta-val">Long setups only</span></div>
+              <div className="meta-item"><span className="meta-label">Direction</span><span className="meta-val">Upside bias</span></div>
               <div className="meta-item"><span className="meta-label">Macro</span><span className="meta-val">{GOLD.macro}</span></div>
               <div className="meta-item"><span className="meta-label">Session</span><span className="meta-val">{FEED_SESSION}</span></div>
               <div className="meta-item"><span className="meta-label">Strength</span><span className="meta-val">{GOLD.strength}</span></div>
             </div>
-            <div className="locked-notice">🔒 Full levels, entry, SL &amp; TP — <a href="#pricing">Premium only</a></div>
+            <div className="locked-notice">🔒 Full key-zone &amp; multi-timeframe analysis — <a href="#pricing">Premium</a></div>
           </div>
 
           <div className="pairs-grid">
@@ -129,7 +129,7 @@ export default function Home() {
                   <div className="pair-strength">Strength: <strong>{p.strength}</strong></div>
                   <div className="free-data">
                     <div className="free-row"><span className="fl">Bias</span><span className={`fv ${p.pill}`}>{p.bias}</span></div>
-                    <div className="free-row"><span className="fl">Direction</span><span className="fv">{p.bias === 'BULLISH' ? 'Long setups' : 'Short setups'}</span></div>
+                    <div className="free-row"><span className="fl">Direction</span><span className="fv">{p.bias === 'BULLISH' ? 'Upside bias' : p.bias === 'BEARISH' ? 'Downside bias' : 'No clear bias'}</span></div>
                   </div>
                 </div>
               </div>
@@ -205,11 +205,11 @@ export default function Home() {
               <div className="plan-badge">MOST POPULAR</div>
               <div className="plan-name">Premium</div>
               <div className="plan-price">£9.99<span>/month</span></div>
-              <p className="plan-desc">Full trade ideas with entry, stop loss, take profit and more.</p>
+              <p className="plan-desc">The complete analysis: key zones, structure and the full calendar.</p>
               <ul className="plan-features">
                 <li>✓ Everything in Free</li>
-                <li>✓ Entry price for every pair</li>
-                <li>✓ Stop loss &amp; take profit levels</li>
+                <li>✓ Key support &amp; resistance zones for all 9 pairs</li>
+                <li>✓ Multi-timeframe structure analysis</li>
                 <li>✓ Full economic calendar with impact</li>
                 <li>✓ Multi-timeframe chart analysis</li>
                 <li>✓ Key resistance &amp; support levels</li>
