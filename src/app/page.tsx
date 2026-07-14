@@ -15,19 +15,19 @@ const TICKER = [
   { t: 'XAU/USD ▲ BULLISH · GOLD', c: 'gold' },
 ];
 
-const FREE_PAIRS = [
-  { pair:'EUR/USD', price:'1.0812', bias:'BEARISH', dir:'▼', strength:'Strong', accent:'bear', pill:'bear' },
-  { pair:'GBP/USD', price:'1.2734', bias:'BULLISH', dir:'▲', strength:'Moderate', accent:'bull', pill:'bull' },
-  { pair:'USD/JPY', price:'157.42', bias:'BULLISH', dir:'▲', strength:'Strong', accent:'bull', pill:'bull' },
-];
+import dailyFeed from "../../content/daily/latest.json";
 
-const LOCKED_PAIRS = [
-  { pair:'USD/CHF', price:'0.9021', bias:'BULLISH', dir:'▲', strength:'Weak', accent:'bull', pill:'bull' },
-  { pair:'AUD/USD', price:'0.6612', bias:'NEUTRAL', dir:'◆', strength:'Neutral', accent:'neu', pill:'neu' },
-  { pair:'USD/CAD', price:'1.3698', bias:'BEARISH', dir:'▼', strength:'Moderate', accent:'bear', pill:'bear' },
-  { pair:'NZD/USD', price:'0.6041', bias:'NEUTRAL', dir:'◆', strength:'Weak', accent:'neu', pill:'neu' },
-  { pair:'GBP/JPY', price:'200.31', bias:'BULLISH', dir:'▲', strength:'Moderate', accent:'bull', pill:'bull' },
-];
+type FeedPair = { pair: string; price: string; bias: string; strength: string };
+const _deco = (bias: string) => bias === "BULLISH"
+  ? { dir: "▲", accent: "bull", pill: "bull" }
+  : bias === "BEARISH" ? { dir: "▼", accent: "bear", pill: "bear" }
+  : { dir: "◆", accent: "neu", pill: "neu" };
+const _pairs = (dailyFeed.pairs as FeedPair[]).map(p => ({ ...p, ..._deco(p.bias) }));
+const FEED_DATE = dailyFeed.date_str;
+const FEED_SESSION = dailyFeed.session;
+const GOLD = dailyFeed.gold;
+const FREE_PAIRS = _pairs.slice(0, 3);
+const LOCKED_PAIRS = _pairs.slice(3);
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,6 +61,8 @@ export default function Home() {
           </button>
           <div className={`nav-links${menuOpen ? ' open' : ''}`}>
             <a href="#analysis" onClick={() => setMenuOpen(false)}>Today&apos;s Analysis</a>
+            <a href="/courses" onClick={() => setMenuOpen(false)}>Courses</a>
+            <a href="/journal" onClick={() => setMenuOpen(false)}>Journal</a>
             <a href="#how" onClick={() => setMenuOpen(false)}>How It Works</a>
             <a href="#pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
             <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener" onClick={() => setMenuOpen(false)}>Follow on X</a>
@@ -91,7 +93,7 @@ export default function Home() {
       <section className="analysis" id="analysis">
         <div className="container">
           <div className="section-header">
-            <div className="eyebrow">TODAY&apos;S ANALYSIS · FRIDAY 19 JUNE 2026</div>
+            <div className="eyebrow">TODAY&apos;S ANALYSIS · {FEED_DATE}</div>
             <h2>9 Pairs. Real Analysis.</h2>
             <p className="section-sub">Bias and direction free for all 9 pairs. Subscribe for entry, stop loss, take profit and the economic calendar.</p>
           </div>
@@ -100,16 +102,16 @@ export default function Home() {
             <div className="gold-header">
               <div>
                 <div className="pair-name">XAU/USD <span className="pair-tag">GOLD</span></div>
-                <div className="pair-price">2,341.50</div>
+                <div className="pair-price">{GOLD.price}</div>
               </div>
-              <span className="bias-pill bull">▲ BULLISH</span>
+              <span className={`bias-pill ${GOLD.bias === "BEARISH" ? "bear" : GOLD.bias === "NEUTRAL" ? "neu" : "bull"}`}>{GOLD.bias === "BEARISH" ? "▼" : GOLD.bias === "NEUTRAL" ? "◆" : "▲"} {GOLD.bias}</span>
             </div>
             <div className="gold-meta">
-              <div className="meta-item"><span className="meta-label">Bias</span><span className="meta-val teal">Bullish</span></div>
+              <div className="meta-item"><span className="meta-label">Bias</span><span className="meta-val teal">{GOLD.bias}</span></div>
               <div className="meta-item"><span className="meta-label">Direction</span><span className="meta-val">Long setups only</span></div>
-              <div className="meta-item"><span className="meta-label">Macro</span><span className="meta-val">Safe haven demand elevated</span></div>
-              <div className="meta-item"><span className="meta-label">Session</span><span className="meta-val">London Open</span></div>
-              <div className="meta-item"><span className="meta-label">Strength</span><span className="meta-val">Strong</span></div>
+              <div className="meta-item"><span className="meta-label">Macro</span><span className="meta-val">{GOLD.macro}</span></div>
+              <div className="meta-item"><span className="meta-label">Session</span><span className="meta-val">{FEED_SESSION}</span></div>
+              <div className="meta-item"><span className="meta-label">Strength</span><span className="meta-val">{GOLD.strength}</span></div>
             </div>
             <div className="locked-notice">🔒 Full levels, entry, SL &amp; TP — <a href="#pricing">Premium only</a></div>
           </div>

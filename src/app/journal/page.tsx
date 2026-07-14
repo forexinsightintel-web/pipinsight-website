@@ -1,244 +1,298 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import {
+  computeStats, equityCurve, groupBy, DEMO_TRADES, PAIRS, SETUPS,
+  type Trade,
+} from "../../lib/journal";
+
+const LS_KEY = "pipinsight_journal_v1";
+
+type Insight = { title: string; severity: "info" | "warning" | "critical"; body: string };
+type Group = Record<string, { n: number; netR: number; winRate: number }>;
+
+function useTrades(): [Trade[], (t: Trade[]) => void] {
+  const [trades, setTrades] = useState<Trade[]>([]);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      setTrades(raw ? JSON.parse(raw) : DEMO_TRADES);
+    } catch { setTrades(DEMO_TRADES); }
+  }, []);
+  const save = (t: Trade[]) => {
+    setTrades(t);
+    try { localStorage.setItem(LS_KEY, JSON.stringify(t)); } catch {}
+  };
+  return [trades, save];
+}
+
+function Tile({ label, value, sub, tone }: {
+  label: string; value: string; sub?: string; tone?: "up" | "down";
+}) {
+  const col = tone === "up" ? "text-emerald-400" : tone === "down" ? "text-rose-400" : "text-slate-100";
+  return (
+    <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+      <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">{label}</div>
+      <div className={`text-2xl font-black mt-1 ${col}`}>{value}</div>
+      {sub && <div className="text-[11px] text-slate-500 mt-0.5">{sub}</div>}
+    </div>
+  );
+}
+
+function Equity({ trades }: { trades: Trade[] }) {
+  const pts = equityCurve(trades);
+  if (pts.length < 2) return <div className="text-slate-600 text-sm p-8 text-center">Log trades to draw your equity curve.</div>;
+  const w = 720, h = 180, pad = 8;
+  const min = Math.min(...pts), max = Math.max(...pts);
+  const span = max - min || 1;
+  const x = (i: number) => pad + (i / (pts.length - 1)) * (w - 2 * pad);
+  const y = (v: number) => h - pad - ((v - min) / span) * (h - 2 * pad);
+  const d = pts.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const up = pts[pts.length - 1] >= 0;
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full">
+      <line x1={pad} x2={w - pad} y1={y(0)} y2={y(0)} stroke="#334155" strokeDasharray="4 4" strokeWidth="1" />
+      <path d={`${d} L${x(pts.length - 1).toFixed(1)},${h - pad} L${x(0).toFixed(1)},${h - pad} Z`}
+        fill={up ? "rgba(52,211,153,0.08)" : "rgba(251,113,133,0.08)"} />
+      <path d={d} fill="none" stroke={up ? "#34d399" : "#fb7185"} strokeWidth="2.5"
+        strokeLinejoin="round" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function Bars({ data }: { data: Group }) {
+  const entries = Object.entries(data).sort((a, b) => b[1].netR - a[1].netR).slice(0, 6);
+  if (!entries.length) return <div className="text-slate-600 text-xs">No data yet.</div>;
+  const maxAbs = Math.max(...entries.map(([, v]) => Math.abs(v.netR)), 0.1);
+  return (
+    <div className="space-y-2">
+      {entries.map(([k, v]) => (
+        <div key={k} className="flex items-center gap-2 text-xs">
+          <div className="w-28 truncate text-slate-400">{k}</div>
+          <div className="flex-1 h-4 bg-slate-800/80 rounded overflow-hidden flex">
+            <div className={`h-full ${v.netR >= 0 ? "bg-emerald-500/80" : "bg-rose-500/80"}`}
+              style={{ width: `${(Math.abs(v.netR) / maxAbs) * 100}%` }} />
+          </div>
+          <div className={`w-14 text-right font-bold ${v.netR >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
+            {v.netR >= 0 ? "+" : ""}{v.netR.toFixed(1)}R
+          </div>
+          <div className="w-12 text-right text-slate-500">{v.winRate.toFixed(0)}%</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const EMPTY: Omit<Trade, "id"> = {
+  date: "", pair: "EUR/USD",
+  direction: "long", session: "London", setup: SETUPS[0], riskR: 1,
+  resultR: 0, emotion: "calm", planned: true, notes: "",
+};
 
 export default function JournalPage() {
-  return (
-    <div className="min-h-screen bg-gray-50">
+  const [trades, save] = useTrades();
+  const [form, setForm] = useState<Omit<Trade, "id">>(EMPTY);
+  const [insights, setInsights] = useState<Insight[] | null>(null);
+  const [headline, setHeadline] = useState("");
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiErr, setAiErr] = useState("");
 
-      {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/">
-            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="h-10 w-auto" />
-          </Link>
-          <div className="flex items-center gap-3">
-            <button className="text-sm text-gray-500 font-medium px-4 py-2 rounded-lg hover:bg-gray-100">Today's Analysis</button>
-            <button className="text-sm text-emerald-600 font-semibold px-4 py-2 rounded-lg bg-emerald-50">My Journal</button>
-            <button className="text-sm text-gray-500 font-medium px-4 py-2 rounded-lg hover:bg-gray-100">PIP Feed</button>
-            <button className="bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold">+ Upload CSV</button>
-            <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold text-sm">J</div>
+  useEffect(() => {
+    setForm((f) => f.date ? f : { ...f, date: new Date().toISOString().slice(0, 10) });
+  }, []);
+
+  const stats = useMemo(() => computeStats(trades), [trades]);
+  const bySetup = useMemo(() => groupBy(trades, (t) => t.setup), [trades]);
+  const bySession = useMemo(() => groupBy(trades, (t) => t.session), [trades]);
+  const byEmotion = useMemo(() => groupBy(trades, (t) => t.emotion), [trades]);
+
+  const addTrade = () => {
+    save([...trades, { ...form, id: crypto.randomUUID(), riskR: Number(form.riskR) || 1, resultR: Number(form.resultR) || 0 }]);
+    setForm({ ...EMPTY, date: form.date });
+  };
+
+  const analyze = async () => {
+    setAiBusy(true); setAiErr(""); setInsights(null);
+    try {
+      const r = await fetch("/api/journal/analyze", {
+        method: "POST", headers: { "content-type": "application/json" },
+        body: JSON.stringify({ trades }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || "Analysis failed");
+      setInsights(d.insights); setHeadline(d.headline || "");
+    } catch (e) { setAiErr(e instanceof Error ? e.message : "Analysis failed"); }
+    setAiBusy(false);
+  };
+
+  const upgrade = async () => {
+    const r = await fetch("/api/checkout", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ kind: "journal" }),
+    });
+    const d = await r.json();
+    if (d.url) window.location.href = d.url;
+    else alert(d.error || "Checkout unavailable");
+  };
+
+  const sevStyle: Record<string, string> = {
+    critical: "border-rose-500/50 bg-rose-500/10",
+    warning: "border-amber-500/50 bg-amber-500/10",
+    info: "border-sky-500/40 bg-sky-500/10",
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-200">
+      <nav className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+          <Link href="/"><Image src="/logo.png" alt="PIP:Insight" width={140} height={38} className="h-9 w-auto" /></Link>
+          <div className="flex items-center gap-2 text-sm">
+            <Link href="/" className="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800">Today&apos;s Analysis</Link>
+            <Link href="/courses" className="px-3 py-1.5 rounded-lg text-slate-400 hover:bg-slate-800">Courses</Link>
+            <span className="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-400 font-semibold">Journal</span>
+            <button onClick={upgrade} className="ml-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-1.5 rounded-lg">
+              Go Pro — £9.99/mo
+            </button>
           </div>
         </div>
       </nav>
 
-      <div className="flex pt-16 min-h-screen">
-
-        {/* SIDEBAR */}
-        <div className="w-56 bg-white border-r border-gray-100 fixed top-16 bottom-0 p-4 overflow-y-auto">
-          <div className="mb-6">
-            <div className="text-[10px] font-bold text-gray-400 tracking-widest uppercase px-2 mb-2">Overview</div>
-            <a className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-emerald-50 text-emerald-700 font-semibold text-sm mb-1 cursor-pointer">
-              <span>📊</span> Dashboard
-            </a>
-            <a className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-gray-500 hover:bg-gray-50 text-sm mb-1 cursor-pointer">
-              <span>📅</span> PIP Feed
-              <span className="ml-auto bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">9</span>
-            </a>
-            <a className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-gray-500 hover:bg-gray-50 text-sm mb-1 cursor-pointer">
-              <span>🤖</span> AI Insights
-              <span className="ml-auto bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
-            </a>
-          </div>
-          <div className="mb-6">
-            <div className="text-[10px] font-bold text-gray-400 tracking-widest uppercase px-2 mb-2">My Trades</div>
-            {[["📋", "Trade Log"], ["📈", "Performance"], ["🧠", "Psychology"], ["⚠️", "Mistakes"]].map(([icon, label]) => (
-              <a key={label} className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-gray-500 hover:bg-gray-50 text-sm mb-1 cursor-pointer">
-                <span>{icon}</span> {label}
-                {label === "Mistakes" && <span className="ml-auto bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">5</span>}
-              </a>
-            ))}
-          </div>
+      <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
+        <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <div className="text-[10px] font-bold text-gray-400 tracking-widest uppercase px-2 mb-2">Analysis</div>
-            {[["💱", "By Pair"], ["🕐", "By Session"], ["📆", "By Day"]].map(([icon, label]) => (
-              <a key={label} className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-gray-500 hover:bg-gray-50 text-sm mb-1 cursor-pointer">
-                <span>{icon}</span> {label}
-              </a>
+            <h1 className="text-2xl font-black text-white">Trade Journal</h1>
+            <p className="text-sm text-slate-500">Free on this device. Pro adds AI analysis history, cloud sync and unlimited records.</p>
+          </div>
+          <button onClick={analyze} disabled={aiBusy || trades.length === 0}
+            className="bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 text-white font-bold px-5 py-2.5 rounded-xl">
+            {aiBusy ? "Analysing…" : "🤖 AI Analysis"}
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+          <Tile label="Trades" value={`${stats.n}`} />
+          <Tile label="Win rate" value={`${stats.winRate.toFixed(0)}%`} sub={`${stats.wins}W / ${stats.losses}L / ${stats.breakeven}BE`} />
+          <Tile label="Net R" value={`${stats.netR >= 0 ? "+" : ""}${stats.netR.toFixed(1)}R`} tone={stats.netR >= 0 ? "up" : "down"} />
+          <Tile label="Expectancy" value={`${stats.expectancy >= 0 ? "+" : ""}${stats.expectancy.toFixed(2)}R`} sub="per trade" tone={stats.expectancy >= 0 ? "up" : "down"} />
+          <Tile label="Profit factor" value={Number.isFinite(stats.profitFactor) ? stats.profitFactor.toFixed(2) : "∞"} />
+          <Tile label="Max drawdown" value={`${stats.maxDrawdownR.toFixed(1)}R`} tone="down" />
+          <Tile label="Streaks" value={`${stats.bestStreak}W / ${stats.worstStreak}L`} sub="best / worst" />
+          <Tile label="Plan adherence" value={`${stats.planAdherence.toFixed(0)}%`} tone={stats.planAdherence >= 80 ? "up" : "down"} />
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-2">Equity curve (R)</div>
+            <Equity trades={trades} />
+          </div>
+          <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 space-y-2 overflow-y-auto max-h-72">
+            <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">AI insights</div>
+            {aiErr && <div className="text-rose-400 text-sm">{aiErr}</div>}
+            {!insights && !aiErr && <div className="text-slate-600 text-sm">Run AI Analysis to read the patterns in your trading — setups, sessions, psychology, plan adherence.</div>}
+            {headline && <div className="text-slate-200 text-sm font-semibold">{headline}</div>}
+            {insights?.map((i, k) => (
+              <div key={k} className={`border rounded-lg p-2.5 text-xs ${sevStyle[i.severity] ?? sevStyle.info}`}>
+                <div className="font-bold text-slate-100">{i.title}</div>
+                <div className="text-slate-300 mt-0.5">{i.body}</div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* MAIN */}
-        <div className="ml-56 flex-1 p-8">
-
-          {/* Header */}
-          <div className="flex items-start justify-between mb-8">
-            <div>
-              <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">My Trading Dashboard</h1>
-              <p className="text-sm text-gray-400 mt-1">847 trades analysed · Last updated 19 Jun 2026</p>
-            </div>
-            <button className="bg-emerald-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-600 transition-colors">
-              + Upload New CSV
-            </button>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-3">By setup</div>
+            <Bars data={bySetup} />
           </div>
-
-          {/* STATS */}
-          <div className="grid grid-cols-5 gap-4 mb-6">
-            {[
-              { label: "Win Rate", value: "58.4%", color: "text-emerald-600", change: "↑ +3.2% vs last month", up: true, highlight: true },
-              { label: "Total Pips", value: "+847", color: "text-emerald-600", change: "↑ This month", up: true },
-              { label: "Avg R:R", value: "1 : 1.8", color: "text-amber-600", change: "Target: 1:2.0", up: null },
-              { label: "Trades Taken", value: "47", color: "text-gray-900", change: "↑ 12 vs target", up: false },
-              { label: "Profit Factor", value: "1.94", color: "text-emerald-600", change: "↑ Good", up: true },
-            ].map(stat => (
-              <div key={stat.label} className={`rounded-2xl p-5 border ${stat.highlight ? 'border-emerald-200 bg-emerald-50' : 'border-gray-200 bg-white'}`}>
-                <div className="text-[10px] font-bold text-gray-400 tracking-widest uppercase font-mono mb-2">{stat.label}</div>
-                <div className={`text-3xl font-extrabold tracking-tight ${stat.color}`}>{stat.value}</div>
-                <div className={`text-xs mt-1 font-mono ${stat.up === true ? 'text-emerald-500' : stat.up === false ? 'text-red-400' : 'text-gray-400'}`}>{stat.change}</div>
-              </div>
-            ))}
+          <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-3">By session</div>
+            <Bars data={bySession} />
           </div>
+          <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+            <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-3">By emotion</div>
+            <Bars data={byEmotion} />
+          </div>
+        </div>
 
-          {/* AI INSIGHT */}
-          <div className="rounded-2xl p-6 mb-6 border border-emerald-200" style={{background: 'linear-gradient(135deg, #EBF8F3, #F0F8FF)'}}>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl">🤖</span>
-              <div>
-                <div className="font-bold text-emerald-700">Claude's Analysis of Your Last 30 Days</div>
-                <div className="text-xs text-gray-400 font-mono">Based on 47 trades · Updated 19 Jun 2026</div>
-              </div>
-            </div>
-            <p className="text-sm text-gray-700 leading-relaxed mb-4">
-              Your overall performance is <strong className="text-emerald-600">improving</strong> — win rate up 3.2% and profit factor above 1.9 is solid. However, three clear patterns are costing you money every month.
-            </p>
-            <div className="space-y-3">
-              {[
-                { color: "bg-red-500", text: <><strong className="text-red-600">Friday Overtrading:</strong> You place 31% of your trades on Fridays but your Friday win rate is only 38%. Avoiding trades after 14:00 UK on Fridays would have saved you 124 pips this month.</> },
-                { color: "bg-red-500", text: <><strong className="text-red-600">Cutting Winners Early:</strong> Your average winner closes at 1.4R despite setting 2.0R targets. You're manually closing 67% of winning trades before TP. Letting winners run would add ~200 pips/month.</> },
-                { color: "bg-amber-500", text: <><strong className="text-amber-600">Revenge Trading:</strong> After a losing trade, you re-enter within 45 minutes in 71% of cases. These revenge trades have a 29% win rate. A 2-hour cooling off rule is strongly recommended.</> },
-                { color: "bg-emerald-500", text: <><strong className="text-emerald-600">Strength:</strong> Your London session trades (08:00–12:00 UK) have a 71% win rate — significantly above your average. Consider concentrating your trading here only.</> },
-              ].map((item, i) => (
-                <div key={i} className="flex gap-3 items-start">
-                  <div className={`w-1.5 h-1.5 rounded-full ${item.color} mt-2 flex-shrink-0`}></div>
-                  <p className="text-sm text-gray-700 leading-relaxed">{item.text}</p>
-                </div>
+        <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4">
+          <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-3">Log a trade</div>
+          <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-2 text-sm">
+            <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2 col-span-2 lg:col-span-2" />
+            <select value={form.pair} onChange={(e) => setForm({ ...form, pair: e.target.value })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2">
+              {PAIRS.map((p) => <option key={p}>{p}</option>)}
+            </select>
+            <select value={form.direction} onChange={(e) => setForm({ ...form, direction: e.target.value as Trade["direction"] })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2">
+              <option value="long">Long</option><option value="short">Short</option>
+            </select>
+            <select value={form.session} onChange={(e) => setForm({ ...form, session: e.target.value as Trade["session"] })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2">
+              {["Asian", "London", "New York", "Other"].map((s) => <option key={s}>{s}</option>)}
+            </select>
+            <select value={form.setup} onChange={(e) => setForm({ ...form, setup: e.target.value })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2 col-span-2">
+              {SETUPS.map((s) => <option key={s}>{s}</option>)}
+            </select>
+            <input type="number" step="0.1" placeholder="Result (R)" value={form.resultR}
+              onChange={(e) => setForm({ ...form, resultR: Number(e.target.value) })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2" />
+            <select value={form.emotion} onChange={(e) => setForm({ ...form, emotion: e.target.value as Trade["emotion"] })}
+              className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-2">
+              {["calm", "confident", "fomo", "revenge", "anxious", "bored"].map((s) => <option key={s}>{s}</option>)}
+            </select>
+            <label className="flex items-center gap-1.5 px-2 text-slate-400">
+              <input type="checkbox" checked={form.planned}
+                onChange={(e) => setForm({ ...form, planned: e.target.checked })} /> In plan
+            </label>
+          </div>
+          <div className="flex gap-2 mt-2">
+            <input placeholder="Notes — what did you see, what did you do, what did you feel?"
+              value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })}
+              className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm" />
+            <button onClick={addTrade} className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 rounded-lg">Add</button>
+          </div>
+        </div>
+
+        <div className="bg-slate-900/70 border border-slate-800 rounded-xl p-4 overflow-x-auto">
+          <div className="text-[10px] font-bold tracking-widest text-slate-500 uppercase mb-3">
+            Trade log ({trades.length})
+            <button onClick={() => { if (confirm("Clear all trades on this device?")) save([]); }}
+              className="float-right text-rose-500/70 hover:text-rose-400 normal-case font-semibold">clear</button>
+          </div>
+          <table className="w-full text-xs">
+            <thead className="text-slate-500 text-left">
+              <tr>{["Date", "Pair", "Dir", "Session", "Setup", "R", "Emotion", "Plan", "Notes", ""].map((h, i) => <th key={i} className="py-1.5 pr-3 font-semibold">{h}</th>)}</tr>
+            </thead>
+            <tbody>
+              {[...trades].sort((a, b) => b.date.localeCompare(a.date)).map((t) => (
+                <tr key={t.id} className="border-t border-slate-800/70">
+                  <td className="py-1.5 pr-3 text-slate-400">{t.date}</td>
+                  <td className="pr-3 font-semibold text-slate-200">{t.pair}</td>
+                  <td className={`pr-3 font-bold ${t.direction === "long" ? "text-emerald-400" : "text-rose-400"}`}>{t.direction.toUpperCase()}</td>
+                  <td className="pr-3 text-slate-400">{t.session}</td>
+                  <td className="pr-3 text-slate-400">{t.setup}</td>
+                  <td className={`pr-3 font-black ${t.resultR > 0 ? "text-emerald-400" : t.resultR < 0 ? "text-rose-400" : "text-slate-400"}`}>
+                    {t.resultR > 0 ? "+" : ""}{t.resultR.toFixed(1)}
+                  </td>
+                  <td className="pr-3 text-slate-400">{t.emotion}</td>
+                  <td className="pr-3">{t.planned ? "✓" : <span className="text-amber-400">✗</span>}</td>
+                  <td className="pr-3 text-slate-500 max-w-[260px] truncate">{t.notes}</td>
+                  <td><button onClick={() => save(trades.filter((x) => x.id !== t.id))} className="text-slate-600 hover:text-rose-400">✕</button></td>
+                </tr>
               ))}
-            </div>
-          </div>
-
-          {/* TRADE TABLE + BREAKDOWN */}
-          <div className="grid grid-cols-3 gap-5 mb-6">
-            <div className="col-span-2 bg-white border border-gray-200 rounded-2xl p-6">
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="font-bold text-gray-900">Recent Trades</h3>
-                <a className="text-sm text-emerald-600 font-semibold cursor-pointer">View all 47 →</a>
-              </div>
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-100">
-                    {["Pair", "Dir", "Entry", "Exit", "Pips", "Result", "AI"].map(h => (
-                      <th key={h} className="text-left text-[10px] font-bold text-gray-400 uppercase tracking-widest pb-3">{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { pair: "GBP/USD", dir: "SHORT", bull: false, entry: "1.33500", exit: "1.32600", pips: "+90", result: "WIN" },
-                    { pair: "EUR/USD", dir: "SHORT", bull: false, entry: "1.14800", exit: "1.14900", pips: "-10", result: "LOSS" },
-                    { pair: "XAU/USD", dir: "LONG", bull: true, entry: "2318.00", exit: "2341.50", pips: "+235", result: "WIN" },
-                    { pair: "USD/JPY", dir: "LONG", bull: true, entry: "160.950", exit: "—", pips: "+40", result: "OPEN" },
-                    { pair: "GBP/JPY", dir: "LONG", bull: true, entry: "212.500", exit: "211.800", pips: "-70", result: "LOSS" },
-                  ].map((row, i) => (
-                    <tr key={i} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                      <td className="py-3 font-mono font-bold text-gray-900">{row.pair}</td>
-                      <td className="py-3"><span className={`text-xs font-bold font-mono ${row.bull ? 'text-emerald-600' : 'text-red-500'}`}>{row.bull ? '▲' : '▼'} {row.dir}</span></td>
-                      <td className="py-3 font-mono text-xs text-gray-600">{row.entry}</td>
-                      <td className="py-3 font-mono text-xs text-gray-600">{row.exit}</td>
-                      <td className={`py-3 font-mono font-bold text-xs ${row.pips.startsWith('+') ? 'text-emerald-600' : 'text-red-500'}`}>{row.pips}</td>
-                      <td className="py-3">
-                        <span className={`text-[10px] font-bold px-2 py-1 rounded font-mono ${
-                          row.result === 'WIN' ? 'bg-emerald-50 text-emerald-700' :
-                          row.result === 'LOSS' ? 'bg-red-50 text-red-600' :
-                          'bg-amber-50 text-amber-600'
-                        }`}>{row.result}</span>
-                      </td>
-                      <td className="py-3"><button className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded font-mono hover:bg-emerald-100">View</button></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="space-y-4">
-              <div className="bg-white border border-gray-200 rounded-2xl p-5">
-                <h3 className="font-bold text-gray-900 mb-4 text-sm">Win Rate by Pair</h3>
-                <div className="space-y-3">
-                  {[
-                    { pair: "XAU/USD", pct: 78, color: "bg-emerald-500" },
-                    { pair: "USD/CHF", pct: 71, color: "bg-emerald-500" },
-                    { pair: "GBP/USD", pct: 64, color: "bg-emerald-500" },
-                    { pair: "USD/JPY", pct: 58, color: "bg-amber-500" },
-                    { pair: "EUR/USD", pct: 51, color: "bg-amber-500" },
-                    { pair: "GBP/JPY", pct: 38, color: "bg-red-500" },
-                    { pair: "NZD/USD", pct: 33, color: "bg-red-500" },
-                  ].map(item => (
-                    <div key={item.pair} className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-gray-600 w-16 flex-shrink-0">{item.pair}</span>
-                      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                        <div className={`h-full ${item.color} rounded-full`} style={{width: `${item.pct}%`}}></div>
-                      </div>
-                      <span className={`text-xs font-mono font-bold w-8 text-right ${item.pct >= 60 ? 'text-emerald-600' : item.pct >= 50 ? 'text-amber-600' : 'text-red-500'}`}>{item.pct}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-white border border-gray-200 rounded-2xl p-5">
-                <h3 className="font-bold text-gray-900 mb-4 text-sm">Best Sessions</h3>
-                <div className="space-y-3">
-                  {[
-                    { session: "London AM", pct: 71, color: "bg-emerald-500" },
-                    { session: "NY Open", pct: 62, color: "bg-emerald-500" },
-                    { session: "London PM", pct: 48, color: "bg-amber-500" },
-                    { session: "Asia", pct: 31, color: "bg-red-500" },
-                  ].map(item => (
-                    <div key={item.session} className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-gray-600 w-20 flex-shrink-0">{item.session}</span>
-                      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                        <div className={`h-full ${item.color} rounded-full`} style={{width: `${item.pct}%`}}></div>
-                      </div>
-                      <span className={`text-xs font-mono font-bold w-8 text-right ${item.pct >= 60 ? 'text-emerald-600' : item.pct >= 50 ? 'text-amber-600' : 'text-red-500'}`}>{item.pct}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* UPLOAD */}
-          <div className="grid grid-cols-2 gap-5">
-            <div className="border-2 border-dashed border-gray-200 rounded-2xl p-10 text-center hover:border-emerald-400 hover:bg-emerald-50 transition-all cursor-pointer">
-              <div className="text-4xl mb-4">📂</div>
-              <h3 className="font-bold text-gray-900 mb-2">Drop your broker CSV here</h3>
-              <p className="text-sm text-gray-400 leading-relaxed mb-4">Claude will analyse every trade — win rate, patterns, psychology, best pairs, worst habits and exactly what to fix.</p>
-              <div className="flex gap-2 justify-center flex-wrap">
-                {["MT4 CSV", "MT5 CSV", "cTrader", "TradingView", "FTMO"].map(f => (
-                  <span key={f} className="text-xs font-mono bg-gray-100 text-gray-500 px-2.5 py-1 rounded">{f}</span>
-                ))}
-              </div>
-            </div>
-            <div className="bg-white border border-gray-200 rounded-2xl p-6">
-              <h3 className="font-bold text-gray-900 mb-4">What Claude analyses</h3>
-              <div className="space-y-3">
-                {[
-                  "Win rate by pair, session, day and time of day",
-                  "Average winner vs loser — are you cutting early?",
-                  "Revenge trading detection after losses",
-                  "Overtrading patterns within sessions",
-                  "Your best and worst pairs — where to focus",
-                  "Specific rule recommendations from your data",
-                ].map(item => (
-                  <div key={item} className="flex gap-2.5 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
-                    <span className="text-gray-600">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
+            </tbody>
+          </table>
         </div>
-      </div>
+
+        <p className="text-[11px] text-slate-600 text-center pb-6">
+          The journal describes your own trading history. It never provides trade instructions or financial advice.
+          Trading involves substantial risk of loss.
+        </p>
+      </main>
     </div>
   );
 }

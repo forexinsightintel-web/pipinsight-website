@@ -1,0 +1,15 @@
+{
+  "date_str": "MONDAY 14 JULY 2026",
+  "session": "London Pre-Open",
+  "gold": {"price": "2,358.20", "bias": "BULLISH", "macro": "Safe haven demand elevated", "strength": "Strong"},
+  "pairs": [
+    {"pair": "EUR/USD", "price": "1.0812", "bias": "BEARISH", "strength": "Strong"},
+    {"pair": "GBP/USD", "price": "1.2734", "bias": "BULLISH", "strength": "Moderate"},
+    {"pair": "USD/JPY", "price": "157.42", "bias": "BULLISH", "strength": "Strong"},
+    {"pair": "USD/CHF", "price": "0.9021", "bias": "BULLISH", "strength": "Weak"},
+    {"pair": "AUD/USD", "price": "0.6612", "bias": "NEUTRAL", "strength": "Neutral"},
+    {"pair": "NZD/USD", "price": "0.6098", "bias": "NEUTRAL", "strength": "Neutral"},
+    {"pair": "USD/CAD", "price": "1.3702", "bias": "BEARISH", "strength": "Moderate"},
+    {"pair": "GBP/JPY", "price": "200.48", "bias": "BULLISH", "strength": "Strong"}
+  ]
+}
