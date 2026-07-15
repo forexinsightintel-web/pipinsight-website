@@ -17,6 +17,7 @@ const TICKER = [
 
 import Link from "next/link";
 import dailyFeed from "../../content/daily/latest.json";
+import analysisIndex from "../../content/analysis/index.json";
 import AnalysisHub from "../components/AnalysisHub";
 
 type FeedPair = { pair: string; price: string; bias: string; strength: string };
@@ -25,9 +26,23 @@ const _deco = (bias: string) => bias === "BULLISH"
   : bias === "BEARISH" ? { dir: "▼", accent: "bear", pill: "bear" }
   : { dir: "◆", accent: "neu", pill: "neu" };
 const _pairs = (dailyFeed.pairs as FeedPair[]).map(p => ({ ...p, ..._deco(p.bias) }));
-const FEED_DATE = dailyFeed.date_str;
+const FEED_DATE = ((analysisIndex as { date_str?: string }).date_str) || dailyFeed.date_str;
 const FEED_SESSION = dailyFeed.session;
 const GOLD = dailyFeed.gold;
+// live figures from the Analysis Hub pipeline (same source as the hub cards)
+const _allCards = Object.values(
+  (analysisIndex as { categories: Record<string, { slug: string; price: number;
+    bias: string; change_pct: number }[]> }).categories).flat();
+const N_INSTRUMENTS = _allCards.length;
+const GOLD_LIVE = _allCards.find((c) => c.slug === "xau-usd");
+const GOLD_PRICE = GOLD_LIVE
+  ? GOLD_LIVE.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  : GOLD.price;
+const GOLD_BIAS = GOLD_LIVE ? GOLD_LIVE.bias : GOLD.bias;
+const GOLD_DIR = GOLD_BIAS === "BULLISH" ? "Upside bias"
+  : GOLD_BIAS === "BEARISH" ? "Downside bias" : "Rangebound";
+const GOLD_CHG = GOLD_LIVE
+  ? `${GOLD_LIVE.change_pct >= 0 ? "+" : ""}${GOLD_LIVE.change_pct}% today` : "—";
 const FREE_PAIRS = _pairs.slice(0, 3);
 const LOCKED_PAIRS = _pairs.slice(3);
 
@@ -77,14 +92,14 @@ export default function Home() {
       <section className="hero">
         <div className="hero-inner">
           <div className="eyebrow">Every weekday · 06:30 UK</div>
-          <h1>Daily Forex Analysis.<br/><span>9 Pairs. Every Morning.</span></h1>
+          <h1>Daily Market Analysis.<br/><span>{N_INSTRUMENTS} Instruments. Every Morning.</span></h1>
           <p className="hero-sub">Real technical and macro analysis across 9 major currency pairs including Gold — published automatically before the London open. Free.</p>
           <div className="hero-ctas">
             <a href="#analysis" className="btn btn-primary btn-lg">See Today&apos;s Analysis</a>
             <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener" className="btn btn-ghost btn-lg">Follow on X →</a>
           </div>
           <div className="hero-stats">
-            <div className="stat"><span className="stat-num">9</span><span className="stat-label">Pairs daily</span></div>
+            <div className="stat"><span className="stat-num">{N_INSTRUMENTS}</span><span className="stat-label">Instruments daily</span></div>
             <div className="stat"><span className="stat-num">06:30</span><span className="stat-label">Every weekday</span></div>
             <div className="stat"><span className="stat-num">Free</span><span className="stat-label">Always</span></div>
           </div>
@@ -96,24 +111,24 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <div className="eyebrow">TODAY&apos;S ANALYSIS · {FEED_DATE}</div>
-            <h2>9 Pairs. Real Analysis.</h2>
-            <p className="section-sub">Bias and direction free for all 9 pairs. Premium adds the full multi-timeframe level analysis, key zones and the complete economic calendar.</p>
+            <h2>{N_INSTRUMENTS} Instruments. Real Analysis.</h2>
+            <p className="section-sub">Majors, metals, crosses and exotics — bias and direction on every free card. Premium adds the full multi-timeframe level analysis, key zones and the complete economic calendar.</p>
           </div>
 
           <Link href="/analysis/xau-usd" className="gold-card gold-card-link">
             <div className="gold-header">
               <div>
                 <div className="pair-name">XAU/USD <span className="pair-tag">GOLD</span></div>
-                <div className="pair-price">{GOLD.price}</div>
+                <div className="pair-price">{GOLD_PRICE}</div>
               </div>
-              <span className={`bias-pill ${GOLD.bias === "BEARISH" ? "bear" : GOLD.bias === "NEUTRAL" ? "neu" : "bull"}`}>{GOLD.bias === "BEARISH" ? "▼" : GOLD.bias === "NEUTRAL" ? "◆" : "▲"} {GOLD.bias}</span>
+              <span className={`bias-pill ${GOLD_BIAS === "BEARISH" ? "bear" : GOLD_BIAS === "NEUTRAL" ? "neu" : "bull"}`}>{GOLD_BIAS === "BEARISH" ? "▼" : GOLD_BIAS === "NEUTRAL" ? "◆" : "▲"} {GOLD_BIAS}</span>
             </div>
             <div className="gold-meta">
-              <div className="meta-item"><span className="meta-label">Bias</span><span className="meta-val teal">{GOLD.bias}</span></div>
-              <div className="meta-item"><span className="meta-label">Direction</span><span className="meta-val">Upside bias</span></div>
-              <div className="meta-item"><span className="meta-label">Macro</span><span className="meta-val">{GOLD.macro}</span></div>
+              <div className="meta-item"><span className="meta-label">Bias</span><span className="meta-val teal">{GOLD_BIAS}</span></div>
+              <div className="meta-item"><span className="meta-label">Direction</span><span className="meta-val">{GOLD_DIR}</span></div>
+              <div className="meta-item"><span className="meta-label">Today</span><span className="meta-val">{GOLD_CHG}</span></div>
               <div className="meta-item"><span className="meta-label">Session</span><span className="meta-val">{FEED_SESSION}</span></div>
-              <div className="meta-item"><span className="meta-label">Strength</span><span className="meta-val">{GOLD.strength}</span></div>
+              
             </div>
             <div className="locked-notice">📈 Today&apos;s full gold analysis — open the trading desk →</div>
           </Link>
@@ -160,7 +175,7 @@ export default function Home() {
               <div className="plan-price">£0<span>/month</span></div>
               <p className="plan-desc">Everything you need to follow the market each morning.</p>
               <ul className="plan-features">
-                <li>✓ Daily bias for all 9 pairs</li>
+                <li>✓ Daily bias across the free instruments</li>
                 <li>✓ Daily market bias &amp; direction analysis</li>
                 <li>✓ PDF reports on X @Forexxinsight</li>
                 <li>✓ Economic calendar highlights</li>
