@@ -1,15 +1,61 @@
 {
-  "date_str": "MONDAY 14 JULY 2026",
-  "session": "London Pre-Open",
-  "gold": {"price": "2,358.20", "bias": "BULLISH", "macro": "Safe haven demand elevated", "strength": "Strong"},
+  "date_str": "WEDNESDAY 15 JULY 2026",
+  "session": "London session",
+  "gold": {
+    "pair": "XAU/USD",
+    "price": "4,067.70",
+    "bias": "BULLISH",
+    "strength": "Moderate",
+    "macro": "Macro read in today's video"
+  },
   "pairs": [
-    {"pair": "EUR/USD", "price": "1.0812", "bias": "BEARISH", "strength": "Strong"},
-    {"pair": "GBP/USD", "price": "1.2734", "bias": "BULLISH", "strength": "Moderate"},
-    {"pair": "USD/JPY", "price": "157.42", "bias": "BULLISH", "strength": "Strong"},
-    {"pair": "USD/CHF", "price": "0.9021", "bias": "BULLISH", "strength": "Weak"},
-    {"pair": "AUD/USD", "price": "0.6612", "bias": "NEUTRAL", "strength": "Neutral"},
-    {"pair": "NZD/USD", "price": "0.6098", "bias": "NEUTRAL", "strength": "Neutral"},
-    {"pair": "USD/CAD", "price": "1.3702", "bias": "BEARISH", "strength": "Moderate"},
-    {"pair": "GBP/JPY", "price": "200.48", "bias": "BULLISH", "strength": "Strong"}
+    {
+      "pair": "EUR/USD",
+      "price": "1.1467",
+      "bias": "BULLISH",
+      "strength": "Moderate"
+    },
+    {
+      "pair": "GBP/USD",
+      "price": "1.3541",
+      "bias": "BULLISH",
+      "strength": "Strong"
+    },
+    {
+      "pair": "USD/JPY",
+      "price": "162.10",
+      "bias": "NEUTRAL",
+      "strength": "Weak"
+    },
+    {
+      "pair": "USD/CHF",
+      "price": "0.8038",
+      "bias": "BEARISH",
+      "strength": "Strong"
+    },
+    {
+      "pair": "AUD/USD",
+      "price": "0.7005",
+      "bias": "BULLISH",
+      "strength": "Moderate"
+    },
+    {
+      "pair": "NZD/USD",
+      "price": "0.5852",
+      "bias": "BULLISH",
+      "strength": "Moderate"
+    },
+    {
+      "pair": "USD/CAD",
+      "price": "1.4035",
+      "bias": "BEARISH",
+      "strength": "Strong"
+    },
+    {
+      "pair": "GBP/JPY",
+      "price": "219.50",
+      "bias": "BULLISH",
+      "strength": "Strong"
+    }
   ]
 }
