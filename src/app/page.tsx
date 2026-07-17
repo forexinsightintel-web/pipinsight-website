@@ -19,6 +19,7 @@ import Link from "next/link";
 import dailyFeed from "../../content/daily/latest.json";
 import analysisIndex from "../../content/analysis/index.json";
 import AnalysisHub from "../components/AnalysisHub";
+import TapeLedger from "../components/TapeLedger";
 
 type FeedPair = { pair: string; price: string; bias: string; strength: string };
 const _deco = (bias: string) => bias === "BULLISH"
@@ -134,6 +135,21 @@ export default function Home() {
           </Link>
 
           <AnalysisHub />
+        </div>
+      </section>
+
+      {/* THE TAPE — settled signals ledger */}
+      <section className="analysis" id="tape" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="section-header">
+            <div className="eyebrow">THE TAPE · EVERY SIGNAL SETTLED IN PUBLIC</div>
+            <h2>Logged Live. Shown After.</h2>
+            <p className="section-sub">Two mechanical strategies on majors and gold,
+            H1, checked hourly. Every signal is logged the hour it fires and
+            publicised only once it has concluded — wins and losses both. No
+            advance calls, ever.</p>
+          </div>
+          <TapeLedger limit={10} />
         </div>
       </section>
 
