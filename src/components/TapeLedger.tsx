@@ -1,4 +1,5 @@
 import tape from "../../content/daily/tape.json";
+import analysisIndex from "../../content/analysis/index.json";
 
 type Row = { symbol: string; dir: string; strat: string; trigger?: string;
   ts: string; entry: number; result: string; pips: number | null;
@@ -8,6 +9,20 @@ type Row = { symbol: string; dir: string; strat: string; trigger?: string;
 const GREEN = "#0E9F6E", RED = "#E02424", AMBER = "#B45309", DIM = "#6B7280";
 const MONO = "'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', sans-serif";
 const NUM = "'SF Mono', 'Roboto Mono', 'Courier New', monospace";
+
+type Card = { slug: string; price: number; change_pct: number };
+const _cards: Card[] = Object.values(
+  (analysisIndex as unknown as { categories: Record<string, Card[]> }).categories).flat();
+const TAPE_TICKER = _cards
+  .filter(c => c.price)
+  .slice(0, 14)
+  .map(c => ({
+    sym: c.slug.toUpperCase().replace("-", "/"),
+    price: c.price >= 100 ? c.price.toFixed(2) : c.price.toFixed(4),
+    chg: `${c.change_pct >= 0 ? "+" : ""}${c.change_pct}%`,
+    arrow: c.change_pct >= 0 ? "▲" : "▼",
+    cls: c.change_pct >= 0 ? "up" : "down",
+  }));
 
 function Stat({ value, label, color }: { value: string; label: string; color?: string }) {
   return (
@@ -52,12 +67,23 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
       {/* terminal header strip */}
       <div style={{ display: "flex", justifyContent: "space-between",
         alignItems: "center", marginBottom: 20 }}>
-        <div style={{ fontFamily: NUM, fontSize: 13, letterSpacing: ".1em",
+        <div style={{ fontFamily: MONO, fontSize: 13.5, letterSpacing: ".08em",
           color: GREEN, fontWeight: 800 }}>
           ● THE TAPE <span style={{ color: DIM, fontWeight: 600 }}>· SETTLED SIGNALS · H1 · UPDATED {tape.updated}</span>
         </div>
-        <div style={{ fontFamily: NUM, fontSize: 12, color: DIM }}>
-          EUR/USD · GBP/USD · USD/JPY · GBP/JPY · XAU/USD</div>
+        <div style={{ fontFamily: MONO, fontSize: 12, color: DIM, fontWeight: 600 }}>
+          MAJORS · YEN CROSSES · GOLD</div>
+      </div>
+
+      {/* NYSE-style pair ticker */}
+      <div className="tape-ticker">
+        <div className="ticker-track">
+          {[...TAPE_TICKER, ...TAPE_TICKER].map((x, i) => (
+            <span key={i} className={`tape-tick ${x.cls}`}>
+              <b>{x.sym}</b>{x.price} {x.arrow} {x.chg}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* the authority board */}
