@@ -25,12 +25,12 @@ function Stat({ value, label, color }: { value: string; label: string; color?: s
 function outcome(r: Row) {
   if (r.result === "win") {
     if (r.banked && r.runner && r.runner > 1)
-      return { text: `BANKED 15 · RUNNER +${Math.round(r.runner)}`, color: GREEN };
+      return { text: `BANKED 15 · RUNNER +${Math.round(r.runner)} PIPS`, color: GREEN };
     if (r.banked)
       return { text: "BANKED 15 · RUNNER BE", color: GREEN };
-    return { text: `TOOK THE LEVEL +${r.pips}${r.mfe ? ` · RAN ${Math.round(r.mfe)}` : ""}`, color: GREEN };
+    return { text: `TOOK THE LEVEL +${r.pips}${r.mfe ? ` · RAN ${Math.round(r.mfe)} PIPS` : ""}`, color: GREEN };
   }
-  if (r.result === "loss") return { text: `STOPPED ${r.pips}`, color: RED };
+  if (r.result === "loss") return { text: `STOPPED ${r.pips} PIPS`, color: RED };
   return { text: `FLAT ${r.pips && r.pips > 0 ? "+" : ""}${r.pips}`, color: DIM };
 }
 
@@ -68,8 +68,8 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
           <tr>
             <Stat value={String(s.wins)} label="Winners settled" color={GREEN} />
             <Stat value={`${s.win_pct}%`} label="Hit the target" color={GREEN} />
-            <Stat value={`${Math.round(s.avg_run || 0)}p`} label="Avg winner run" color={AMBER} />
-            <Stat value={`${Math.round(s.best_run || 0)}p`} label="Best run" color={AMBER} />
+            <Stat value={`${Math.round(s.avg_run || 0)} Pips`} label="Avg winner run" color={AMBER} />
+            <Stat value={`${Math.round(s.best_run || 0)} Pips`} label="Best run" color={AMBER} />
           </tr>
         </tbody>
       </table>
