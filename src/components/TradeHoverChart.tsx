@@ -54,17 +54,9 @@ export default function TradeHoverChart({ data, symbol }:
         color: "#B45309",
         shape: data.dir === "long" ? "arrowUp" : "arrowDown",
         text: "ENTRY", size: 2 }]);
-      // zoom to the trade: from a few bars before entry to ~18 bars after,
-      // so the entry-to-exit zone fills the frame instead of hiding in a
-      // 38-hour panorama
-      const entryIdx = data.candles.indexOf(entryBar);
-      const from = Math.max(0, entryIdx - 5);
-      const to = Math.min(data.candles.length - 1, entryIdx + 18);
-      c.timeScale().setVisibleRange({
-        from: data.candles[from][0] as never,
-        // extend 6h past the last shown candle: blank right margin so the
-        // ENTRY/TARGET labels sit in clear space, never on price action
-        to: (data.candles[to][0] + 6 * 3600) as never });
+      // desk-chart recipe (the one Jason signed off): show the whole
+      // embedded trade neighbourhood, rightOffset supplies the label margin
+      c.timeScale().fitContent();
     })();
     return () => { cancelled = true; if (chart) chart.remove(); };
   }, [data]);
