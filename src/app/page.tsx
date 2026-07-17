@@ -121,7 +121,7 @@ export default function Home() {
             only once it has concluded — wins and losses both. No advance
             calls, ever.</p>
           </div>
-          <TapeLedger limit={10} />
+          <TapeLedger limit={9} winnersOnly />
           <p style={{ marginTop: 16 }}>
             <a href="/tape" style={{ color: "#1AAF8B", fontWeight: 800 }}>
               The full tape — every signal, wins and losses &rarr;</a>
@@ -217,8 +217,8 @@ export default function Home() {
                 <li>✓ Full economic calendar with impact ratings</li>
                 <li>✓ Journal Pro with AI insights included</li>
               </ul>
-              <a href="https://buy.stripe.com/28EdR964Q0Za0U13YAebu00" className="btn btn-primary btn-full">Get Full Access — £9.99/mo</a>
-              <div className="plan-note">Cancel anytime · No commitment</div>
+              <span className="btn btn-outline btn-full" style={{ cursor: "default", opacity: .75 }}>Coming Soon — launching next week</span>
+              <div className="plan-note">Perfecting the product first · Cancel anytime once live</div>
             </div>
             <div className="plan plan-annual">
               <div className="plan-badge badge-gold">FOUNDING RATE</div>
@@ -230,14 +230,7 @@ export default function Home() {
                 <li>✓ 2 months free vs monthly</li>
                 <li>✓ Founding-member rate — locked in while you stay subscribed, even as prices rise</li>
               </ul>
-              <button className="btn btn-primary btn-full" onClick={async () => {
-                const r = await fetch("/api/checkout", { method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ kind: "full-access-annual" }) });
-                const d = await r.json();
-                if (d.url) window.location.href = d.url;
-                else alert(d.error || "Checkout is not available right now.");
-              }}>Lock the Founding Rate — £79/yr</button>
+              <span className="btn btn-outline btn-full" style={{ cursor: "default", opacity: .75 }}>Coming Soon — founding rate held</span>
               <div className="plan-note">14-day money-back guarantee</div>
             </div>
           </div>
