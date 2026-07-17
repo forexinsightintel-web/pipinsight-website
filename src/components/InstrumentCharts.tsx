@@ -26,7 +26,10 @@ function Panel({ title, candles, zones, daily }: {
         grid: { vertLines: { color: "#F1F5F9" }, horzLines: { color: "#F1F5F9" } },
         rightPriceScale: { borderColor: "#E2E8F0" },
         timeScale: { borderColor: "#E2E8F0",
-                     timeVisible: !daily, secondsVisible: false },
+                     timeVisible: !daily, secondsVisible: false,
+                     // blank margin on the right: the zone labels render
+                     // there instead of covering the latest price action
+                     rightOffset: daily ? 14 : 16 },
         crosshair: { mode: 0 },
       });
       const series = chart.addSeries(lw.CandlestickSeries, {

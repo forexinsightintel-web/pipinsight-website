@@ -20,7 +20,7 @@ export default function TradeHoverChart({ data, symbol }:
           fontSize: 11 },
         grid: { vertLines: { color: "#F3F4F6" }, horzLines: { color: "#F3F4F6" } },
         timeScale: { timeVisible: true, secondsVisible: false,
-          borderColor: "#E5E7EB" },
+          borderColor: "#E5E7EB", rightOffset: 7 },
         rightPriceScale: { borderColor: "#E5E7EB" },
         handleScroll: false, handleScale: false,
       });
@@ -48,7 +48,15 @@ export default function TradeHoverChart({ data, symbol }:
         color: "#B45309",
         shape: data.dir === "long" ? "arrowUp" : "arrowDown",
         text: "ENTRY", size: 2 }]);
-      c.timeScale().fitContent();
+      // zoom to the trade: from a few bars before entry to ~18 bars after,
+      // so the entry-to-exit zone fills the frame instead of hiding in a
+      // 38-hour panorama
+      const entryIdx = data.candles.indexOf(entryBar);
+      const from = Math.max(0, entryIdx - 5);
+      const to = Math.min(data.candles.length - 1, entryIdx + 18);
+      c.timeScale().setVisibleRange({
+        from: data.candles[from][0] as never,
+        to: data.candles[to][0] as never });
     })();
     return () => { cancelled = true; if (chart) chart.remove(); };
   }, [data]);
