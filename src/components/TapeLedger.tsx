@@ -5,16 +5,17 @@ type Row = { symbol: string; dir: string; strat: string; trigger?: string;
   banked?: number | null; runner?: number | null;
   mfe: number | null; unit: string; phase?: string };
 
-const GREEN = "#22C55E", RED = "#F87171", AMBER = "#FBBF24", DIM = "#5B6B84";
-const MONO = "'SF Mono', 'Roboto Mono', 'Courier New', monospace";
+const GREEN = "#0E9F6E", RED = "#E02424", AMBER = "#B45309", DIM = "#6B7280";
+const MONO = "'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', sans-serif";
+const NUM = "'SF Mono', 'Roboto Mono', 'Courier New', monospace";
 
 function Stat({ value, label, color }: { value: string; label: string; color?: string }) {
   return (
     <td style={{ padding: "26px 30px", textAlign: "center",
-      borderRight: "1px solid #1B2740" }}>
+      borderRight: "1px solid #E5E7EB" }}>
       <div style={{ fontSize: 52, fontWeight: 900, lineHeight: 1,
-        fontFamily: MONO, color: color || "#E5EDF8",
-        textShadow: color ? `0 0 24px ${color}44` : "none" }}>{value}</div>
+        fontFamily: NUM, color: color || "#0A0F1A",
+        letterSpacing: "-1px" }}>{value}</div>
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".16em",
         color: DIM, marginTop: 10, textTransform: "uppercase" }}>{label}</div>
     </td>
@@ -46,23 +47,23 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
       hours of concluding.</p>;
   }
   return (
-    <div style={{ background: "#0B1220", borderRadius: 16, padding: "26px 26px 18px",
-      border: "1px solid #1B2740", boxShadow: "0 12px 44px rgba(2,8,23,.45)" }}>
+    <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "26px 26px 18px",
+      border: "1px solid #E5E7EB", boxShadow: "0 10px 36px rgba(15,23,42,.08)" }}>
       {/* terminal header strip */}
       <div style={{ display: "flex", justifyContent: "space-between",
         alignItems: "center", marginBottom: 20 }}>
-        <div style={{ fontFamily: MONO, fontSize: 13, letterSpacing: ".12em",
-          color: GREEN, fontWeight: 700 }}>
-          ● THE TAPE <span style={{ color: DIM }}>· SETTLED SIGNALS · H1 · UPDATED {tape.updated}</span>
+        <div style={{ fontFamily: NUM, fontSize: 13, letterSpacing: ".1em",
+          color: GREEN, fontWeight: 800 }}>
+          ● THE TAPE <span style={{ color: DIM, fontWeight: 600 }}>· SETTLED SIGNALS · H1 · UPDATED {tape.updated}</span>
         </div>
-        <div style={{ fontFamily: MONO, fontSize: 12, color: DIM }}>
+        <div style={{ fontFamily: NUM, fontSize: 12, color: DIM }}>
           EUR/USD · GBP/USD · USD/JPY · GBP/JPY · XAU/USD</div>
       </div>
 
       {/* the authority board */}
       <table style={{ margin: "0 auto 24px", borderCollapse: "collapse",
-        border: "1px solid #1B2740", borderRadius: 12, overflow: "hidden",
-        background: "#0E1729" }}>
+        border: "1px solid #E5E7EB", borderRadius: 12, overflow: "hidden",
+        background: "#F9FAFB" }}>
         <tbody>
           <tr>
             <Stat value={String(s.wins)} label="Winners settled" color={GREEN} />
@@ -74,13 +75,13 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
       </table>
 
       {winnersOnly && (
-        <div style={{ fontFamily: MONO, fontSize: 11.5, letterSpacing: ".14em",
-          color: AMBER, fontWeight: 700, marginBottom: 8 }}>
-          RECENT WINNERS — FULL TAPE BELOW</div>
+        <div style={{ fontFamily: NUM, fontSize: 11.5, letterSpacing: ".14em",
+          color: AMBER, fontWeight: 800, marginBottom: 8 }}>
+          RECENT WINNERS — FULL TAPE ONE CLICK AWAY</div>
       )}
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse",
-          fontSize: 13, fontFamily: MONO }}>
+          fontSize: 13.5, fontFamily: MONO }}>
           <thead><tr style={{ textAlign: "left", color: DIM, fontSize: 11,
             letterSpacing: ".08em" }}>
             <th style={{ padding: "6px 8px" }}>FIRED (UTC)</th>
@@ -93,16 +94,16 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
             {rows.map((r, i) => {
               const o = outcome(r);
               return (
-                <tr key={i} style={{ borderTop: "1px solid #16203A" }}>
+                <tr key={i} style={{ borderTop: "1px solid #F3F4F6" }}>
                   <td style={{ padding: "8px", whiteSpace: "nowrap", color: DIM }}>{r.ts}</td>
-                  <td style={{ padding: "8px", fontWeight: 700, color: "#E5EDF8" }}>
+                  <td style={{ padding: "8px", fontWeight: 700, color: "#0A0F1A" }}>
                     {r.dir.toUpperCase()} {r.symbol} @ {r.entry}</td>
                   <td style={{ padding: "8px" }}>
                     <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: ".06em",
                       padding: "2px 8px", borderRadius: 4,
-                      background: "rgba(34,197,94,.12)", color: GREEN }}>
+                      background: "rgba(14,159,110,.1)", color: GREEN }}>
                       {r.strat}</span></td>
-                  <td style={{ padding: "8px", color: "#9FB0CB" }}>{r.trigger || "—"}</td>
+                  <td style={{ padding: "8px", color: "#4B5563" }}>{r.trigger || "—"}</td>
                   <td style={{ padding: "8px", fontWeight: 800, color: o.color }}>{o.text}</td>
                 </tr>
               );
@@ -110,7 +111,7 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
           </tbody>
         </table>
       </div>
-      <p style={{ fontSize: 11, color: DIM, marginTop: 14, fontFamily: MONO }}>
+      <p style={{ fontSize: 11, color: "#9CA3AF", marginTop: 14 }}>
         {tape.note}{" "}Educational only — not financial advice. Capital at risk.</p>
     </div>
   );
