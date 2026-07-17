@@ -80,6 +80,7 @@ export default function Home() {
           <div className={`nav-links${menuOpen ? ' open' : ''}`}>
             <a href="#analysis" onClick={() => setMenuOpen(false)}>Today&apos;s Analysis</a>
             <a href="/courses" onClick={() => setMenuOpen(false)}>Courses</a>
+            <a href="/tape" onClick={() => setMenuOpen(false)}>The Tape</a>
             <a href="/journal" onClick={() => setMenuOpen(false)}>Journal</a>
             <a href="#how" onClick={() => setMenuOpen(false)}>How It Works</a>
             <a href="#pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
@@ -108,6 +109,25 @@ export default function Home() {
       </section>
 
       {/* ANALYSIS */}
+      {/* THE TAPE — settled signals ledger */}
+      <section className="analysis" id="tape" style={{ paddingBottom: 0 }}>
+        <div className="container">
+          <div className="section-header">
+            <div className="eyebrow">THE TAPE · EVERY SIGNAL SETTLED IN PUBLIC</div>
+            <h2>Logged Live. Shown After.</h2>
+            <p className="section-sub">Two mechanical strategies on majors and gold,
+            H1, checked hourly. Every signal is logged the hour it fires and
+            publicised only once it has concluded — wins and losses both. No
+            advance calls, ever.</p>
+          </div>
+          <TapeLedger limit={10} />
+          <p style={{ marginTop: 16 }}>
+            <a href="/tape" style={{ color: "#1AAF8B", fontWeight: 800 }}>
+              The full tape — every signal, wins and losses &rarr;</a>
+          </p>
+        </div>
+      </section>
+
       <section className="analysis" id="analysis">
         <div className="container">
           <div className="section-header">
@@ -135,21 +155,6 @@ export default function Home() {
           </Link>
 
           <AnalysisHub />
-        </div>
-      </section>
-
-      {/* THE TAPE — settled signals ledger */}
-      <section className="analysis" id="tape" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="section-header">
-            <div className="eyebrow">THE TAPE · EVERY SIGNAL SETTLED IN PUBLIC</div>
-            <h2>Logged Live. Shown After.</h2>
-            <p className="section-sub">Two mechanical strategies on majors and gold,
-            H1, checked hourly. Every signal is logged the hour it fires and
-            publicised only once it has concluded — wins and losses both. No
-            advance calls, ever.</p>
-          </div>
-          <TapeLedger limit={10} />
         </div>
       </section>
 

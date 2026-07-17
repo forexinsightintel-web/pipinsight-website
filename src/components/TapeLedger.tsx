@@ -1,17 +1,27 @@
 import tape from "../../content/daily/tape.json";
 
-type Row = { symbol: string; dir: string; strat: string; ts: string;
-  entry: number; result: string; pips: number | null; mfe: number | null;
-  unit: string; phase: string };
+type Row = { symbol: string; dir: string; strat: string; trigger?: string;
+  ts: string; entry: number; result: string; pips: number | null;
+  mfe: number | null; unit: string; phase?: string };
 
-const STRAT_NAME: Record<string, string> = {
-  LDN_BREAK: "London break", PDH_SWEEP: "Prior-day sweep",
-  TREND_PULL: "Trend pullback",
-};
+const TEAL = "#1AAF8B", TEAL_DK = "#0F6E56", RED = "#E8476A";
+
+function StatCell({ value, label, color }: { value: string; label: string; color?: string }) {
+  return (
+    <td style={{ padding: "22px 18px", textAlign: "center",
+      borderRight: "1px solid #E2E8F0" }}>
+      <div style={{ fontSize: 44, fontWeight: 900, lineHeight: 1,
+        color: color || "#0A0F1A", letterSpacing: "-1px" }}>{value}</div>
+      <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: ".1em",
+        color: "#64748B", marginTop: 8, textTransform: "uppercase" }}>{label}</div>
+    </td>
+  );
+}
 
 export default function TapeLedger({ limit = 10 }: { limit?: number }) {
   const rows = (tape.rows as Row[]).slice(0, limit);
-  const s = tape.summary;
+  const s = tape.summary as { n: number; wins: number; win_pct: number;
+    pips: number; avg_run?: number };
   if (!rows.length) {
     return <p style={{ color: "#64748B", fontSize: 14 }}>
       The Tape is warming up — the first settled signals publish here within
@@ -19,23 +29,32 @@ export default function TapeLedger({ limit = 10 }: { limit?: number }) {
   }
   return (
     <div>
-      <div style={{ display: "flex", gap: 26, flexWrap: "wrap", marginBottom: 18 }}>
-        <div><div style={{ fontSize: 30, fontWeight: 900, color: "#1AAF8B" }}>{s.n}</div>
-          <div style={{ fontSize: 12, color: "#64748B" }}>signals settled</div></div>
-        <div><div style={{ fontSize: 30, fontWeight: 900, color: "#1AAF8B" }}>{s.win_pct}%</div>
-          <div style={{ fontSize: 12, color: "#64748B" }}>reached +15 before the stop</div></div>
-        <div><div style={{ fontSize: 30, fontWeight: 900,
-          color: s.pips >= 0 ? "#1AAF8B" : "#E8476A" }}>{s.pips >= 0 ? "+" : ""}{s.pips}</div>
-          <div style={{ fontSize: 12, color: "#64748B" }}>net pips, all signals</div></div>
-      </div>
+      {/* the authority board — big, centred, tabled */}
+      <table style={{ margin: "0 auto 26px", borderCollapse: "collapse",
+        border: "1px solid #E2E8F0", borderRadius: 12, overflow: "hidden",
+        background: "#FBFDFC", boxShadow: "0 2px 10px rgba(10,15,26,.05)" }}>
+        <tbody>
+          <tr>
+            <StatCell value={String(s.n)} label="Signals settled" />
+            <StatCell value={`${s.win_pct}%`} label="Hit target" color={TEAL} />
+            <StatCell value={`${s.pips >= 0 ? "+" : ""}${s.pips}`}
+              label="Net pips" color={s.pips >= 0 ? TEAL : RED} />
+            {s.avg_run ? (
+              <StatCell value={`${Math.round(s.avg_run)}p`}
+                label="Avg winner run" color={TEAL_DK} />
+            ) : null}
+          </tr>
+        </tbody>
+      </table>
+
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13.5 }}>
           <thead><tr style={{ textAlign: "left", color: "#64748B" }}>
             <th style={{ padding: "6px 8px" }}>Fired (UTC)</th>
             <th style={{ padding: "6px 8px" }}>Signal</th>
-            <th style={{ padding: "6px 8px" }}>Strategy</th>
+            <th style={{ padding: "6px 8px" }}>Strat</th>
+            <th style={{ padding: "6px 8px" }}>Trigger</th>
             <th style={{ padding: "6px 8px" }}>Outcome</th>
-            <th style={{ padding: "6px 8px" }}>Phase</th>
           </tr></thead>
           <tbody>
             {rows.map((r, i) => (
@@ -43,19 +62,17 @@ export default function TapeLedger({ limit = 10 }: { limit?: number }) {
                 <td style={{ padding: "7px 8px", whiteSpace: "nowrap", color: "#64748B" }}>{r.ts}</td>
                 <td style={{ padding: "7px 8px", fontWeight: 700 }}>
                   {r.dir.toUpperCase()} {r.symbol} @ {r.entry}</td>
-                <td style={{ padding: "7px 8px" }}>{STRAT_NAME[r.strat] || r.strat}</td>
+                <td style={{ padding: "7px 8px" }}>
+                  <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".05em",
+                    padding: "2px 8px", borderRadius: 6,
+                    background: "rgba(26,175,139,.1)", color: TEAL_DK }}>
+                    {r.strat}</span></td>
+                <td style={{ padding: "7px 8px", color: "#475569" }}>{r.trigger || "—"}</td>
                 <td style={{ padding: "7px 8px", fontWeight: 800,
-                  color: r.result === "win" ? "#1AAF8B" : r.result === "loss" ? "#E8476A" : "#64748B" }}>
+                  color: r.result === "win" ? TEAL : r.result === "loss" ? RED : "#64748B" }}>
                   {r.result === "win"
                     ? `WON +${r.pips}${r.mfe ? ` (ran ${Math.round(r.mfe)} ${r.unit})` : ""}`
                     : r.result === "loss" ? `LOST ${r.pips}` : `FLAT ${r.pips && r.pips > 0 ? "+" : ""}${r.pips}`}
-                </td>
-                <td style={{ padding: "7px 8px" }}>
-                  <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: ".06em",
-                    padding: "2px 8px", borderRadius: 20,
-                    background: r.phase === "live" ? "rgba(26,175,139,.12)" : "rgba(100,116,139,.12)",
-                    color: r.phase === "live" ? "#0F6E56" : "#475569" }}>
-                    {r.phase === "live" ? "LIVE" : "BACKTEST"}</span>
                 </td>
               </tr>
             ))}
@@ -63,8 +80,7 @@ export default function TapeLedger({ limit = 10 }: { limit?: number }) {
         </table>
       </div>
       <p style={{ fontSize: 11.5, color: "#94A3B8", marginTop: 12 }}>{tape.note}{" "}
-        Historical reporting of a mechanical system. Educational only — not
-        financial advice. Capital at risk. Updated {tape.updated}.</p>
+        Educational only — not financial advice. Capital at risk. Updated {tape.updated}.</p>
     </div>
   );
 }
