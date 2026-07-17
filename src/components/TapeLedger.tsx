@@ -29,10 +29,10 @@ const TAPE_TICKER = _cards
 
 function Stat({ value, label, color }: { value: string; label: string; color?: string }) {
   return (
-    <td style={{ padding: "26px 30px", textAlign: "center",
+    <td className="tape-stat" style={{ padding: "26px 30px", textAlign: "center",
       borderRight: "1px solid #E5E7EB" }}>
-      <div style={{ fontSize: 52, fontWeight: 900, lineHeight: 1,
-        fontFamily: NUM, color: color || "#0A0F1A",
+      <div className="tape-stat-num" style={{ fontSize: 52, fontWeight: 900,
+        lineHeight: 1, fontFamily: NUM, color: color || "#0A0F1A",
         letterSpacing: "-1px" }}>{value}</div>
       <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".16em",
         color: DIM, marginTop: 10, textTransform: "uppercase" }}>{label}</div>
@@ -91,7 +91,8 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
       </div>
 
       {/* the authority board */}
-      <table style={{ margin: "0 auto 24px", borderCollapse: "collapse",
+      <table className="tape-board" style={{ margin: "0 auto 24px",
+        borderCollapse: "collapse",
         border: "1px solid #E5E7EB", borderRadius: 12, overflow: "hidden",
         background: "#F9FAFB" }}>
         <tbody>

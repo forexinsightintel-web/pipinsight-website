@@ -836,3 +836,20 @@ a.gold-card-link .locked-notice { color: var(--teal-dk, #0e8c6f); font-weight: 7
 .tape-tick b { color: #F8FAFC; font-weight: 800; margin-right: 8px; }
 .tape-tick.up { color: #34D399; }
 .tape-tick.down { color: #F87171; }
+
+/* ── mobile overflow fixes (Jason, 17 Jul: tables + tracker bleeding) ── */
+html, body { overflow-x: hidden; }
+.inst-levels { overflow-x: auto; }
+
+@media (max-width: 680px) {
+  /* the Tape authority board: 4-across → 2x2 grid, numbers scaled down */
+  .tape-board { width: 100%; display: block; }
+  .tape-board tbody { display: block; width: 100%; }
+  .tape-board tr { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .tape-board td.tape-stat { padding: 18px 10px !important;
+    border-bottom: 1px solid #E5E7EB; }
+  .tape-board td.tape-stat:nth-child(even) { border-right: none !important; }
+  .tape-board td.tape-stat:nth-child(n+3) { border-bottom: none; }
+  .tape-stat-num { font-size: 34px !important; }
+  .tape-tick { padding: 0 14px; font-size: 11.5px; }
+}
