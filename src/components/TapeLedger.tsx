@@ -1,10 +1,13 @@
+"use client";
+import { useState } from "react";
 import tape from "../../content/daily/tape.json";
+import TradeHoverChart, { type ChartData } from "./TradeHoverChart";
 import analysisIndex from "../../content/analysis/index.json";
 
 type Row = { symbol: string; dir: string; strat: string; trigger?: string;
   ts: string; entry: number; result: string; pips: number | null;
   banked?: number | null; runner?: number | null;
-  mfe: number | null; unit: string; phase?: string };
+  mfe: number | null; unit: string; phase?: string; chart?: ChartData };
 
 const GREEN = "#0E9F6E", RED = "#E02424", AMBER = "#B45309", DIM = "#6B7280";
 const MONO = "'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', sans-serif";
@@ -51,7 +54,8 @@ function outcome(r: Row) {
 
 export default function TapeLedger({ limit = 10, winnersOnly = false }:
   { limit?: number; winnersOnly?: boolean }) {
-  const all = tape.rows as Row[];
+  const [hover, setHover] = useState<number | null>(null);
+  const all = tape.rows as unknown as Row[];
   const rows = (winnersOnly ? all.filter(r => r.result === "win") : all)
     .slice(0, limit);
   const s = tape.summary as { n: number; wins: number; win_pct: number;
@@ -120,7 +124,12 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
             {rows.map((r, i) => {
               const o = outcome(r);
               return (
-                <tr key={i} style={{ borderTop: "1px solid #F3F4F6" }}>
+                <tr key={i}
+                  onMouseEnter={() => r.chart && setHover(i)}
+                  onMouseLeave={() => setHover(null)}
+                  style={{ borderTop: "1px solid #F3F4F6", position: "relative",
+                    cursor: r.chart ? "pointer" : "default",
+                    background: hover === i ? "#F9FAFB" : "transparent" }}>
                   <td style={{ padding: "8px", whiteSpace: "nowrap", color: DIM }}>{r.ts}</td>
                   <td style={{ padding: "8px", fontWeight: 700, color: "#0A0F1A" }}>
                     {r.dir.toUpperCase()} {r.symbol} @ {r.entry}</td>
@@ -130,7 +139,14 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
                       background: "rgba(14,159,110,.1)", color: GREEN }}>
                       {r.strat}</span></td>
                   <td style={{ padding: "8px", color: "#4B5563" }}>{r.trigger || "—"}</td>
-                  <td style={{ padding: "8px", fontWeight: 800, color: o.color }}>{o.text}</td>
+                  <td style={{ padding: "8px", fontWeight: 800, color: o.color,
+                    position: "relative" }}>
+                    {o.text}{r.chart && <span style={{ marginLeft: 8,
+                      fontSize: 10, color: "#9CA3AF" }}>▦ chart</span>}
+                    {hover === i && r.chart && (
+                      <TradeHoverChart data={r.chart} symbol={r.symbol} />
+                    )}
+                  </td>
                 </tr>
               );
             })}
