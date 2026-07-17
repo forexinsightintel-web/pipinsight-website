@@ -40,6 +40,13 @@ export default function TapePage() {
         <div style={{ marginTop: 34 }}>
           <TapeLedger limit={120} />
         </div>
+        <p style={{ fontSize: 12, color: "#94A3B8", marginTop: 14 }}>
+          For the auditors: across the full record above, level-stakes net
+          is approximately breakeven before costs — the running record
+          updates hourly and every row is checkable against the chart. The
+          product here is the discipline and the transparency; treat any
+          service selling certainty with suspicion.
+        </p>
       </div>
     </main>
   );

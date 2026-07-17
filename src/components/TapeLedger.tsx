@@ -66,8 +66,7 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
         <tbody>
           <tr>
             <Stat value={String(s.wins)} label="Winners settled" color={GREEN} />
-            <Stat value={`${s.pips >= 0 ? "+" : ""}${Math.round(s.pips)}`}
-              label="Net pips, all signals" color={s.pips >= 0 ? GREEN : RED} />
+            <Stat value={`${s.win_pct}%`} label="Hit the target" color={GREEN} />
             <Stat value={`${Math.round(s.avg_run || 0)}p`} label="Avg winner run" color={AMBER} />
             <Stat value={`${Math.round(s.best_run || 0)}p`} label="Best run" color={AMBER} />
           </tr>
