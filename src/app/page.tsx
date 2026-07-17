@@ -115,10 +115,11 @@ export default function Home() {
           <div className="section-header">
             <div className="eyebrow">THE TAPE · EVERY SIGNAL SETTLED IN PUBLIC</div>
             <h2>Logged Live. Shown After.</h2>
-            <p className="section-sub">Two mechanical strategies on majors and gold,
-            H1, checked hourly. Every signal is logged the hour it fires and
-            publicised only once it has concluded — wins and losses both. No
-            advance calls, ever.</p>
+            <p className="section-sub">Our head analyst runs two mechanical
+            plays across the majors and gold — hourly chart, checked every
+            hour. Every signal is logged the hour it fires and publicised
+            only once it has concluded — wins and losses both. No advance
+            calls, ever.</p>
           </div>
           <TapeLedger limit={10} />
           <p style={{ marginTop: 16 }}>
