@@ -1,19 +1,21 @@
 {
- "updated": "17 Jul 10:43 UTC",
+ "updated": "17 Jul 10:51 UTC",
  "summary": {
   "n": 64,
   "wins": 33,
   "win_pct": 52,
   "pips": 84.4,
+  "avg_run": 51.2,
   "live_n": 0,
   "live_wins": 0
  },
- "note": "Signals marked BACKTEST are the labelled validation period \u2014 the same fixed rules replayed over prior price action. Signals marked LIVE were logged (and committed) the hour they fired, and publicised only after concluding.",
+ "note": "Every row is a settled signal under the same fixed rules - 15-pip target, capped structural stop, 24-hour timeout. Signals publicise only after concluding; the record includes the pre-launch validation fortnight, identical rules. Historical reporting of a mechanical system.",
  "rows": [
   {
    "symbol": "GBP/JPY",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-17 08:00",
    "entry": 218.381,
    "result": "win",
@@ -25,7 +27,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-17 07:00",
    "entry": 1.14534,
    "result": "loss",
@@ -37,7 +40,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-17 07:00",
    "entry": 162.26401,
    "result": "loss",
@@ -49,7 +53,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-17 06:00",
    "entry": 1.34633,
    "result": "win",
@@ -61,7 +66,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-16 22:00",
    "entry": 162.35201,
    "result": "loss",
@@ -73,7 +79,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-16 16:00",
    "entry": 162.41701,
    "result": "loss",
@@ -85,7 +92,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-16 10:00",
    "entry": 1.35089,
    "result": "win",
@@ -97,7 +105,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-16 10:00",
    "entry": 219.05099,
    "result": "win",
@@ -109,7 +118,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-16 08:00",
    "entry": 3996.3999,
    "result": "loss",
@@ -121,7 +131,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-15 10:00",
    "entry": 1.14207,
    "result": "loss",
@@ -133,7 +144,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-15 08:00",
    "entry": 4074.6001,
    "result": "loss",
@@ -145,7 +157,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-15 08:00",
    "entry": 162.26801,
    "result": "win",
@@ -157,7 +170,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-15 06:00",
    "entry": 1.34115,
    "result": "loss",
@@ -169,7 +183,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-15 06:00",
    "entry": 217.509,
    "result": "win",
@@ -181,7 +196,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-14 15:00",
    "entry": 1.14482,
    "result": "win",
@@ -193,7 +209,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-14 15:00",
    "entry": 1.3407,
    "result": "win",
@@ -205,7 +222,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-14 10:00",
    "entry": 162.17799,
    "result": "win",
@@ -217,7 +235,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-14 09:00",
    "entry": 1.14038,
    "result": "win",
@@ -229,7 +248,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-14 09:00",
    "entry": 1.33749,
    "result": "win",
@@ -241,7 +261,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-14 09:00",
    "entry": 217.033,
    "result": "loss",
@@ -253,7 +274,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-14 08:00",
    "entry": 4083.8999,
    "result": "win",
@@ -265,7 +287,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-13 08:00",
    "entry": 1.14273,
    "result": "win",
@@ -277,7 +300,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-13 08:00",
    "entry": 1.33935,
    "result": "win",
@@ -289,7 +313,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-13 06:00",
    "entry": 4068.3999,
    "result": "loss",
@@ -301,7 +326,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-13 06:00",
    "entry": 162.258,
    "result": "loss",
@@ -313,7 +339,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-13 06:00",
    "entry": 217.10001,
    "result": "win",
@@ -325,7 +352,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-13 00:00",
    "entry": 4066.30005,
    "result": "loss",
@@ -337,7 +365,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-10 15:00",
    "entry": 1.1426,
    "result": "win",
@@ -349,7 +378,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-10 12:00",
    "entry": 1.34266,
    "result": "win",
@@ -361,7 +391,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-10 10:00",
    "entry": 4101.7002,
    "result": "loss",
@@ -373,7 +404,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-10 09:00",
    "entry": 216.80901,
    "result": "loss",
@@ -385,7 +417,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-10 06:00",
    "entry": 1.3428,
    "result": "win",
@@ -397,7 +430,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-10 05:00",
    "entry": 1.14456,
    "result": "win",
@@ -409,7 +443,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-10 01:00",
    "entry": 217.50999,
    "result": "loss",
@@ -421,7 +456,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-09 22:00",
    "entry": 1.34055,
    "result": "loss",
@@ -433,7 +469,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-09 20:00",
    "entry": 1.14312,
    "result": "loss",
@@ -445,7 +482,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-09 15:00",
    "entry": 1.33923,
    "result": "loss",
@@ -457,7 +495,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-09 13:00",
    "entry": 1.14273,
    "result": "loss",
@@ -469,7 +508,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-09 09:00",
    "entry": 4131.7002,
    "result": "win",
@@ -481,7 +521,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-09 07:00",
    "entry": 1.14443,
    "result": "loss",
@@ -493,7 +534,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-09 07:00",
    "entry": 162.289,
    "result": "loss",
@@ -505,7 +547,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-09 07:00",
    "entry": 217.88,
    "result": "loss",
@@ -517,7 +560,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-09 06:00",
    "entry": 1.34046,
    "result": "win",
@@ -529,7 +573,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 21:00",
    "entry": 1.33889,
    "result": "loss",
@@ -541,7 +586,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 17:00",
    "entry": 1.14168,
    "result": "win",
@@ -553,7 +599,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 14:00",
    "entry": 1.33686,
    "result": "win",
@@ -565,7 +612,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-08 11:00",
    "entry": 4044.1001,
    "result": "loss",
@@ -577,7 +625,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 10:00",
    "entry": 1.1409,
    "result": "loss",
@@ -589,7 +638,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-08 07:00",
    "entry": 1.3364,
    "result": "loss",
@@ -601,7 +651,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 07:00",
    "entry": 162.198,
    "result": "loss",
@@ -613,7 +664,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 02:00",
    "entry": 1.1409,
    "result": "win",
@@ -625,7 +677,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-08 01:00",
    "entry": 1.33535,
    "result": "win",
@@ -637,7 +690,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-07 09:00",
    "entry": 4170.0,
    "result": "win",
@@ -649,7 +703,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-07 06:00",
    "entry": 1.14351,
    "result": "loss",
@@ -661,7 +716,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-07 06:00",
    "entry": 1.33842,
    "result": "win",
@@ -673,7 +729,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-07 02:00",
    "entry": 4141.7002,
    "result": "win",
@@ -685,7 +742,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-07 01:00",
    "entry": 217.058,
    "result": "win",
@@ -697,7 +755,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-07 00:00",
    "entry": 1.33944,
    "result": "win",
@@ -709,7 +768,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-06 13:00",
    "entry": 4172.8999,
    "result": "loss",
@@ -721,7 +781,8 @@
   {
    "symbol": "EUR/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-06 06:00",
    "entry": 1.14273,
    "result": "win",
@@ -733,7 +794,8 @@
   {
    "symbol": "GBP/USD",
    "dir": "short",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-06 06:00",
    "entry": 1.33367,
    "result": "loss",
@@ -745,7 +807,8 @@
   {
    "symbol": "USD/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-06 06:00",
    "entry": 162.07201,
    "result": "win",
@@ -757,7 +820,8 @@
   {
    "symbol": "GBP/JPY",
    "dir": "long",
-   "strat": "LDN_BREAK",
+   "strat": "LDN BRK",
+   "trigger": "BOS",
    "ts": "2026-07-06 06:00",
    "entry": 216.14101,
    "result": "win",
@@ -769,7 +833,8 @@
   {
    "symbol": "XAU/USD",
    "dir": "long",
-   "strat": "PDH_SWEEP",
+   "strat": "S/R",
+   "trigger": "KL Sweep",
    "ts": "2026-07-06 03:00",
    "entry": 4175.7002,
    "result": "loss",
