@@ -25,10 +25,16 @@ export default function TradeHoverChart({ data, symbol }:
         handleScroll: false, handleScale: false,
       });
       chart = c;
+      // precision: FX pairs need 4-5 decimals or every label rounds to the
+      // same "1.35"; yen pairs 3; gold 2
+      const px = data.entry;
+      const precision = px < 10 ? 4 : px < 1000 ? 3 : 2;
       const series = c.addSeries(LWC.CandlestickSeries, {
         upColor: "#0E9F6E", downColor: "#E02424",
         wickUpColor: "#0E9F6E", wickDownColor: "#E02424",
-        borderVisible: false });
+        borderVisible: false,
+        priceFormat: { type: "price", precision,
+          minMove: Math.pow(10, -precision) } });
       series.setData(data.candles.map(x => ({
         time: x[0] as never, open: x[1], high: x[2], low: x[3], close: x[4] })));
       series.createPriceLine({ price: data.entry, color: "#B45309",
@@ -56,7 +62,9 @@ export default function TradeHoverChart({ data, symbol }:
       const to = Math.min(data.candles.length - 1, entryIdx + 18);
       c.timeScale().setVisibleRange({
         from: data.candles[from][0] as never,
-        to: data.candles[to][0] as never });
+        // extend 6h past the last shown candle: blank right margin so the
+        // ENTRY/TARGET labels sit in clear space, never on price action
+        to: (data.candles[to][0] + 6 * 3600) as never });
     })();
     return () => { cancelled = true; if (chart) chart.remove(); };
   }, [data]);

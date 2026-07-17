@@ -32,9 +32,13 @@ function Panel({ title, candles, zones, daily }: {
                      rightOffset: daily ? 14 : 16 },
         crosshair: { mode: 0 },
       });
+      const px0 = candles.length ? candles[candles.length - 1].close : 1;
+      const precision = px0 < 10 ? 4 : px0 < 1000 ? 3 : 2;
       const series = chart.addSeries(lw.CandlestickSeries, {
         upColor: TEAL, downColor: RED, borderUpColor: TEAL, borderDownColor: RED,
         wickUpColor: TEAL, wickDownColor: RED,
+        priceFormat: { type: "price", precision,
+          minMove: Math.pow(10, -precision) },
       });
       series.setData(candles.map((c) => ({
         time: daily ? c.time
