@@ -29,7 +29,7 @@ function Panel({ title, candles, zones, daily }: {
                      timeVisible: !daily, secondsVisible: false,
                      // blank margin on the right: the zone labels render
                      // there instead of covering the latest price action
-                     rightOffset: daily ? 14 : 16 },
+                     rightOffset: 6 },
         crosshair: { mode: 0 },
       });
       const px0 = candles.length ? candles[candles.length - 1].close : 1;
@@ -52,9 +52,38 @@ function Panel({ title, candles, zones, daily }: {
           lineWidth: 2,
           lineStyle: z.touches >= 3 ? 0 : 2,
           axisLabelVisible: true,
-          title: z.label,
+          title: "",   // names live in the LEFT-side chips, off the candles
         });
       }
+      // LEFT-side zone chips (Jason, 17 Jul): the inline titles were
+      // covering the latest price action. Chips render at the chart's left
+      // edge at each zone's y, de-collided vertically.
+      const placeChips = () => {
+        if (!ref.current) return;
+        const host = ref.current.parentElement?.querySelector(
+          ".zone-chips") as HTMLElement | null;
+        if (!host) return;
+        host.innerHTML = "";
+        const placed: number[] = [];
+        const sorted = [...zones].sort((a, b) => b.level - a.level);
+        for (const z of sorted) {
+          const y = series.priceToCoordinate(z.level);
+          if (y === null || y < 8 || y > 360) continue;
+          let top = y - 9;
+          while (placed.some(p => Math.abs(p - top) < 20)) top += 20;
+          placed.push(top);
+          const el = document.createElement("div");
+          el.textContent = z.label;
+          el.style.cssText = `position:absolute;left:6px;top:${top}px;` +
+            `font-size:10.5px;font-weight:700;padding:1px 8px;` +
+            `border-radius:4px;color:#fff;z-index:5;pointer-events:none;` +
+            `background:${z.side === "resistance" ? RED : TEAL};opacity:.92`;
+          host.appendChild(el);
+        }
+      };
+      setTimeout(placeChips, 120);
+      chart.timeScale().subscribeVisibleTimeRangeChange(() =>
+        setTimeout(placeChips, 60));
       chart.timeScale().fitContent();
       const ro = new ResizeObserver(() => {
         if (ref.current && chart) chart.applyOptions({ width: ref.current.clientWidth });
@@ -67,7 +96,11 @@ function Panel({ title, candles, zones, daily }: {
   return (
     <div className="inst-chart-card">
       <div className="jr-card-title">{title}</div>
-      <div ref={ref} style={{ width: "100%" }} />
+      <div style={{ position: "relative" }}>
+        <div className="zone-chips" style={{ position: "absolute", inset: 0,
+          pointerEvents: "none", zIndex: 5 }} />
+        <div ref={ref} style={{ width: "100%" }} />
+      </div>
       <div style={{ padding: "10px 2px 6px" }}>
         <span className="inst-zone-tag"><span className="inst-zone-dot" style={{ background: TEAL }} /> support zone</span>
         <span className="inst-zone-tag"><span className="inst-zone-dot" style={{ background: RED }} /> resistance zone</span>
