@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import catalog from "../../../content/catalog.json";
 
 type Course = {
   course_no: number; slug: string; title: string; strategy: string;
   pitch: string; level: string; ebook_price_gbp: number;
   chapters: string[]; video_lessons: string[]; accent_theme: string;
+  ebook_available?: boolean;
 };
 
 const ACCENT: Record<string, string> = {
@@ -23,6 +24,15 @@ const ACCENT: Record<string, string> = {
 export default function CoursesPage() {
   const [busy, setBusy] = useState("");
   const [open, setOpen] = useState("");
+  const [bought, setBought] = useState<{ slug: string; sid: string } | null>(null);
+  useEffect(() => {
+    try {
+      const u = new URL(window.location.href);
+      const slug = u.searchParams.get("purchased");
+      const sid = u.searchParams.get("session_id");
+      if (slug && sid) setBought({ slug, sid });
+    } catch {}
+  }, []);
 
   const buy = async (slug: string) => {
     setBusy(slug);
@@ -53,6 +63,18 @@ export default function CoursesPage() {
           </div>
         </div>
       </nav>
+
+      {bought && (
+        <div style={{ background: "#F0FDF9", borderBottom: "1.5px solid #1AAF8B",
+          padding: "14px 20px", textAlign: "center", fontSize: 15 }}>
+          <b>Payment received — thank you.</b>{" "}
+          <a href={`/api/ebook/download?session_id=${bought.sid}`}
+            style={{ fontWeight: 800, color: "#13896D" }}>
+            Download your ebook (PDF) →</a>{" "}
+          <span style={{ color: "#64748B", fontSize: 13 }}>
+            Keep this page's link — it re-downloads any time.</span>
+        </div>
+      )}
 
       <header className="courses-hero">
         <div className="container">
@@ -96,10 +118,17 @@ export default function CoursesPage() {
                     </ul>
                   )}
                   <div className="course-actions">
-                    <button className="btn btn-primary" disabled={busy === c.slug}
-                      onClick={() => buy(c.slug)}>
-                      {busy === c.slug ? "Opening checkout…" : `Buy the ebook — £${c.ebook_price_gbp.toFixed(2)}`}
-                    </button>
+                    {c.ebook_available ? (
+                      <button className="btn btn-primary" disabled={busy === c.slug}
+                        onClick={() => buy(c.slug)}>
+                        {busy === c.slug ? "Opening checkout…" : `Buy the ebook — £${c.ebook_price_gbp.toFixed(2)}`}
+                      </button>
+                    ) : (
+                      <span className="btn btn-ghost" style={{ cursor: "default",
+                        opacity: .75 }}>
+                        Ebook in production — £{c.ebook_price_gbp.toFixed(2)} at launch
+                      </span>
+                    )}
                     <a className="btn btn-ghost" target="_blank" rel="noreferrer"
                       href="https://www.youtube.com/@PIPInsightForexAnalysis">
                       ▶ Videos

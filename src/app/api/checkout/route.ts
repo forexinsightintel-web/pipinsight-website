@@ -73,6 +73,7 @@ export async function POST(request: Request) {
     if (!course) return Response.json({ error: "Unknown course." }, { status: 404 });
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      metadata: { slug: course.slug },
       line_items: [{
         quantity: 1,
         price_data: {
@@ -84,7 +85,7 @@ export async function POST(request: Request) {
           },
         },
       }],
-      success_url: `${origin}/courses?purchased=${course.slug}`,
+      success_url: `${origin}/courses?purchased=${course.slug}&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/courses`,
     });
     return Response.json({ url: session.url });

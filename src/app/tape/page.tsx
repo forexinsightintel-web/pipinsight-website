@@ -3,7 +3,7 @@ import Link from "next/link";
 import TapeLedger from "../../components/TapeLedger";
 
 export const metadata: Metadata = {
-  title: "The Tape — every signal settled in public | PIP:Insight",
+  title: "The Tape — every call settled in public | PIP:Insight",
   description:
     "Two mechanical strategies on majors and gold, checked hourly. Every " +
     "signal logged the hour it fires, publicised only once concluded — " +

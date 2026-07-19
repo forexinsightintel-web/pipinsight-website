@@ -13,6 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/free`, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/school`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/glossary`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/privacy`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE}/terms`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE}/risk`, changeFrequency: "yearly", priority: 0.3 },
   ];
   const cats = (idx as { categories: Record<string, { slug: string }[]> })
     .categories;
