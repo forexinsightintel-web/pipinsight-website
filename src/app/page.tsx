@@ -74,17 +74,18 @@ export default function Home() {
       <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
         <div className="nav-inner">
           <img src={LOGO} alt="PIP:Insight" className="logo-img" />
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <button className={`hamburger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             <span></span><span></span><span></span>
           </button>
           <div className={`nav-links${menuOpen ? ' open' : ''}`}>
             <a href="#analysis" onClick={() => setMenuOpen(false)}>Today&apos;s Analysis</a>
+            <a href="/journal" onClick={() => setMenuOpen(false)}>Journal</a>
+            <a href="/school" onClick={() => setMenuOpen(false)}>School</a>
             <a href="/courses" onClick={() => setMenuOpen(false)}>Courses</a>
             <a href="/tape" onClick={() => setMenuOpen(false)}>The Tape</a>
-            <a href="/journal" onClick={() => setMenuOpen(false)}>Journal</a>
-            <a href="#how" onClick={() => setMenuOpen(false)}>How It Works</a>
+            <a href="/glossary" onClick={() => setMenuOpen(false)}>Glossary</a>
+            <a href="/free" onClick={() => setMenuOpen(false)}>Free Tools</a>
             <a href="#pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
-            <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener" onClick={() => setMenuOpen(false)}>Follow on X</a>
             <a href="#pricing" className="btn btn-primary btn-sm" onClick={() => setMenuOpen(false)}>Get Full Access</a>
           </div>
         </div>
@@ -95,7 +96,7 @@ export default function Home() {
         <div className="hero-inner">
           <div className="eyebrow">Every weekday · 06:30 UK</div>
           <h1>Daily Market Analysis.<br/><span>{N_INSTRUMENTS} Instruments. Every Morning.</span></h1>
-          <p className="hero-sub">Daily technical and macro analysis across 27 instruments — majors, metals, crosses and exotics including Gold — published before the London open. Free.</p>
+          <p className="hero-sub">Daily technical and macro analysis across {N_INSTRUMENTS} instruments — majors, metals, crosses and exotics including Gold — published before the London open. Free.</p>
           <div className="hero-ctas">
             <a href="#analysis" className="btn btn-primary btn-lg">See Today&apos;s Analysis</a>
             <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener" className="btn btn-ghost btn-lg">Follow on X →</a>
@@ -238,18 +239,7 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="footer">
-        <div className="container">
-          <img src={LOGO} alt="PIP:Insight" className="footer-logo" />
-          <div className="footer-links">
-            <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener">@Forexxinsight on X</a>
-            <a href="#analysis">Today&apos;s Analysis</a>
-            <a href="#pricing">Pricing</a>
-          </div>
-          <div className="footer-disclaimer">This is not financial advice. Forex trading involves significant risk of loss. Past analysis does not guarantee future results. Always use a stop loss. Trade at your own risk.</div>
-          <div className="footer-copy">© 2026 PIP:Insight · pip-insight.co.uk · United Kingdom</div>
-        </div>
-      </footer>
+
     </div>
   );
 }
