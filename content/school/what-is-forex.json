@@ -1,0 +1,33 @@
+{
+ "title": "What Is Forex, Actually?",
+ "body": "Every time someone swaps one country's money for another's \u2014 a holiday, an import bill, a pension fund hedging \u2014 that swap happens at a price. Forex is simply the global marketplace where those prices are set, around the clock, five and a half days a week.\n\n## The biggest market on Earth\n\nShares get the films, but forex is the giant: trillions of dollars change hands every day, more than every stock market combined. That size matters to you for one practical reason \u2014 it's almost always easy to get in and out of a position at a fair price. Nobody's stuck holding currency the way you can be stuck holding an obscure share.\n\n## What a trader is actually doing\n\nWhen you trade forex you're not buying a thing, you're backing an opinion: that one currency will strengthen against another. Think the pound will gain on the dollar? You buy the pound against the dollar. Right, and the price moves your way, you profit. Wrong, you lose. That's the whole game \u2014 everything else in this school is about being wrong less often and losing less when you are.\n\n## What it isn't\n\nIt isn't a cash machine, whatever the Instagram lads with rented Lamborghinis tell you. Most retail traders lose money \u2014 the regulator makes brokers print that on the tin. The edge, where it exists, comes from process, risk control and patience. That's the version of trading this school teaches: boring on purpose, receipts over promises.",
+ "quiz": [
+  {
+   "q": "When you 'buy GBP/USD', what are you actually backing?",
+   "opts": [
+    "The pound to strengthen against the dollar",
+    "The dollar to strengthen against the pound",
+    "Both currencies to rise together"
+   ],
+   "a": 0
+  },
+  {
+   "q": "Why does forex's enormous size matter to a small trader?",
+   "opts": [
+    "It guarantees profits",
+    "It's usually easy to enter and exit at a fair price",
+    "It means prices only move slowly"
+   ],
+   "a": 1
+  },
+  {
+   "q": "What do most retail forex traders do?",
+   "opts": [
+    "Beat the market",
+    "Break even",
+    "Lose money \u2014 the regulator makes brokers say so"
+   ],
+   "a": 2
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "title": "How a Trade Makes \u2014 or Loses \u2014 Money",
+ "body": "A trade has four moving parts: direction, size, entry and exit. Get comfortable with how they combine and every account statement you'll ever read becomes obvious.\n\n## Long and short\n\nGoing long means buying \u2014 you profit if the price rises. Going short means selling first \u2014 you profit if it falls. Forex has no awkwardness about shorting; betting on a currency to weaken is as normal as backing it to strengthen. Half the opportunities in any market are on the way down.\n\n## The arithmetic of a trade\n\nSay you go long GBP/USD at 1.2700 and close at 1.2750 \u2014 50 pips in your favour. Your profit is 50 pips times whatever each pip is worth at your position size. Sold instead, same numbers, the 50 pips would be a loss. The market doesn't know or care which way you bet; it just moves, and your position turns that movement into pounds \u2014 in either direction.\n\n## Where beginners come unstuck\n\nNot on winners \u2014 on letting losers run. A trade 20 pips against you whispers that it'll come back. Sometimes it does. The times it doesn't are what end accounts, which is why professionals decide their exit *before* they enter: a stop loss where the idea is proven wrong, a target where it's proven right. Entries get all the attention; exits pay the bills.\n\n## The honest version\n\nEvery trade on our public Tape is logged with its entry, stop and target the moment it's called \u2014 because a plan you can change halfway through isn't a plan, it's a mood. That discipline is free to copy, and it's the single most valuable thing on this site.",
+ "quiz": [
+  {
+   "q": "You short EUR/USD and it falls 30 pips. You are\u2026",
+   "opts": [
+    "Losing",
+    "In profit",
+    "Flat"
+   ],
+   "a": 1
+  },
+  {
+   "q": "When should your exit levels be decided?",
+   "opts": [
+    "Before entering the trade",
+    "Once it's 20 pips against you",
+    "When you feel ready"
+   ],
+   "a": 0
+  },
+  {
+   "q": "What most commonly wrecks beginner accounts?",
+   "opts": [
+    "Taking profits too early",
+    "Letting losing trades run",
+    "Trading too small"
+   ],
+   "a": 1
+  }
+ ]
+}

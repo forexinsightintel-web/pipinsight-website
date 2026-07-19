@@ -300,6 +300,7 @@ export default function JournalPage() {
           </Link>
           <div className="nav-links">
             <Link href="/">Today&apos;s Analysis</Link>
+            <Link href="/school">School</Link>
             <Link href="/courses">Courses</Link>
             <Link href="/journal" style={{ color: "var(--teal)", fontWeight: 700 }}>Journal</Link>
             <button onClick={upgrade} className="btn btn-primary btn-sm">Go Pro — £9.99/mo</button>

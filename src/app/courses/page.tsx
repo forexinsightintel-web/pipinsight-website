@@ -46,6 +46,7 @@ export default function CoursesPage() {
           </Link>
           <div className="nav-links">
             <Link href="/">Today&apos;s Analysis</Link>
+            <Link href="/school">School</Link>
             <Link href="/courses" style={{ color: "var(--teal)", fontWeight: 700 }}>Courses</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/journal" className="btn btn-primary btn-sm">Trade Journal →</Link>

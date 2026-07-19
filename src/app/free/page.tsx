@@ -50,6 +50,7 @@ export default function FreePage() {
           </Link>
           <div className="nav-links">
             <Link href="/">Today&apos;s Analysis</Link>
+            <Link href="/school">School</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/free" style={{ color: "var(--teal)", fontWeight: 700 }}>Free Tools</Link>
           </div>

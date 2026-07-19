@@ -1,0 +1,33 @@
+{
+ "title": "Who's In the Market With You",
+ "body": "Prices don't move by magic \u2014 they move because someone with size is buying or selling. Knowing who's in the pool with you explains most of the market's behaviour.\n\n## The whales\n\nCentral banks sit at the top \u2014 when the Bank of England or the Fed shifts interest rates (or hints it might), currencies repricing is the entire market reacting to the biggest player of all. Then the commercial banks, moving client billions and trading their own books; the funds \u2014 pensions, hedge funds, algorithms \u2014 hunting returns; and corporations hedging real-world business, Airbus selling planes in dollars while paying wages in euros.\n\n## The minnows \u2014 us\n\nRetail traders are a tiny slice of daily volume. Read that again, because it's liberating: you cannot move this market, but you also don't need to. A minnow doesn't have to beat the whales \u2014 it has to avoid swimming into their mouths. That means respecting the hours they're active, the news that mobilises them, and the levels where their orders cluster.\n\n## Why this matters practically\n\nThe economic calendar isn't homework \u2014 it's the whales' diary. A rate decision at 1pm means the biggest players in the world act at 1pm, and standing in front of that with a tenner and a dream is how spreads eat beginners. Support and resistance work partly because institutional orders pile up at obvious levels \u2014 the market's memory is really the whales' order book.\n\nThat's the induction done. Next level: the mechanics of actually placing trades \u2014 orders, lots, leverage and what it all costs.",
+ "quiz": [
+  {
+   "q": "Who is the single most market-moving player?",
+   "opts": [
+    "Retail traders",
+    "Central banks",
+    "Travel money bureaus"
+   ],
+   "a": 1
+  },
+  {
+   "q": "What share of the market do retail traders make up?",
+   "opts": [
+    "A tiny slice",
+    "About half",
+    "The majority"
+   ],
+   "a": 0
+  },
+  {
+   "q": "What is the economic calendar, practically speaking?",
+   "opts": [
+    "A list of bank holidays",
+    "The diary of when the big players will act",
+    "A broker marketing tool"
+   ],
+   "a": 1
+  }
+ ]
+}

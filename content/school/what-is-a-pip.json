@@ -1,0 +1,33 @@
+{
+ "title": "What's a Pip? (It's In Our Name)",
+ "body": "A pip is the standard unit of movement in a currency pair \u2014 the market's inch. For most pairs it's the fourth decimal place: GBP/USD moving from 1.2700 to 1.2701 is one pip. Yen pairs are the exception \u2014 there it's the second decimal (USD/JPY 148.50 to 148.51).\n\n## Why traders count in pips\n\nSaying \"the pound went up a bit\" is useless; saying \"Cable's up 40 pips\" tells every trader on Earth exactly how big the move was, instantly, regardless of position size. Pips are the market's shared ruler.\n\n## Pips are distance, not money\n\nHere's what beginners tangle up: how much a pip is worth in pounds depends entirely on your position size. Forty pips on a tiny position is coffee money; the same forty on an oversized one can empty an account. Same distance, different consequences \u2014 position sizing (Risk School covers it properly) is what turns distance into acceptable risk.\n\n## Pipettes, briefly\n\nMost brokers quote an extra decimal \u2014 a tenth of a pip, the pipette. Useful for precision, irrelevant for understanding. If your platform shows 1.27013, the pip count lives in the fourth decimal; the trailing digit is fine print.\n\nNow you know what our name means: the insight is in the pips.",
+ "quiz": [
+  {
+   "q": "GBP/USD moves 1.2700 \u2192 1.2750. How many pips?",
+   "opts": [
+    "5",
+    "50",
+    "500"
+   ],
+   "a": 1
+  },
+  {
+   "q": "On yen pairs, where does the pip live?",
+   "opts": [
+    "Fourth decimal",
+    "Second decimal",
+    "First decimal"
+   ],
+   "a": 1
+  },
+  {
+   "q": "Is 40 pips a lot of money?",
+   "opts": [
+    "Always \u2014 pips are fixed in value",
+    "It depends entirely on your position size",
+    "Only on Fridays"
+   ],
+   "a": 1
+  }
+ ]
+}

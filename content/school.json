@@ -1,0 +1,234 @@
+{
+ "name": "The Trading School",
+ "strap": "From absolute zero to your first written trading plan. Free, forever, no catch \u2014 the school we wish existed when we started.",
+ "levels": [
+  {
+   "no": 1,
+   "slug": "the-induction",
+   "name": "The Induction",
+   "blurb": "What forex actually is, who's in it, and how a trade makes or loses money \u2014 in plain English.",
+   "lessons": [
+    {
+     "slug": "what-is-forex",
+     "title": "What Is Forex, Actually?",
+     "mins": 4
+    },
+    {
+     "slug": "currency-pairs-explained",
+     "title": "Currency Pairs, In Plain English",
+     "mins": 5
+    },
+    {
+     "slug": "what-is-a-pip",
+     "title": "What's a Pip? (It's In Our Name)",
+     "mins": 4
+    },
+    {
+     "slug": "how-trades-make-money",
+     "title": "How a Trade Makes \u2014 or Loses \u2014 Money",
+     "mins": 6
+    },
+    {
+     "slug": "when-markets-move",
+     "title": "Sessions: When the Market's Awake",
+     "mins": 5
+    },
+    {
+     "slug": "the-players",
+     "title": "Who's In the Market With You",
+     "mins": 5
+    }
+   ]
+  },
+  {
+   "no": 2,
+   "slug": "desk-basics",
+   "name": "Desk Basics",
+   "blurb": "Orders, lots, leverage, spreads and margin \u2014 the mechanics you must know before a penny goes in.",
+   "lessons": [
+    {
+     "slug": "order-types",
+     "title": "Market, Limit, Stop: The Three Orders That Matter",
+     "mins": 6
+    },
+    {
+     "slug": "lots-and-position-sizes",
+     "title": "Lots and Position Sizes Without the Maths Headache",
+     "mins": 6
+    },
+    {
+     "slug": "leverage-truth",
+     "title": "Leverage: The Loaded Word",
+     "mins": 7
+    },
+    {
+     "slug": "spreads-and-costs",
+     "title": "Spreads, Swaps and What Trading Really Costs",
+     "mins": 6
+    },
+    {
+     "slug": "margin-calls",
+     "title": "Margin and the Call You Never Want",
+     "mins": 5
+    },
+    {
+     "slug": "demo-first",
+     "title": "Why Your First 100 Trades Should Cost Nothing",
+     "mins": 4
+    }
+   ]
+  },
+  {
+   "no": 3,
+   "slug": "reading-the-market",
+   "name": "Reading the Market",
+   "blurb": "Candles, support and resistance, trends and ranges \u2014 the chart-reading foundations everything else stands on.",
+   "lessons": [
+    {
+     "slug": "candles-explained",
+     "title": "Candlesticks: Four Numbers, One Picture",
+     "mins": 7
+    },
+    {
+     "slug": "support-resistance",
+     "title": "Support and Resistance: The Market's Memory",
+     "mins": 7
+    },
+    {
+     "slug": "trends-and-ranges",
+     "title": "Trends, Ranges and Knowing Which One You're In",
+     "mins": 6
+    },
+    {
+     "slug": "timeframes",
+     "title": "Timeframes: One Market, Many Stories",
+     "mins": 5
+    },
+    {
+     "slug": "chart-patterns-intro",
+     "title": "Patterns: Useful Servant, Terrible Master",
+     "mins": 6
+    },
+    {
+     "slug": "volume-and-conviction",
+     "title": "Conviction: Reading Strength Behind a Move",
+     "mins": 5
+    }
+   ]
+  },
+  {
+   "no": 4,
+   "slug": "the-toolkit",
+   "name": "The Toolkit",
+   "blurb": "Indicators demystified \u2014 what each one measures, when it lies, and why fewer is better.",
+   "lessons": [
+    {
+     "slug": "moving-averages",
+     "title": "Moving Averages: The Market's Rolling Mood",
+     "mins": 6
+    },
+    {
+     "slug": "rsi-explained",
+     "title": "RSI: Overbought Is Not a Sell Signal",
+     "mins": 6
+    },
+    {
+     "slug": "macd-explained",
+     "title": "MACD Without the Mystery",
+     "mins": 6
+    },
+    {
+     "slug": "atr-volatility",
+     "title": "ATR: How Far Does This Thing Normally Move?",
+     "mins": 5
+    },
+    {
+     "slug": "indicator-traps",
+     "title": "Indicator Traps: More Lines, Worse Trading",
+     "mins": 5
+    },
+    {
+     "slug": "the-calendar",
+     "title": "The Economic Calendar: News That Moves Money",
+     "mins": 6
+    }
+   ]
+  },
+  {
+   "no": 5,
+   "slug": "risk-school",
+   "name": "Risk School",
+   "blurb": "The level that decides whether you survive. Position sizing, stops, R-multiples, and the psychology of losing well.",
+   "lessons": [
+    {
+     "slug": "risk-per-trade",
+     "title": "The 1% Rule and Why Pros Are Boring",
+     "mins": 6
+    },
+    {
+     "slug": "stops-that-work",
+     "title": "Stop Losses: Where They Go and Why Yours Get Hit",
+     "mins": 7
+    },
+    {
+     "slug": "r-multiples",
+     "title": "Think in R: The Only Scoreboard That Matters",
+     "mins": 6
+    },
+    {
+     "slug": "drawdown-maths",
+     "title": "Drawdown Maths: The Hole Gets Deeper Faster",
+     "mins": 5
+    },
+    {
+     "slug": "tilt-and-revenge",
+     "title": "Tilt, Revenge Trading and the Angry Thumb",
+     "mins": 6
+    },
+    {
+     "slug": "journal-habit",
+     "title": "The Journal Habit: Receipts On Yourself",
+     "mins": 5
+    }
+   ]
+  },
+  {
+   "no": 6,
+   "slug": "going-live",
+   "name": "Going Live",
+   "blurb": "Choosing a broker, moving from demo to live money, and writing the one-page plan you'll actually follow.",
+   "lessons": [
+    {
+     "slug": "choosing-a-broker",
+     "title": "Choosing a Broker: The Checklist That Matters",
+     "mins": 7
+    },
+    {
+     "slug": "demo-to-live",
+     "title": "Demo to Live: Why Small Real Money Feels Different",
+     "mins": 5
+    },
+    {
+     "slug": "building-your-plan",
+     "title": "Your One-Page Trading Plan",
+     "mins": 8
+    },
+    {
+     "slug": "routine-of-a-trader",
+     "title": "The Daily Routine (Ours, Stolen Freely)",
+     "mins": 5
+    },
+    {
+     "slug": "first-90-days",
+     "title": "Your First 90 Days: A Realistic Map",
+     "mins": 6
+    },
+    {
+     "slug": "graduation",
+     "title": "Graduation: What Comes After the School",
+     "mins": 4
+    }
+   ]
+  }
+ ]
+}

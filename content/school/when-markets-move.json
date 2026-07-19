@@ -1,0 +1,33 @@
+{
+ "title": "Sessions: When the Market's Awake",
+ "body": "Forex trades around the clock, but it isn't equally alive around the clock. The day rolls through three great sessions \u2014 Asia, London, New York \u2014 and knowing their rhythm is like knowing when the tide's in.\n\n## The daily rhythm\n\nAsia (roughly midnight to 8am UK) is usually the quiet shift \u2014 yen pairs stir, majors often drift in tight ranges. London (8am to 4pm) is the main event: the world's largest forex hub wakes up, spreads tighten, and the day's real direction frequently gets set in the first few hours. New York (1pm to 9pm) overlaps London through the afternoon \u2014 that 1pm-4pm window is the loudest part of the whole day, and it's when US economic news lands.\n\n## Why timing changes everything\n\nThe same strategy can thrive at 9am and die at 11pm, because a market with no participants doesn't move cleanly \u2014 it drifts, snaps and fakes. Range-trading Asia and momentum-trading the London open are different sports. Most beginners lose money at hours pros simply don't work.\n\n## The London bias\n\nYou'll notice our daily analysis publishes before the London open. That's deliberate: for UK traders, London is the session \u2014 the best liquidity, the cleanest moves, your body clock's prime time. Trade the hours where the market \u2014 and you \u2014 are actually awake.",
+ "quiz": [
+  {
+   "q": "When is forex typically at its most active?",
+   "opts": [
+    "The Asian session",
+    "The London\u2013New York overlap",
+    "Sunday evening"
+   ],
+   "a": 1
+  },
+  {
+   "q": "Why do quiet hours punish momentum strategies?",
+   "opts": [
+    "Spreads are tighter",
+    "Thin markets drift and fake rather than trend cleanly",
+    "Brokers close"
+   ],
+   "a": 1
+  },
+  {
+   "q": "Why does our analysis land before 8am UK?",
+   "opts": [
+    "Servers are cheaper at night",
+    "London's open is the UK trader's prime session",
+    "Habit"
+   ],
+   "a": 1
+  }
+ ]
+}

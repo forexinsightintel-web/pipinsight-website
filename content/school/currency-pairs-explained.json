@@ -1,0 +1,33 @@
+{
+ "title": "Currency Pairs, In Plain English",
+ "body": "Currencies are always quoted in pairs, because money can only be valued in other money. GBP/USD at 1.2700 means one pound buys 1.27 dollars. That's it \u2014 everything else is vocabulary.\n\n## Base and quote\n\nThe first currency in the pair is the base, the second is the quote. The price is always how much of the quote one unit of the base buys. When GBP/USD rises, the pound is strengthening against the dollar; when it falls, the dollar's winning the arm-wrestle.\n\n## The families\n\nThe majors are the heavyweight pairs \u2014 the dollar against the pound, euro, yen, franc, and friends. Tightest costs, deepest markets, where beginners should live. Crosses skip the dollar entirely (EUR/GBP, GBP/JPY) \u2014 perfectly tradeable, slightly wilder. Exotics pair a major currency with a smaller economy's \u2014 wide costs, sudden lurches, genuinely not for your first year. Metals ride along too: gold quoted in dollars (XAU/USD) trades like a currency with a temper.\n\n## Nicknames you'll hear\n\nCable for GBP/USD (after the Victorian telegraph cable that carried the rate across the Atlantic), the Fibre for EUR/USD, the Gopher for USD/JPY. Nobody needs these, but now the forums make sense.\n\n## Why it matters\n\nEvery pair has a personality \u2014 how far it moves in a day, when it's busiest, what news yanks its chain. Our daily analysis covers 27 instruments precisely because a trader who knows their pair's habits has a head start on one who treats them all the same.",
+ "quiz": [
+  {
+   "q": "GBP/USD = 1.2700. What does that mean?",
+   "opts": [
+    "One dollar buys \u00a31.27",
+    "One pound buys $1.27",
+    "The pair moved 1.27% today"
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which family should a beginner mostly trade?",
+   "opts": [
+    "Exotics \u2014 bigger moves, bigger wins",
+    "Majors \u2014 deepest markets, tightest costs",
+    "Whatever's trending on social media"
+   ],
+   "a": 1
+  },
+  {
+   "q": "'Cable' is trader slang for which pair?",
+   "opts": [
+    "EUR/USD",
+    "USD/JPY",
+    "GBP/USD"
+   ],
+   "a": 2
+  }
+ ]
+}
