@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   computeStats, equityWithDates, groupBy, rHistogram, netRByWeekday,
   rollingWinRate, longShortSplit, DEMO_TRADES, PAIRS, SETUPS, type Trade,
+  dayNet, discipline, playbook,
 } from "../../lib/journal";
 
 const LS_KEY = "pipinsight_journal_v1";
@@ -31,6 +32,129 @@ function useTrades(): [Trade[], (t: Trade[]) => void] {
 }
 
 /* ── Equity curve: area + 2px line, gridlines, crosshair hover ── */
+function CalendarHeatmap({ trades }: { trades: Trade[] }) {
+  const days = useMemo(() => dayNet(trades), [trades]);
+  const dates = Object.keys(days).sort();
+  const latest = dates.length ? new Date(dates[dates.length - 1]) : new Date();
+  const [ym, setYm] = useState<[number, number]>([latest.getFullYear(), latest.getMonth()]);
+  const [sel, setSel] = useState<string | null>(null);
+  const [y, m] = ym;
+  const first = new Date(y, m, 1);
+  const startDow = (first.getDay() + 6) % 7; // Mon = 0
+  const nDays = new Date(y, m + 1, 0).getDate();
+  const maxAbs = Math.max(1, ...Object.values(days).map(d => Math.abs(d.netR)));
+  const cells: (string | null)[] = Array(startDow).fill(null);
+  for (let d = 1; d <= nDays; d++)
+    cells.push(`${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`);
+  const month = first.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+  const monthDates = cells.filter((c): c is string => !!c && !!days[c]);
+  const monthNet = monthDates.reduce((a, c) => a + days[c].netR, 0);
+  const selInfo = sel && days[sel] ? days[sel] : null;
+  return (
+    <div>
+      <div className="jr-cal-head">
+        <button onClick={() => setYm(m ? [y, m - 1] : [y - 1, 11])}>‹</button>
+        <b>{month}</b>
+        <button onClick={() => setYm(m === 11 ? [y + 1, 0] : [y, m + 1])}>›</button>
+        <span className={monthNet >= 0 ? "up" : "down"}>
+          {monthDates.length ? `${monthNet >= 0 ? "+" : ""}${monthNet.toFixed(1)}R this month` : "no trades"}
+        </span>
+      </div>
+      <div className="jr-cal-grid">
+        {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
+          <span key={i} className="jr-cal-dow">{d}</span>
+        ))}
+        {cells.map((c, i) => {
+          if (!c) return <span key={i} />;
+          const d = days[c];
+          const t = d ? Math.min(1, Math.abs(d.netR) / maxAbs) : 0;
+          const bg = !d ? "var(--bg2)"
+            : d.netR >= 0 ? `rgba(26,175,139,${0.15 + t * 0.7})`
+            : `rgba(232,71,106,${0.15 + t * 0.65})`;
+          return (
+            <button key={i} className={`jr-cal-cell${sel === c ? " sel" : ""}`}
+              style={{ background: bg }}
+              onClick={() => setSel(sel === c ? null : c)}
+              title={d ? `${c}: ${d.netR >= 0 ? "+" : ""}${d.netR.toFixed(1)}R (${d.n})` : c}>
+              {+c.slice(-2)}
+            </button>
+          );
+        })}
+      </div>
+      <div className="jr-cal-foot">
+        {selInfo && sel
+          ? <><b>{new Date(sel).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "short" })}</b>
+              {"  ·  "}{selInfo.n} trade{selInfo.n > 1 ? "s" : ""} ·{" "}
+              <span className={selInfo.netR >= 0 ? "up" : "down"}>
+                {selInfo.netR >= 0 ? "+" : ""}{selInfo.netR.toFixed(1)}R</span></>
+          : "tap a day — green earns, red pays for lessons"}
+      </div>
+    </div>
+  );
+}
+
+function DisciplineCard({ trades }: { trades: Trade[] }) {
+  const d = useMemo(() => discipline(trades), [trades]);
+  const R = 52, C = 2 * Math.PI * R;
+  const col = d.score >= 75 ? TEAL : d.score >= 50 ? "#D4A017" : RED;
+  return (
+    <div className="jr-disc">
+      <div className="jr-disc-dial">
+        <svg viewBox="0 0 140 140" width="128" height="128">
+          <circle cx="70" cy="70" r={R} fill="none" stroke="var(--bg2)" strokeWidth="14" />
+          <circle cx="70" cy="70" r={R} fill="none" stroke={col} strokeWidth="14"
+            strokeLinecap="round" strokeDasharray={`${C * d.score / 100} ${C}`}
+            transform="rotate(-90 70 70)" />
+          <text x="70" y="66" textAnchor="middle" fontSize="30" fontWeight="900"
+            fill="var(--ink)">{d.score}</text>
+          <text x="70" y="86" textAnchor="middle" fontSize="10" fontWeight="700"
+            fill="var(--muted)" letterSpacing="1.5">DISCIPLINE</text>
+        </svg>
+      </div>
+      <div className="jr-disc-comps">
+        {d.components.map(c => (
+          <div key={c.label} className="jr-disc-comp" title={c.detail}>
+            <span className="jr-disc-label">{c.label}</span>
+            <span className="jr-disc-bar"><span style={{ width: `${c.pct * 100}%`,
+              background: c.pct >= 0.75 ? TEAL : c.pct >= 0.5 ? "#D4A017" : RED }} /></span>
+            <span className="jr-disc-pct">{Math.round(c.pct * 100)}%</span>
+          </div>
+        ))}
+        {d.insights.slice(0, 2).map((t, i) => (
+          <div key={i} className="jr-disc-insight">{t}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PlaybookCard({ trades }: { trades: Trade[] }) {
+  const rows = useMemo(() => playbook(trades), [trades]);
+  if (!rows.length) return <p style={{ color: "var(--muted)", fontSize: 13.5 }}>
+    Log trades with setups and your playbook prices itself.</p>;
+  return (
+    <table className="jr-play">
+      <thead><tr><th>Setup</th><th>Trades</th><th>Win rate</th><th>Net R</th><th>Per trade</th><th></th></tr></thead>
+      <tbody>
+        {rows.map((r, i) => (
+          <tr key={r.setup}>
+            <td><b>{r.setup}</b></td>
+            <td>{r.n}</td>
+            <td>{r.winRate.toFixed(0)}%</td>
+            <td className={r.netR >= 0 ? "up" : "down"}>
+              {r.netR >= 0 ? "+" : ""}{r.netR.toFixed(1)}R</td>
+            <td className={r.expectancy >= 0 ? "up" : "down"}>
+              {r.expectancy >= 0 ? "+" : ""}{r.expectancy.toFixed(2)}R</td>
+            <td className="jr-play-tag">
+              {i === 0 && r.netR > 0 ? "the edge" :
+               i === rows.length - 1 && r.netR < 0 ? "the leak" : ""}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 function EquityChart({ trades }: { trades: Trade[] }) {
   const pts = useMemo(() => equityWithDates(trades), [trades]);
   const [hover, setHover] = useState<number | null>(null);
@@ -341,6 +465,25 @@ export default function JournalPage() {
             <div className="jr-tile"><div className="jr-tile-label">Max drawdown</div><div className="jr-tile-value down">{stats.maxDrawdownR.toFixed(1)}R</div></div>
             <div className="jr-tile"><div className="jr-tile-label">Streaks</div><div className="jr-tile-value">{stats.bestStreak}W/{stats.worstStreak}L</div><div className="jr-tile-sub">best / worst</div></div>
             <div className="jr-tile"><div className="jr-tile-label">Plan adherence</div><div className={`jr-tile-value ${stats.planAdherence >= 80 ? "up" : "down"}`}>{stats.planAdherence.toFixed(0)}%</div></div>
+          </div>
+
+          <div className="jr-grid half">
+            <div className="jr-card">
+              <div className="jr-card-title">The month, at a glance
+                <span>every square is a trading day</span></div>
+              <CalendarHeatmap trades={trades} />
+            </div>
+            <div className="jr-card">
+              <div className="jr-card-title">Discipline score
+                <span>process, measured — not P&L</span></div>
+              <DisciplineCard trades={trades} />
+            </div>
+          </div>
+
+          <div className="jr-card" style={{ marginBottom: 20 }}>
+            <div className="jr-card-title">Your playbook, priced
+              <span>every setup&apos;s true cost or edge</span></div>
+            <PlaybookCard trades={trades} />
           </div>
 
           <div className="jr-grid two">

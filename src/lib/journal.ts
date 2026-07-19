@@ -179,3 +179,89 @@ export function equityWithDates(trades: Trade[]) {
   return [{ i: 0, date: "", eq: 0 },
     ...sorted.map((t, i) => ({ i: i + 1, date: t.date, eq: +(eq += t.resultR).toFixed(2) }))];
 }
+
+/* ── v2 additions: heatmap, discipline engine, playbook ── */
+
+export function dayNet(trades: Trade[]): Record<string, { netR: number; n: number }> {
+  const out: Record<string, { netR: number; n: number }> = {};
+  for (const t of trades) {
+    const d = (out[t.date] ||= { netR: 0, n: 0 });
+    d.netR += t.resultR;
+    d.n += 1;
+  }
+  return out;
+}
+
+export type Discipline = {
+  score: number;
+  components: { label: string; pct: number; weight: number; detail: string }[];
+  insights: string[];
+};
+
+export function discipline(trades: Trade[]): Discipline {
+  if (!trades.length) return { score: 0, components: [], insights: [] };
+  const n = trades.length;
+  const planned = trades.filter(t => t.planned).length / n;
+  const calm = trades.filter(t => !["fomo", "revenge"].includes(t.emotion)).length / n;
+  const days = dayNet(trades);
+  const overDays = Object.values(days).filter(d => d.n > 5).length;
+  const overtrading = Math.max(0, 1 - overDays / Math.max(1, Object.keys(days).length) * 2);
+  const risks = trades.map(t => t.riskR || 1);
+  const mean = risks.reduce((a, b) => a + b, 0) / n;
+  const sd = Math.sqrt(risks.reduce((a, b) => a + (b - mean) ** 2, 0) / n);
+  const riskConsistency = sd <= 0.15 ? 1 : sd <= 0.4 ? 0.6 : 0.25;
+  // reaction to losses: of trades taken same day AFTER a loss, share planned
+  const byDay: Record<string, Trade[]> = {};
+  for (const t of trades) (byDay[t.date] ||= []).push(t);
+  let after = 0, afterPlanned = 0;
+  for (const list of Object.values(byDay)) {
+    for (let i = 1; i < list.length; i++) {
+      if (list[i - 1].resultR < 0) {
+        after++;
+        if (list[i].planned && list[i].emotion !== "revenge") afterPlanned++;
+      }
+    }
+  }
+  const lossReaction = after ? afterPlanned / after : 1;
+  const comps = [
+    { label: "Planned trades", pct: planned, weight: 35,
+      detail: `${Math.round(planned * 100)}% of trades were in the plan` },
+    { label: "Emotional control", pct: calm, weight: 25,
+      detail: `${Math.round((1 - calm) * 100)}% tagged FOMO or revenge` },
+    { label: "Reaction to losses", pct: lossReaction, weight: 20,
+      detail: after ? `${afterPlanned}/${after} post-loss trades stayed disciplined`
+                    : "no post-loss trades logged" },
+    { label: "Overtrading", pct: overtrading, weight: 10,
+      detail: overDays ? `${overDays} day(s) over 5 trades` : "no overtraded days" },
+    { label: "Risk consistency", pct: riskConsistency, weight: 10,
+      detail: `risk size deviation ${sd.toFixed(2)}R` },
+  ];
+  const score = Math.round(comps.reduce((a, c) => a + c.pct * c.weight, 0));
+  const insights: string[] = [];
+  const unplanned = trades.filter(t => !t.planned);
+  if (unplanned.length) {
+    const upR = unplanned.reduce((a, t) => a + t.resultR, 0);
+    insights.push(`Unplanned trades: ${unplanned.length}, net ${upR >= 0 ? "+" : ""}${upR.toFixed(1)}R — ${upR < 0 ? "the leak is real" : "lucky, not good"}.`);
+  }
+  const rev = trades.filter(t => t.emotion === "revenge");
+  if (rev.length) {
+    const rr = rev.reduce((a, t) => a + t.resultR, 0);
+    insights.push(`Revenge-tagged trades: ${rev.length} for ${rr >= 0 ? "+" : ""}${rr.toFixed(1)}R.`);
+  }
+  if (overDays) insights.push(`Heaviest days hurt: check the calendar's busiest squares.`);
+  return { score, components: comps, insights };
+}
+
+export type PlaySetup = { setup: string; n: number; winRate: number;
+  netR: number; expectancy: number };
+
+export function playbook(trades: Trade[]): PlaySetup[] {
+  const by: Record<string, Trade[]> = {};
+  for (const t of trades) (by[t.setup] ||= []).push(t);
+  return Object.entries(by).map(([setup, list]) => {
+    const wins = list.filter(t => t.resultR > 0).length;
+    const netR = list.reduce((a, t) => a + t.resultR, 0);
+    return { setup, n: list.length, winRate: wins / list.length * 100,
+             netR, expectancy: netR / list.length };
+  }).sort((a, b) => b.netR - a.netR);
+}
