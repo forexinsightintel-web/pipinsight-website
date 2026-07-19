@@ -95,7 +95,7 @@ export default function Home() {
         <div className="hero-inner">
           <div className="eyebrow">Every weekday · 06:30 UK</div>
           <h1>Daily Market Analysis.<br/><span>{N_INSTRUMENTS} Instruments. Every Morning.</span></h1>
-          <p className="hero-sub">Real technical and macro analysis across 9 major currency pairs including Gold — published automatically before the London open. Free.</p>
+          <p className="hero-sub">Daily technical and macro analysis across 27 instruments — majors, metals, crosses and exotics including Gold — published before the London open. Free.</p>
           <div className="hero-ctas">
             <a href="#analysis" className="btn btn-primary btn-lg">See Today&apos;s Analysis</a>
             <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener" className="btn btn-ghost btn-lg">Follow on X →</a>
