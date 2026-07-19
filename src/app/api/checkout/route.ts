@@ -37,7 +37,7 @@ export async function POST(request: Request) {
           },
         },
       }],
-      success_url: `${origin}/journal?upgraded=1`,
+      success_url: `${origin}/journal?upgraded=1&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/journal`,
     });
     return Response.json({ url: session.url });
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
           },
         },
       }],
-      success_url: `${origin}/journal?upgraded=1`,
+      success_url: `${origin}/journal?upgraded=1&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/#pricing`,
     });
     return Response.json({ url: session.url });

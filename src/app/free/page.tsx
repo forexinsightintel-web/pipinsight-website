@@ -12,7 +12,7 @@ import { useState } from "react";
 const TEAL = "#1AAF8B";
 
 const GETS = [
-  ["The Trade Journal", "Not a spreadsheet — software. Log trades, get your equity curve, win rates by setup and session, and AI analysis of your own patterns.", "Free forever"],
+  ["The Trade Journal", "Not a spreadsheet — software. Log trades, get your equity curve, win rates by setup, session and emotion. The AI analyst layer is the Pro upgrade (\u00a39.99/mo).", "Free forever"],
   ["The Discipline Tracker", "A 31-day habit scoreboard for the trading behaviours that actually decide outcomes. Downloadable spreadsheet — works in Excel and Google Sheets.", "Instant download"],
   ["The Daily Analysis", "27 instruments mapped every morning before the London open — majors, metals, crosses, exotics. Levels, bias, context.", "Every morning"],
   ["The Tape", "Every settled call on the public record, wins and losses, timestamped. Check the ledger before you trust a word we say.", "Always public"],
@@ -64,7 +64,7 @@ export default function FreePage() {
         </h1>
         <p style={{ fontSize: 16.5, color: "#475569", lineHeight: 1.6, maxWidth: 620 }}>
           Discipline is measurable — so measure it. One email gets you the
-          full toolkit: a proper trade journal with AI analysis, the 31-day
+          full toolkit: a proper trade journal, the 31-day
           discipline tracker, and the analysis we publish every morning
           before London opens. No card, no trial, no catch.
         </p>

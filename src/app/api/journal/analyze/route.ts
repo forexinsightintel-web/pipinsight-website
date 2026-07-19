@@ -1,6 +1,35 @@
 // AI analysis endpoint: trades in -> structured coaching insights out.
-// Uses ANTHROPIC_API_KEY (server env). Descriptive analysis only — the
-// system prompt forbids directive trade advice (FCA-safe framing).
+// PRO-GATED: every call costs real Claude tokens, so the server verifies an
+// active Stripe subscription before spending a penny — the client never
+// decides. A daily cap bounds spend even for Pro. Uses ANTHROPIC_API_KEY +
+// STRIPE_SECRET_KEY (server env). Descriptive analysis only — the system
+// prompt forbids directive trade advice (FCA-safe framing).
+import Stripe from "stripe";
+
+const DAILY_CAP = 10;
+
+// Best-effort in-memory caches (serverless instances reset; Stripe
+// re-verification on a cache miss is the real gate).
+const verified = new Map<string, { ok: boolean; exp: number }>();
+const usage = new Map<string, { day: string; count: number }>();
+
+async function isPro(sessionId: string, stripeKey: string): Promise<boolean> {
+  const hit = verified.get(sessionId);
+  if (hit && hit.exp > Date.now()) return hit.ok;
+  let ok = false;
+  try {
+    const stripe = new Stripe(stripeKey);
+    const s = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["subscription"],
+    });
+    const sub = s.subscription as Stripe.Subscription | null;
+    ok = !!sub && ["active", "trialing"].includes(sub.status);
+  } catch {
+    ok = false;
+  }
+  verified.set(sessionId, { ok, exp: Date.now() + 6 * 3600_000 });
+  return ok;
+}
 
 const SYSTEM = `You are the AI performance analyst inside PIP:Insight's trading journal. You are given a trader's logged trades (R-multiples, setups, sessions, emotions, plan adherence).
 
@@ -15,16 +44,40 @@ Rules:
 
 export async function POST(request: Request) {
   const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) {
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!key || !stripeKey) {
     return Response.json(
       { error: "AI analysis is not configured yet (missing server key)." },
       { status: 503 },
     );
   }
-  const { trades } = await request.json();
+  const { trades, proSession } = await request.json();
+  if (!proSession || typeof proSession !== "string") {
+    return Response.json(
+      { error: "The AI analyst is a Pro feature. The journal stays free forever — the analyst is £9.99/mo." },
+      { status: 402 },
+    );
+  }
+  if (!(await isPro(proSession, stripeKey))) {
+    return Response.json(
+      { error: "We couldn't verify an active Pro subscription. Just subscribed? Give it a minute and try again." },
+      { status: 402 },
+    );
+  }
   if (!Array.isArray(trades) || trades.length === 0) {
     return Response.json({ error: "No trades provided." }, { status: 400 });
   }
+  // Daily cap — bounds token spend per subscriber, stops the constant-clicker.
+  const today = new Date().toISOString().slice(0, 10);
+  const u = usage.get(proSession);
+  const count = u && u.day === today ? u.count : 0;
+  if (count >= DAILY_CAP) {
+    return Response.json(
+      { error: `That's ${DAILY_CAP} analyses today — the daily limit. Your data isn't going anywhere; run it again tomorrow.` },
+      { status: 429 },
+    );
+  }
+  usage.set(proSession, { day: today, count: count + 1 });
   const slim = trades.slice(-200).map((t) => ({
     date: t.date, pair: t.pair, dir: t.direction, session: t.session,
     setup: t.setup, resultR: t.resultR, emotion: t.emotion,

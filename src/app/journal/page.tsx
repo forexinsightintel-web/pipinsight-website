@@ -252,12 +252,27 @@ export default function JournalPage() {
     setForm({ ...EMPTY, date: form.date });
   };
 
+  const PRO_KEY = "pipinsight_pro_session_v1";
+  const [proSession, setProSession] = useState<string | null>(null);
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      const sid = url.searchParams.get("session_id");
+      if (sid) {
+        localStorage.setItem(PRO_KEY, sid);
+        url.searchParams.delete("session_id");
+        window.history.replaceState({}, "", url.toString());
+      }
+      setProSession(localStorage.getItem(PRO_KEY));
+    } catch {}
+  }, []);
+
   const analyze = async () => {
     setAiBusy(true); setAiErr(""); setInsights(null);
     try {
       const r = await fetch("/api/journal/analyze", {
         method: "POST", headers: { "content-type": "application/json" },
-        body: JSON.stringify({ trades }),
+        body: JSON.stringify({ trades, proSession }),
       });
       const d = await r.json();
       if (!r.ok) throw new Error(d.error || "Analysis failed");
@@ -299,12 +314,15 @@ export default function JournalPage() {
               <div className="eyebrow">PIP:INSIGHT TRADE JOURNAL</div>
               <h1>Your Trading, <span style={{ color: "var(--teal)" }}>Measured.</span></h1>
               <p className="jr-hero-sub">
-                Free on this device. Pro adds AI analysis history, cloud sync and unlimited records.
+                The journal is free forever on this device. Pro adds the AI analyst — your trading, read back to you.
               </p>
             </div>
-            <button className="btn btn-primary btn-lg" onClick={analyze}
-              disabled={aiBusy || trades.length === 0}>
-              {aiBusy ? "Analysing…" : "🤖 Run AI Analysis"}
+            <button className="btn btn-primary btn-lg"
+              onClick={proSession ? analyze : upgrade}
+              disabled={aiBusy || (proSession !== null && trades.length === 0)}>
+              {aiBusy ? "Analysing…"
+                : proSession ? "🤖 Run AI Analysis"
+                : "🤖 AI Analysis — Pro, £9.99/mo"}
             </button>
           </div>
         </div>
