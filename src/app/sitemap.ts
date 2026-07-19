@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/tape`, changeFrequency: "hourly", priority: 0.9 },
     { url: `${BASE}/journal`, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/courses`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/free`, changeFrequency: "weekly", priority: 0.8 },
   ];
   const cats = (idx as { categories: Record<string, { slug: string }[]> })
     .categories;
