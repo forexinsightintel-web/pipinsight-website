@@ -211,6 +211,7 @@ img { max-width: 100%; }
   margin-bottom: 48px;
 }
 .hero-stats {
+  margin-top: 26px;
   display: inline-flex;
   align-items: stretch;
   background: #fff;
