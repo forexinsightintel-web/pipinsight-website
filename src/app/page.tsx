@@ -127,7 +127,7 @@ export default function Home() {
             only once it has concluded — wins and losses both. No advance
             calls, ever.</p>
           </div>
-          <TapeLedger limit={9} winnersOnly />
+          <TapeLedger limit={9} />
           <p style={{ marginTop: 16 }}>
             <a href="/tape" style={{ color: "#1AAF8B", fontWeight: 800 }}>
               The full tape — every signal, wins and losses &rarr;</a>
