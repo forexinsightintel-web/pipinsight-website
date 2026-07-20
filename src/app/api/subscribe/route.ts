@@ -1,13 +1,71 @@
-// Email capture -> the leads database (private repo, leads/leads.csv).
-// Fires a repository_dispatch; the lead_capture workflow validates again,
-// dedupes and commits. Emails travel in the POST body only, never a URL.
-// Needs LEADS_GH_TOKEN (a GitHub PAT with repo scope) in the host env.
+// Email capture -> DUAL-WRITE: (1) beehiiv (The London Open list — the
+// sender of record) and (2) the leads database (private repo, our own copy,
+// first-capture-wins). Either leg succeeding = subscriber saved; both legs
+// are env-gated so the route degrades gracefully while keys are pending.
+// Emails travel in the POST body only, never a URL.
+// Env: BEEHIIV_API_KEY + BEEHIIV_PUB_ID, LEADS_GH_TOKEN.
 
 const RE = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
 
-export async function POST(request: Request) {
+async function beehiivAdd(email: string, source: string): Promise<boolean> {
+  const key = process.env.BEEHIIV_API_KEY;
+  const pub = process.env.BEEHIIV_PUB_ID;
+  if (!key || !pub) return false;
+  try {
+    const r = await fetch(
+      `https://api.beehiiv.com/v2/publications/${pub}/subscriptions`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${key}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          reactivate_existing: true,
+          send_welcome_email: true,
+          utm_source: "pip-insight.co.uk",
+          utm_medium: source,
+        }),
+      },
+    );
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function leadsAdd(email: string, source: string): Promise<boolean> {
   const token = process.env.LEADS_GH_TOKEN;
-  if (!token) {
+  if (!token) return false;
+  try {
+    const r = await fetch(
+      "https://api.github.com/repos/forexinsightintel-web/pipinsight-daily/dispatches",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          event_type: "new_lead",
+          client_payload: {
+            email,
+            source,
+            consent: "free-tools signup; agreed to receive PIP:Insight emails",
+          },
+        }),
+      },
+    );
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
+export async function POST(request: Request) {
+  if (!process.env.LEADS_GH_TOKEN && !process.env.BEEHIIV_API_KEY) {
     return Response.json(
       { error: "Sign-up is not live just yet — please try again later." },
       { status: 503 },
@@ -30,26 +88,11 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  const r = await fetch(
-    "https://api.github.com/repos/forexinsightintel-web/pipinsight-daily/dispatches",
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github+json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        event_type: "new_lead",
-        client_payload: {
-          email,
-          source,
-          consent: "free-tools signup; agreed to receive PIP:Insight emails",
-        },
-      }),
-    },
-  );
-  if (!r.ok) {
+  const [bee, gh] = await Promise.all([
+    beehiivAdd(email, source),
+    leadsAdd(email, source),
+  ]);
+  if (!bee && !gh) {
     return Response.json(
       { error: "Couldn't save that just now — please try again." },
       { status: 502 },
