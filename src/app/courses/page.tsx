@@ -100,6 +100,9 @@ export default function CoursesPage() {
             mentorship: no upsells waiting behind the last chapter.
           </p>
           <p className="courses-note">
+            30-day no-quibble refund on every ebook — if it wasn&apos;t worth it, we don&apos;t want your money.
+          </p>
+          <p className="courses-note">
             Educational content only · Not financial advice · Trading involves substantial risk of loss
           </p>
         </div>

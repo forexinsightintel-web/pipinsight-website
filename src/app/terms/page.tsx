@@ -33,11 +33,18 @@ export default function Terms() {
       contacting us; access continues to the end of the paid period. No
       tie-ins, no cancellation fees.</p>
       <p style={S.p}><b>Ebooks</b> — one-off purchases delivered as PDF
-      downloads. Because digital content is delivered immediately, the
-      statutory 14-day cooling-off period ends when the download begins — but
-      if a book fails to deliver or is materially not as described, contact us
-      and we will put it right or refund it. Your statutory rights are
-      unaffected.</p>
+      downloads. By purchasing you consent to immediate delivery and
+      acknowledge that the statutory 14-day cooling-off period for digital
+      content ends when the download begins. We then go further than the law
+      requires: every ebook carries a <b>30-day no-quibble refund</b> — if
+      you don&apos;t think it was worth what you paid, tell us within 30 days
+      and we&apos;ll refund it in full, no forms, no argument. Your statutory
+      rights are unaffected.</p>
+      <p style={S.p}><b>Refund fair use</b> — the no-quibble promise exists
+      for genuine buyers. Where a pattern of purchasing and refunding
+      suggests the promise is being used as a free-copy scheme, we may
+      decline future purchases from that customer. Refunds already promised
+      are always honoured.</p>
 
       <h2 style={S.h}>Fair use</h2>
       <p style={S.p}>Content and purchased materials are for your personal use;

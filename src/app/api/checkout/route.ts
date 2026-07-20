@@ -80,6 +80,9 @@ export async function POST(request: Request) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       metadata: { slug: course.slug },
+      custom_text: { submit: { message:
+        "Instant download after payment. By purchasing you consent to " +
+        "immediate delivery of digital content. 30-day no-quibble refund." } },
       line_items: [ebookPriceId ? { quantity: 1, price: ebookPriceId } : {
         quantity: 1,
         price_data: {
