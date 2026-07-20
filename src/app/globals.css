@@ -973,3 +973,26 @@ table.jr-play, table.jr-table {
   .course-head { flex-wrap: wrap; gap: 6px; }
   .course-level { max-width: 100%; }
 }
+
+/* ── The London Open capture bar (hero) ─────────────────────────── */
+.nl-bar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  background: #0F1D2E; border: 1px solid #24405C; border-radius: 14px;
+  padding: 14px 18px; margin: 22px auto 4px; max-width: 660px;
+  text-align: left; }
+.nl-copy { display: flex; flex-direction: column; gap: 2px; flex: 1 1 220px; }
+.nl-name { color: #F0C040; font-weight: 800; font-size: 12px;
+  letter-spacing: 2.5px; }
+.nl-tag { color: #B9C9DA; font-size: 12.5px; line-height: 1.45; }
+.nl-controls { display: flex; gap: 8px; flex: 1 1 260px; }
+.nl-controls input { flex: 1; min-width: 0; font-size: 14.5px;
+  padding: 10px 14px; border-radius: 10px; border: 1.5px solid #33506E;
+  background: #16283C; color: #fff; outline: none; }
+.nl-controls input::placeholder { color: #6E86A0; }
+.nl-controls .btn { white-space: nowrap; font-weight: 800; }
+.nl-err { color: #E8476A; font-size: 12px; font-weight: 600; width: 100%; }
+.nl-done { color: #C9F5E8; font-size: 14.5px; display: block; }
+.nl-done b { color: #1AAF8B; }
+@media (max-width: 560px) {
+  .nl-bar { padding: 13px 14px; }
+  .nl-controls { flex: 1 1 100%; }
+}

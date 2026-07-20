@@ -55,7 +55,8 @@ function outcome(r: Row) {
 export default function TapeLedger({ limit = 10, winnersOnly = false }:
   { limit?: number; winnersOnly?: boolean }) {
   const [hover, setHover] = useState<number | null>(null);
-  const all = tape.rows as unknown as Row[];
+  const all = [...(tape.rows as unknown as Row[])]
+    .sort((a, b) => (a.ts < b.ts ? 1 : -1));   // newest first, always
   const rows = (winnersOnly ? all.filter(r => r.result === "win") : all)
     .slice(0, limit);
   const s = tape.summary as { n: number; wins: number; win_pct: number;
