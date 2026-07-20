@@ -99,17 +99,24 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
         <tbody>
           <tr>
             <Stat value={String(s.wins)} label="Winners settled" color={GREEN} />
-            <Stat value={`${s.win_pct}%`} label="Hit the target" color={GREEN} />
-            <Stat value={`${Math.round(s.avg_run || 0)} Pips`} label="Avg winner run" color={AMBER} />
+            <Stat value={`${Math.round(s.avg_run || 0)} Pips`} label="Avg winner run" color={GREEN} />
             <Stat value={`${Math.round(s.best_run || 0)} Pips`} label="Best run" color={AMBER} />
+            <Stat value="20 Pips" label="Max risk, every trade" color={AMBER} />
           </tr>
         </tbody>
       </table>
 
       {winnersOnly && (
-        <div style={{ fontFamily: NUM, fontSize: 11.5, letterSpacing: ".14em",
-          color: AMBER, fontWeight: 800, marginBottom: 8 }}>
-          RECENT WINNERS — FULL TAPE ONE CLICK AWAY</div>
+        <div style={{ display: "flex", justifyContent: "space-between",
+          alignItems: "baseline", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+          <span style={{ fontFamily: NUM, fontSize: 11.5, letterSpacing: ".14em",
+            color: GREEN, fontWeight: 800 }}>
+            &#9679; THE HIGHLIGHT REEL &mdash; RECENT WINNERS</span>
+          <a href="/tape" style={{ fontFamily: NUM, fontSize: 11,
+            letterSpacing: ".1em", color: "#64748B", fontWeight: 700,
+            textDecoration: "none" }}>
+            EVERY TRADE &mdash; WINS <i>AND</i> LOSSES &mdash; ON THE FULL TAPE &#8594;</a>
+        </div>
       )}
       <div style={{ overflowX: "auto" }}>
         <table style={{ width: "100%", borderCollapse: "collapse",
