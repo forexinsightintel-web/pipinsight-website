@@ -1,6 +1,8 @@
 // Stripe Checkout: journal subscription (£9.99/mo) and one-off ebook
-// purchases from the course catalog. Uses inline price_data so no Stripe
-// dashboard products are required. Requires STRIPE_SECRET_KEY (server env).
+// purchases from the course catalog. Prefers catalogue price IDs from env
+// (STRIPE_PRICE_PRO_MONTHLY / STRIPE_PRICE_PRO_ANNUAL / STRIPE_PRICE_EBOOK_<SLUG>)
+// so live checkouts use the dashboard catalogue; falls back to inline
+// price_data when unset (test mode / local). Requires STRIPE_SECRET_KEY.
 import Stripe from "stripe";
 import catalog from "../../../../content/catalog.json";
 
@@ -22,9 +24,10 @@ export async function POST(request: Request) {
   const origin = request.headers.get("origin") ?? "https://pip-insight.co.uk";
 
   if (kind === "journal" || kind === "full-access") {
+    const priceId = process.env.STRIPE_PRICE_PRO_MONTHLY;
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
-      line_items: [{
+      line_items: [priceId ? { quantity: 1, price: priceId } : {
         quantity: 1,
         price_data: {
           currency: "gbp",
@@ -45,9 +48,10 @@ export async function POST(request: Request) {
 
   if (kind === "full-access-annual") {
     // £79/year — "2 months free" vs monthly; founding-member rate
+    const priceId = process.env.STRIPE_PRICE_PRO_ANNUAL;
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
-      line_items: [{
+      line_items: [priceId ? { quantity: 1, price: priceId } : {
         quantity: 1,
         price_data: {
           currency: "gbp",
@@ -71,10 +75,12 @@ export async function POST(request: Request) {
   if (kind === "ebook") {
     const course = (catalog as Course[]).find((c) => c.slug === slug);
     if (!course) return Response.json({ error: "Unknown course." }, { status: 404 });
+    const ebookPriceId = process.env[
+      `STRIPE_PRICE_EBOOK_${course.slug.toUpperCase().replace(/-/g, "_")}`];
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       metadata: { slug: course.slug },
-      line_items: [{
+      line_items: [ebookPriceId ? { quantity: 1, price: ebookPriceId } : {
         quantity: 1,
         price_data: {
           currency: "gbp",
