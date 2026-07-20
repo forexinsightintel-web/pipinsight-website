@@ -39,7 +39,12 @@ export default function Privacy() {
       your analysis; they are not stored by us afterwards.</p>
       <p style={S.p}><b>Payments</b> — handled entirely by Stripe. We never see
       or store card details. Stripe shares with us only what is needed to
-      deliver what you bought (payment status and a reference).</p>
+      deliver what you bought (payment status and a reference). When you
+      download purchased content or use a paid feature, we record delivery
+      and usage details (time, IP address, device type) against the payment
+      record held by Stripe — our legitimate interest in proving delivery
+      and preventing payment fraud. These records are kept only as long as
+      payment-dispute rules require.</p>
 
       <h2 style={S.h}>What we don&apos;t do</h2>
       <p style={S.p}>No selling or renting of personal data, ever. No

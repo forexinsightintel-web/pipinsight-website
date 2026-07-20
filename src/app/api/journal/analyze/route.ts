@@ -10,13 +10,14 @@ const DAILY_CAP = 10;
 
 // Best-effort in-memory caches (serverless instances reset; Stripe
 // re-verification on a cache miss is the real gate).
-const verified = new Map<string, { ok: boolean; exp: number }>();
+const verified = new Map<string, { ok: boolean; exp: number; subId?: string }>();
 const usage = new Map<string, { day: string; count: number }>();
 
 async function isPro(sessionId: string, stripeKey: string): Promise<boolean> {
   const hit = verified.get(sessionId);
   if (hit && hit.exp > Date.now()) return hit.ok;
   let ok = false;
+  let subId: string | undefined;
   try {
     const stripe = new Stripe(stripeKey);
     const s = await stripe.checkout.sessions.retrieve(sessionId, {
@@ -24,11 +25,35 @@ async function isPro(sessionId: string, stripeKey: string): Promise<boolean> {
     });
     const sub = s.subscription as Stripe.Subscription | null;
     ok = !!sub && ["active", "trialing"].includes(sub.status);
+    subId = sub?.id;
   } catch {
     ok = false;
   }
-  verified.set(sessionId, { ok, exp: Date.now() + 6 * 3600_000 });
+  verified.set(sessionId, { ok, exp: Date.now() + 6 * 3600_000, subId });
   return ok;
+}
+
+// CHARGEBACK EVIDENCE: stamp service usage onto the subscription's metadata.
+// "Customer used the AI analyst N times, most recently at T" is the dispute
+// answer for any "service not provided" claim. Fire-and-forget.
+function stampUsage(sessionId: string, stripeKey: string, request: Request) {
+  const subId = verified.get(sessionId)?.subId;
+  if (!subId) return;
+  const now = new Date().toISOString();
+  const ip = (request.headers.get("x-forwarded-for") || "")
+    .split(",")[0].trim().slice(0, 45) || "unknown";
+  const stripe = new Stripe(stripeKey);
+  stripe.subscriptions.retrieve(subId).then((sub) => {
+    const m = (sub.metadata as Record<string, string>) || {};
+    const total = (parseInt(m.analyze_calls_total || "0", 10) || 0) + 1;
+    return stripe.subscriptions.update(subId, { metadata: {
+      ...(m.first_used_at ? {} : { first_used_at: now }),
+      last_used_at: now,
+      last_used_ip: ip,
+      analyze_calls_total: String(total),
+      service: "ai-journal-analyst;cancel-anytime-terms",
+    } });
+  }).catch(() => {});
 }
 
 const SYSTEM = `You are the AI performance analyst inside PIP:Insight's trading journal. You are given a trader's logged trades (R-multiples, setups, sessions, emotions, plan adherence).
@@ -67,6 +92,7 @@ export async function POST(request: Request) {
   if (!Array.isArray(trades) || trades.length === 0) {
     return Response.json({ error: "No trades provided." }, { status: 400 });
   }
+  stampUsage(proSession, stripeKey, request);
   // Daily cap — bounds token spend per subscriber, stops the constant-clicker.
   const today = new Date().toISOString().slice(0, 10);
   const u = usage.get(proSession);
