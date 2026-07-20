@@ -116,7 +116,7 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
           fontSize: 13.5, fontFamily: MONO }}>
           <thead><tr style={{ textAlign: "left", color: DIM, fontSize: 11,
             letterSpacing: ".08em" }}>
-            <th style={{ padding: "6px 8px" }}>FIRED (UTC)</th>
+            <th style={{ padding: "6px 8px" }}>FIRED (UK TIME)</th>
             <th style={{ padding: "6px 8px" }}>SIGNAL</th>
             <th style={{ padding: "6px 8px" }}>STRAT</th>
             <th style={{ padding: "6px 8px" }}>TRIGGER</th>
