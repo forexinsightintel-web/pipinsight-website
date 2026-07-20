@@ -29,14 +29,14 @@
   "ebook_available": true,
   "bonuses": [
    {
+    "key": "cheatsheet",
+    "title": "Levels Cheat Sheet",
+    "blurb": "The S&R course compressed to printable chart pages."
+   },
+   {
     "key": "glossary",
     "title": "The Glossary \u2014 Trading in Pub English",
     "blurb": "40 terms, zero jargon, printable PDF."
-   },
-   {
-    "key": "cheatsheet",
-    "title": "Levels Cheat Sheet",
-    "blurb": "The whole course compressed to one page for beside the charts."
    },
    {
     "key": "quickstart",
@@ -77,7 +77,24 @@
    "Spotting When a Trend Is Dying"
   ],
   "accent_theme": "green",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 3,
@@ -106,7 +123,24 @@
    "Why Location Beats the Pattern Every Time"
   ],
   "accent_theme": "cyan",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 4,
@@ -135,7 +169,24 @@
    "How to Backtest an MA System"
   ],
   "accent_theme": "blue",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 5,
@@ -163,7 +214,24 @@
    "Managing a Breakout Trade From Entry to Exit"
   ],
   "accent_theme": "amber",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 6,
@@ -193,7 +261,24 @@
    "When Patterns Fail \u2014 and Why That's Information"
   ],
   "accent_theme": "magenta",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 7,
@@ -222,7 +307,24 @@
    "Building a Divergence Checklist"
   ],
   "accent_theme": "cyan",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 8,
@@ -250,7 +352,24 @@
    "Confluence: Making Fib Levels Meaningful"
   ],
   "accent_theme": "gold",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 9,
@@ -279,7 +398,24 @@
    "Zones vs Levels: When to Use Which"
   ],
   "accent_theme": "green",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 10,
@@ -308,7 +444,24 @@
    "Building Your End-of-Day Routine"
   ],
   "accent_theme": "blue",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 11,
@@ -337,7 +490,24 @@
    "Building a Pre-Market Routine"
   ],
   "accent_theme": "amber",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 12,
@@ -366,7 +536,24 @@
    "Rules That Keep Scalpers Disciplined"
   ],
   "accent_theme": "magenta",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 13,
@@ -396,7 +583,24 @@
    "Trading Around News Without Getting Wrecked"
   ],
   "accent_theme": "cyan",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 14,
@@ -427,7 +631,24 @@
    "The Full SMC Sequence on One Chart"
   ],
   "accent_theme": "gold",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 15,
@@ -457,6 +678,23 @@
    "Writing Your Personal Risk Plan"
   ],
   "accent_theme": "green",
-  "ebook_available": false
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  }
 ]

@@ -12,8 +12,36 @@ import path from "path";
 import Stripe from "stripe";
 
 const FILES: Record<string, string> = {
+  "breakout-retest-trading":
+    "content/ebooks/course5_breakout-retest-trading.pdf",
+  "candlestick-price-action":
+    "content/ebooks/course3_candlestick-price-action.pdf",
+  "chart-patterns-decoded":
+    "content/ebooks/course6_chart-patterns-decoded.pdf",
+  "day-trading-the-sessions":
+    "content/ebooks/course11_day-trading-the-sessions.pdf",
+  "fibonacci-retracement-trading":
+    "content/ebooks/course8_fibonacci-retracement-trading.pdf",
+  "moving-average-systems":
+    "content/ebooks/course4_moving-average-systems.pdf",
+  "news-fundamentals-trading":
+    "content/ebooks/course13_news-fundamentals-trading.pdf",
+  "risk-management-position-sizing":
+    "content/ebooks/course15_risk-management-position-sizing.pdf",
+  "rsi-divergence-trading":
+    "content/ebooks/course7_rsi-divergence-trading.pdf",
+  "scalping-precision":
+    "content/ebooks/course12_scalping-precision.pdf",
+  "smart-money-concepts":
+    "content/ebooks/course14_smart-money-concepts.pdf",
+  "supply-demand-zones":
+    "content/ebooks/course9_supply-demand-zones.pdf",
   "support-resistance-mastery":
     "content/ebooks/course1_support_resistance_mastery.pdf",
+  "swing-trading-blueprint":
+    "content/ebooks/course10_swing-trading-blueprint.pdf",
+  "trend-following-market-structure":
+    "content/ebooks/course2_trend-following-market-structure.pdf",
 };
 
 // Bonus stack: any paid ebook session unlocks the bonuses too.
