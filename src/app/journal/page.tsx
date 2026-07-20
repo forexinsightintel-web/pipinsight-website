@@ -391,6 +391,23 @@ export default function JournalPage() {
     } catch {}
   }, []);
 
+  const [boardState, setBoardState] = useState<"idle"|"busy"|"done"|"error">("idle");
+  const postToBoard = async () => {
+    if (!proSession) { upgrade(); return; }
+    setBoardState("busy");
+    try {
+      const wins = trades.filter(t => (t.resultR || 0) > 0).length;
+      const netR = trades.reduce((a, t) => a + (t.resultR || 0), 0);
+      const r = await fetch("/api/leaderboard", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: proSession,
+          stats: { trades: trades.length, wins, netR } }),
+      });
+      if (!r.ok) throw new Error();
+      setBoardState("done");
+    } catch { setBoardState("error"); }
+  };
+
   const analyze = async () => {
     setAiBusy(true); setAiErr(""); setInsights(null);
     try {
@@ -451,6 +468,15 @@ export default function JournalPage() {
               {aiBusy ? "Analysing…"
                 : proSession ? "🤖 Run AI Analysis"
                 : "🤖 AI Analysis — Pro, £9.99/mo"}
+            </button>
+            <button className="btn btn-outline btn-lg"
+              onClick={postToBoard}
+              disabled={boardState === "busy" || trades.length < 10}
+              title={trades.length < 10 ? "Log 10 trades first" : "Post your wins under your screen name — opt-in, Pro only"}>
+              {boardState === "busy" ? "Posting…"
+                : boardState === "done" ? "🏆 On the board!"
+                : boardState === "error" ? "🏆 Try again?"
+                : "🏆 Post my record — Leaderboard"}
             </button>
           </div>
         </div>

@@ -37,6 +37,10 @@ export default function Privacy() {
       see them. If you use the Pro AI analysis, the trades you submit are sent
       to our server and on to our AI provider (Anthropic) solely to generate
       your analysis; they are not stored by us afterwards.</p>
+      <p style={S.p}><b>Leaderboard (optional, Pro)</b> — if you choose to
+      post your record, we publish only your chosen screen name and aggregate
+      statistics (trade count, wins, net R). Never your trades, name or email.
+      Entries can be removed on request.</p>
       <p style={S.p}><b>Payments</b> — handled entirely by Stripe. We never see
       or store card details. Stripe shares with us only what is needed to
       deliver what you bought (payment status and a reference). When you

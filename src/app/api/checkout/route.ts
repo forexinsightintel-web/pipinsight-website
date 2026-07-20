@@ -27,6 +27,12 @@ export async function POST(request: Request) {
     const priceId = process.env.STRIPE_PRICE_PRO_MONTHLY;
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
+      custom_fields: [{
+        key: "screen_name",
+        label: { type: "custom", custom: "Leaderboard screen name (public)" },
+        type: "text",
+        text: { minimum_length: 3, maximum_length: 20 },
+      }],
       line_items: [priceId ? { quantity: 1, price: priceId } : {
         quantity: 1,
         price_data: {
@@ -51,6 +57,12 @@ export async function POST(request: Request) {
     const priceId = process.env.STRIPE_PRICE_PRO_ANNUAL;
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
+      custom_fields: [{
+        key: "screen_name",
+        label: { type: "custom", custom: "Leaderboard screen name (public)" },
+        type: "text",
+        text: { minimum_length: 3, maximum_length: 20 },
+      }],
       line_items: [priceId ? { quantity: 1, price: priceId } : {
         quantity: 1,
         price_data: {
