@@ -20,12 +20,14 @@ export default function TapePage() {
             <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
-            <Link href="/">Today&apos;s Analysis</Link>
+            <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/school">School</Link>
             <Link href="/courses">Courses</Link>
             <Link href="/tape" style={{ color: "var(--teal)", fontWeight: 700 }}>The Tape</Link>
+            <Link href="/glossary">Glossary</Link>
             <Link href="/free">Free Tools</Link>
+            <Link href="/#pricing">Pricing</Link>
           </div>
         </div>
       </nav>

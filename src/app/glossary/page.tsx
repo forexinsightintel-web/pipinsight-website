@@ -28,9 +28,14 @@ export default function GlossaryPage() {
             <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
-            <Link href="/school">School</Link>
-            <Link href="/glossary" style={{ color: "var(--teal)", fontWeight: 700 }}>Glossary</Link>
+            <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal">Journal</Link>
+            <Link href="/school">School</Link>
+            <Link href="/courses">Courses</Link>
+            <Link href="/tape">The Tape</Link>
+            <Link href="/glossary" style={{ color: "var(--teal)", fontWeight: 700 }}>Glossary</Link>
+            <Link href="/free">Free Tools</Link>
+            <Link href="/#pricing">Pricing</Link>
           </div>
         </div>
       </nav>
