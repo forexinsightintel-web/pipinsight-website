@@ -11,6 +11,13 @@ const FILES: Record<string, string> = {
     "content/ebooks/course1_support_resistance_mastery.pdf",
 };
 
+// Bonus stack: any paid ebook session unlocks the bonuses too.
+const BONUSES: Record<string, string> = {
+  glossary: "content/ebooks/bonuses/pip-insight-glossary.pdf",
+  cheatsheet: "content/ebooks/bonuses/pip-insight-levels-cheatsheet.pdf",
+  quickstart: "content/ebooks/bonuses/pip-insight-journal-quickstart.pdf",
+};
+
 export async function GET(request: Request) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return new Response("Downloads not configured.", { status: 503 });
@@ -27,15 +34,19 @@ export async function GET(request: Request) {
   } catch {
     return new Response("Could not verify purchase.", { status: 402 });
   }
-  const rel = FILES[slug];
-  if (!rel) return new Response("Unknown ebook.", { status: 404 });
+  const bonus = url.searchParams.get("bonus") || "";
+  const rel = bonus ? BONUSES[bonus] : FILES[slug];
+  if (!rel || (!bonus && !FILES[slug]))
+    return new Response("Unknown ebook.", { status: 404 });
   const p = path.join(process.cwd(), rel);
   if (!fs.existsSync(p)) return new Response("File missing.", { status: 500 });
+  const fname = bonus
+    ? path.basename(rel)
+    : `PIP-Insight-${slug}.pdf`;
   return new Response(fs.readFileSync(p), {
     headers: {
       "Content-Type": "application/pdf",
-      "Content-Disposition":
-        `attachment; filename="PIP-Insight-${slug}.pdf"`,
+      "Content-Disposition": `attachment; filename="${fname}"`,
     },
   });
 }

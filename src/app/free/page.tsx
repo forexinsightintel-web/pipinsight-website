@@ -15,7 +15,7 @@ const GETS = [
   ["The Trade Journal", "Not a spreadsheet — software. Log trades, get your equity curve, win rates by setup, session and emotion. The AI analyst layer is the Pro upgrade (\u00a39.99/mo).", "Free forever"],
   ["The Discipline Tracker", "A 31-day habit scoreboard for the trading behaviours that actually decide outcomes. Downloadable spreadsheet — works in Excel and Google Sheets.", "Instant download"],
   ["The Daily Analysis", "27 instruments mapped every morning before the London open — majors, metals, crosses, exotics. Levels, bias, context.", "Every morning"],
-  ["The Tape", "Every settled call on the public record, wins and losses, timestamped. Check the ledger before you trust a word we say.", "Always public"],
+  ["The Tape", "Every settled call on the public record, wins and losses, timestamped. Backtests are homework — the Tape is an exam. Check the ledger before you trust a word we say.", "Always public"],
 ];
 
 export default function FreePage() {

@@ -6,7 +6,7 @@
   "strategy": "Identifying the horizontal price levels where markets have repeatedly stalled or reversed, and structuring trade ideas around reactions at those levels.",
   "pitch": "Support and resistance is the foundation every other strategy is built on, and this ebook teaches you to draw levels that actually matter rather than cluttering your charts with guesswork. Learn a repeatable, rules-based framework for analysing how price behaves at key levels \u2014 clear, practical education for traders starting their journey.",
   "level": "Beginner",
-  "ebook_price_gbp": 14.99,
+  "ebook_price_gbp": 7.99,
   "chapters": [
    "What Support & Resistance Really Are",
    "Drawing Levels That Matter",
@@ -26,7 +26,29 @@
    "Building Your Level-Trading Checklist"
   ],
   "accent_theme": "gold",
-  "ebook_available": true
+  "ebook_available": true,
+  "bonuses": [
+   {
+    "key": "glossary",
+    "title": "The Glossary \u2014 Trading in Pub English",
+    "blurb": "40 terms, zero jargon, printable PDF."
+   },
+   {
+    "key": "cheatsheet",
+    "title": "Levels Cheat Sheet",
+    "blurb": "The whole course compressed to one page for beside the charts."
+   },
+   {
+    "key": "quickstart",
+    "title": "Journal Quick-Start",
+    "blurb": "The 5-step routine that makes the free journal change your trading."
+   },
+   {
+    "key": "tracker",
+    "title": "The 31-Day Discipline Tracker",
+    "blurb": "Habit scoreboard spreadsheet \u2014 Excel and Google Sheets."
+   }
+  ]
  },
  {
   "course_no": 2,
@@ -35,7 +57,7 @@
   "strategy": "Reading swing highs and lows to define trend direction, then aligning trades with the prevailing market structure until it demonstrably breaks.",
   "pitch": "Before indicators, before patterns, there is structure \u2014 the sequence of highs and lows that defines every trend on every chart. This course gives you a clear, objective method for identifying trend direction, spotting structural breaks and understanding when a market is genuinely turning, so your analysis rests on evidence rather than opinion.",
   "level": "Beginner",
-  "ebook_price_gbp": 14.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "Why Trend Is the Trader's Compass",
    "Swing Highs and Swing Lows: The Building Blocks",
@@ -64,7 +86,7 @@
   "strategy": "Interpreting individual candlesticks and small clusters \u2014 pin bars, engulfing bars, inside bars \u2014 as evidence of buying and selling pressure at meaningful locations.",
   "pitch": "Candlesticks are the language of the chart, and this ebook teaches you to read them fluently \u2014 not as magic patterns, but as a record of the battle between buyers and sellers. Learn which formations carry real weight, why location matters more than the pattern itself, and how to combine candles with levels for a complete price-action approach.",
   "level": "Beginner",
-  "ebook_price_gbp": 15.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "How to Read a Candlestick: Anatomy and Meaning",
    "Momentum Candles, Indecision Candles and Rejection Candles",
@@ -93,7 +115,7 @@
   "strategy": "Using moving averages for trend filtering, crossover signals and dynamic support and resistance, from the classic 50/200 golden cross to EMA pullback methods.",
   "pitch": "Moving averages are the most widely used indicator in trading, yet most people never learn to use them with rules and context. This course covers crossovers, dynamic support and resistance, and trend filters \u2014 and, crucially, teaches you to test which settings suit your market and timeframe rather than copying someone else's numbers.",
   "level": "Beginner",
-  "ebook_price_gbp": 15.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "What a Moving Average Actually Measures",
    "SMA vs EMA: Choosing the Right Tool",
@@ -122,7 +144,7 @@
   "strategy": "Trading the break of a defined level or range, then using the retest of that broken level as a lower-risk confirmation entry.",
   "pitch": "Breakouts attract every trader \u2014 and trap most of them, because few understand the difference between a genuine break and a false one. This ebook teaches the full breakout-and-retest framework: identifying ranges worth watching, qualifying breakouts with volume and structure, and using the retest to enter with clearly defined risk.",
   "level": "Intermediate",
-  "ebook_price_gbp": 17.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "Why Breakouts Happen: Consolidation and Expansion",
    "Identifying Ranges and Levels Worth Trading",
@@ -150,7 +172,7 @@
   "strategy": "Recognising and trading classical chart patterns \u2014 head and shoulders, double tops and bottoms, triangles, flags and wedges \u2014 with objective rules.",
   "pitch": "Head and shoulders, triangles, flags, wedges \u2014 everyone can name them, far fewer can trade them with discipline. This course turns pattern-spotting into a structured skill, teaching you the logic behind each formation, how to measure targets, and how to avoid the hindsight bias that makes patterns look easier than they are.",
   "level": "Intermediate",
-  "ebook_price_gbp": 18.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "Why Patterns Form: The Psychology Behind the Shapes",
    "Reversal vs Continuation Patterns",
@@ -180,7 +202,7 @@
   "strategy": "Using the Relative Strength Index to gauge momentum, and trading regular and hidden divergence between price and the oscillator as an early warning of shifts.",
   "pitch": "RSI is one of the most searched-for tools in trading, and one of the most misused \u2014 overbought does not mean sell. This ebook rebuilds your understanding from first principles: what momentum really measures, how regular and hidden divergence work, and how to combine RSI with structure so the indicator informs your analysis instead of dictating it.",
   "level": "Intermediate",
-  "ebook_price_gbp": 18.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "What RSI Actually Measures",
    "The Overbought/Oversold Myth",
@@ -209,7 +231,7 @@
   "strategy": "Applying Fibonacci retracement and extension levels to identify likely pullback zones within trends and project targets for the next leg.",
   "pitch": "Fibonacci levels appear on charts across every trading community, but few traders learn where to anchor them or why confluence is what gives them meaning. This course teaches disciplined Fibonacci use \u2014 correct swing selection, the golden zone, extensions for targets, and how to combine retracements with structure and levels for a coherent pullback framework.",
   "level": "Intermediate",
-  "ebook_price_gbp": 18.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "The Fibonacci Sequence and Why Traders Use It",
    "Anchoring Retracements: Choosing the Right Swing",
@@ -237,7 +259,7 @@
   "strategy": "Marking the zones where price departed with strong imbalance \u2014 areas of unfilled institutional interest \u2014 and trading the first return to those zones.",
   "pitch": "Supply and demand takes support and resistance to the next level, focusing on the footprints left behind when large orders move a market. This ebook teaches you to identify high-quality zones, grade their freshness and strength, and plan trades around the first return \u2014 a structured, location-first approach to reading imbalance on any chart.",
   "level": "Intermediate",
-  "ebook_price_gbp": 19.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "Imbalance: The Engine Behind Every Move",
    "Supply and Demand vs Traditional Support & Resistance",
@@ -266,7 +288,7 @@
   "strategy": "Holding positions for days to weeks by combining higher-timeframe structure, pullback entries and wide, patient trade management.",
   "pitch": "Swing trading suits people with jobs, families and lives \u2014 analysis measured in days, not minutes. This course assembles the skills from earlier in the syllabus into a complete end-of-day workflow: selecting pairs, planning entries on the daily and four-hour charts, and managing positions calmly through the inevitable noise.",
   "level": "Intermediate",
-  "ebook_price_gbp": 19.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "The Case for Swing Trading: Time, Temperament and Lifestyle",
    "Top-Down Analysis: Weekly to Four-Hour",
@@ -295,7 +317,7 @@
   "strategy": "Trading intraday moves around the rhythm of the trading day \u2014 the Asian range, the London open expansion and the New York overlap.",
   "pitch": "The forex day has a structure: Asia builds the range, London breaks it, New York decides whether it holds. This course teaches you to read that rhythm \u2014 session ranges, opening drives, overlap volatility \u2014 and to build an intraday plan around the hours when your chosen pairs actually move.",
   "level": "Advanced",
-  "ebook_price_gbp": 21.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "The 24-Hour Forex Clock: Sessions and Volatility",
    "The Asian Range: Setting the Stage",
@@ -324,7 +346,7 @@
   "strategy": "Taking many small, short-duration trades on low timeframes, exploiting micro-structure, spreads and session volatility with strict execution rules.",
   "pitch": "Scalping is the most demanding discipline in trading \u2014 small targets, fast decisions and zero room for sloppy execution. This ebook covers the mechanics honestly: spread and cost mathematics, micro-structure reading, one-setup mastery and the psychological guard-rails that separate structured scalping from impulsive clicking.",
   "level": "Advanced",
-  "ebook_price_gbp": 22.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "What Scalping Is \u2014 and What It Demands",
    "The Mathematics of Costs: Spreads, Commissions and Slippage",
@@ -353,7 +375,7 @@
   "strategy": "Understanding how interest rates, inflation data and central bank policy drive currencies, and trading around high-impact economic releases with defined risk.",
   "pitch": "Every major forex move ultimately traces back to fundamentals \u2014 rates, inflation, growth and the central banks that respond to them. This course teaches you to read the economic calendar intelligently, understand why currencies move on data, and manage the unique risks of trading around releases like NFP and CPI, including when the best trade is to stand aside.",
   "level": "Advanced",
-  "ebook_price_gbp": 22.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "What Actually Moves Currencies: The Fundamental Drivers",
    "Interest Rates and Central Banks: The Core Relationship",
@@ -383,7 +405,7 @@
   "strategy": "Analysing order blocks, liquidity pools, fair value gaps and market-structure shifts to frame where institutional order flow is likely to move price.",
   "pitch": "Smart Money Concepts is the most talked-about methodology in modern retail trading, and this course cuts through the jargon to teach it as a coherent framework \u2014 liquidity, order blocks, fair value gaps and structure shifts, each defined precisely and connected to ordinary price action. Learn the model, understand its logic and limits, and integrate it with everything you have studied so far.",
   "level": "Advanced",
-  "ebook_price_gbp": 24.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "The Smart Money Model: Premise and Limits",
    "Liquidity: Where Stops Cluster and Why It Matters",
@@ -414,7 +436,7 @@
   "strategy": "The capstone discipline: sizing every position from a fixed risk percentage, managing drawdowns, and building the statistical and psychological framework that keeps a trader in the game.",
   "pitch": "Strategy tells you where to trade; risk management decides whether you survive long enough for any strategy to matter. This capstone course covers position sizing mathematics, risk-to-reward thinking, drawdown control and the trader's psychology of loss \u2014 the material professionals consider the real edge, taught with worked examples and calculators you build yourself.",
   "level": "Advanced",
-  "ebook_price_gbp": 23.99,
+  "ebook_price_gbp": 9.99,
   "chapters": [
    "Why Risk Management Is the Real Strategy",
    "Risk Per Trade: The Fixed-Percentage Model",

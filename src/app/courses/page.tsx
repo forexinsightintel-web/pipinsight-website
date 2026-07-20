@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import catalog from "../../../content/catalog.json";
 
+type Bonus = { key: string; title: string; blurb: string };
 type Course = {
   course_no: number; slug: string; title: string; strategy: string;
   pitch: string; level: string; ebook_price_gbp: number;
   chapters: string[]; video_lessons: string[]; accent_theme: string;
-  ebook_available?: boolean;
+  ebook_available?: boolean; bonuses?: Bonus[];
 };
 
 const ACCENT: Record<string, string> = {
@@ -66,13 +67,25 @@ export default function CoursesPage() {
 
       {bought && (
         <div style={{ background: "#F0FDF9", borderBottom: "1.5px solid #1AAF8B",
-          padding: "14px 20px", textAlign: "center", fontSize: 15 }}>
+          padding: "16px 20px", textAlign: "center", fontSize: 15 }}>
           <b>Payment received — thank you.</b>{" "}
           <a href={`/api/ebook/download?session_id=${bought.sid}`}
             style={{ fontWeight: 800, color: "#13896D" }}>
-            Download your ebook (PDF) →</a>{" "}
-          <span style={{ color: "#64748B", fontSize: 13 }}>
-            Keep this page's link — it re-downloads any time.</span>
+            Download your ebook (PDF) →</a>
+          <div style={{ fontSize: 13.5, marginTop: 8, display: "flex", gap: 14,
+            justifyContent: "center", flexWrap: "wrap" }}>
+            <span style={{ color: "#64748B", fontWeight: 700 }}>Your bonuses:</span>
+            <a href={`/api/ebook/download?session_id=${bought.sid}&bonus=glossary`}
+              style={{ color: "#13896D", fontWeight: 700 }}>Glossary</a>
+            <a href={`/api/ebook/download?session_id=${bought.sid}&bonus=cheatsheet`}
+              style={{ color: "#13896D", fontWeight: 700 }}>Levels Cheat Sheet</a>
+            <a href={`/api/ebook/download?session_id=${bought.sid}&bonus=quickstart`}
+              style={{ color: "#13896D", fontWeight: 700 }}>Journal Quick-Start</a>
+            <a href="/downloads/pip-insight-discipline-tracker.xlsx"
+              style={{ color: "#13896D", fontWeight: 700 }}>Discipline Tracker</a>
+          </div>
+          <div style={{ color: "#64748B", fontSize: 12.5, marginTop: 6 }}>
+            Keep this page's link — everything re-downloads any time.</div>
         </div>
       )}
 
@@ -83,7 +96,8 @@ export default function CoursesPage() {
           <p className="courses-sub">
             Each course is a complete ebook with a matching free video series on the
             PIP:Insight YouTube channel — start with the videos, own the book when
-            you want the full depth.
+            you want the full depth. Every book is priced at a pint, not a
+            mentorship: no upsells waiting behind the last chapter.
           </p>
           <p className="courses-note">
             Educational content only · Not financial advice · Trading involves substantial risk of loss
@@ -116,6 +130,18 @@ export default function CoursesPage() {
                     <ul className="course-chapters">
                       {c.chapters.map((ch) => <li key={ch}>{ch}</li>)}
                     </ul>
+                  )}
+                  {c.bonuses && c.ebook_available && (
+                    <div className="course-bonuses">
+                      <div className="course-bonuses-head">
+                        INCLUDED FREE WITH THE BOOK
+                      </div>
+                      {c.bonuses.map((b) => (
+                        <div key={b.key} className="course-bonus">
+                          <b>{b.title}</b> — {b.blurb}
+                        </div>
+                      ))}
+                    </div>
                   )}
                   <div className="course-actions">
                     {c.ebook_available ? (

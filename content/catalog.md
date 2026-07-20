@@ -9,7 +9,7 @@
 ---
 
 ## 1. Support & Resistance Mastery
-- **Slug:** `support-resistance-mastery` · **Level:** Beginner · **Ebook:** £14.99 · **Accent:** gold
+- **Slug:** `support-resistance-mastery` · **Level:** Beginner · **Ebook:** £7.99 (tripwire — includes the 4-bonus stack) · **Accent:** gold
 - **Strategy:** Identifying the horizontal price levels where markets have repeatedly stalled or reversed, and structuring trade ideas around reactions at those levels.
 - **Pitch:** Support and resistance is the foundation every other strategy is built on, and this ebook teaches you to draw levels that actually matter rather than cluttering your charts with guesswork. Learn a repeatable, rules-based framework for analysing how price behaves at key levels — clear, practical education for traders starting their journey.
 
@@ -29,7 +29,7 @@
 ---
 
 ## 2. Trend Following & Market Structure
-- **Slug:** `trend-following-market-structure` · **Level:** Beginner · **Ebook:** £14.99 · **Accent:** green
+- **Slug:** `trend-following-market-structure` · **Level:** Beginner · **Ebook:** £9.99 · **Accent:** green
 - **Strategy:** Reading swing highs and lows to define trend direction, then aligning trades with the prevailing market structure until it demonstrably breaks.
 - **Pitch:** Before indicators, before patterns, there is structure — the sequence of highs and lows that defines every trend on every chart. This course gives you a clear, objective method for identifying trend direction, spotting structural breaks and understanding when a market is genuinely turning, so your analysis rests on evidence rather than opinion.
 
@@ -49,7 +49,7 @@
 ---
 
 ## 3. Candlestick Price Action
-- **Slug:** `candlestick-price-action` · **Level:** Beginner · **Ebook:** £15.99 · **Accent:** cyan
+- **Slug:** `candlestick-price-action` · **Level:** Beginner · **Ebook:** £9.99 · **Accent:** cyan
 - **Strategy:** Interpreting individual candlesticks and small clusters — pin bars, engulfing bars, inside bars — as evidence of buying and selling pressure at meaningful locations.
 - **Pitch:** Candlesticks are the language of the chart, and this ebook teaches you to read them fluently — not as magic patterns, but as a record of the battle between buyers and sellers. Learn which formations carry real weight, why location matters more than the pattern itself, and how to combine candles with levels for a complete price-action approach.
 
@@ -69,7 +69,7 @@
 ---
 
 ## 4. Moving Average Systems
-- **Slug:** `moving-average-systems` · **Level:** Beginner · **Ebook:** £15.99 · **Accent:** blue
+- **Slug:** `moving-average-systems` · **Level:** Beginner · **Ebook:** £9.99 · **Accent:** blue
 - **Strategy:** Using moving averages for trend filtering, crossover signals and dynamic support and resistance, from the classic 50/200 golden cross to EMA pullback methods.
 - **Pitch:** Moving averages are the most widely used indicator in trading, yet most people never learn to use them with rules and context. This course covers crossovers, dynamic support and resistance, and trend filters — and, crucially, teaches you to test which settings suit your market and timeframe rather than copying someone else's numbers.
 
@@ -89,7 +89,7 @@
 ---
 
 ## 5. Breakout & Retest Trading
-- **Slug:** `breakout-retest-trading` · **Level:** Intermediate · **Ebook:** £17.99 · **Accent:** amber
+- **Slug:** `breakout-retest-trading` · **Level:** Intermediate · **Ebook:** £9.99 · **Accent:** amber
 - **Strategy:** Trading the break of a defined level or range, then using the retest of that broken level as a lower-risk confirmation entry.
 - **Pitch:** Breakouts attract every trader — and trap most of them, because few understand the difference between a genuine break and a false one. This ebook teaches the full breakout-and-retest framework: identifying ranges worth watching, qualifying breakouts with volume and structure, and using the retest to enter with clearly defined risk.
 
@@ -109,7 +109,7 @@
 ---
 
 ## 6. Chart Patterns Decoded
-- **Slug:** `chart-patterns-decoded` · **Level:** Intermediate · **Ebook:** £18.99 · **Accent:** magenta
+- **Slug:** `chart-patterns-decoded` · **Level:** Intermediate · **Ebook:** £9.99 · **Accent:** magenta
 - **Strategy:** Recognising and trading classical chart patterns — head and shoulders, double tops and bottoms, triangles, flags and wedges — with objective rules.
 - **Pitch:** Head and shoulders, triangles, flags, wedges — everyone can name them, far fewer can trade them with discipline. This course turns pattern-spotting into a structured skill, teaching you the logic behind each formation, how to measure targets, and how to avoid the hindsight bias that makes patterns look easier than they are.
 
@@ -130,7 +130,7 @@
 ---
 
 ## 7. RSI & Divergence Trading
-- **Slug:** `rsi-divergence-trading` · **Level:** Intermediate · **Ebook:** £18.99 · **Accent:** cyan
+- **Slug:** `rsi-divergence-trading` · **Level:** Intermediate · **Ebook:** £9.99 · **Accent:** cyan
 - **Strategy:** Using the Relative Strength Index to gauge momentum, and trading regular and hidden divergence between price and the oscillator as an early warning of shifts.
 - **Pitch:** RSI is one of the most searched-for tools in trading, and one of the most misused — overbought does not mean sell. This ebook rebuilds your understanding from first principles: what momentum really measures, how regular and hidden divergence work, and how to combine RSI with structure so the indicator informs your analysis instead of dictating it.
 
@@ -150,7 +150,7 @@
 ---
 
 ## 8. Fibonacci Retracement Trading
-- **Slug:** `fibonacci-retracement-trading` · **Level:** Intermediate · **Ebook:** £18.99 · **Accent:** gold
+- **Slug:** `fibonacci-retracement-trading` · **Level:** Intermediate · **Ebook:** £9.99 · **Accent:** gold
 - **Strategy:** Applying Fibonacci retracement and extension levels to identify likely pullback zones within trends and project targets for the next leg.
 - **Pitch:** Fibonacci levels appear on charts across every trading community, but few traders learn where to anchor them or why confluence is what gives them meaning. This course teaches disciplined Fibonacci use — correct swing selection, the golden zone, extensions for targets, and how to combine retracements with structure and levels for a coherent pullback framework.
 
@@ -170,7 +170,7 @@
 ---
 
 ## 9. Supply & Demand Zones
-- **Slug:** `supply-demand-zones` · **Level:** Intermediate · **Ebook:** £19.99 · **Accent:** green
+- **Slug:** `supply-demand-zones` · **Level:** Intermediate · **Ebook:** £9.99 · **Accent:** green
 - **Strategy:** Marking the zones where price departed with strong imbalance — areas of unfilled institutional interest — and trading the first return to those zones.
 - **Pitch:** Supply and demand takes support and resistance to the next level, focusing on the footprints left behind when large orders move a market. This ebook teaches you to identify high-quality zones, grade their freshness and strength, and plan trades around the first return — a structured, location-first approach to reading imbalance on any chart.
 
@@ -190,7 +190,7 @@
 ---
 
 ## 10. The Swing Trading Blueprint
-- **Slug:** `swing-trading-blueprint` · **Level:** Intermediate · **Ebook:** £19.99 · **Accent:** blue
+- **Slug:** `swing-trading-blueprint` · **Level:** Intermediate · **Ebook:** £9.99 · **Accent:** blue
 - **Strategy:** Holding positions for days to weeks by combining higher-timeframe structure, pullback entries and wide, patient trade management.
 - **Pitch:** Swing trading suits people with jobs, families and lives — analysis measured in days, not minutes. This course assembles the skills from earlier in the syllabus into a complete end-of-day workflow: selecting pairs, planning entries on the daily and four-hour charts, and managing positions calmly through the inevitable noise.
 
@@ -210,7 +210,7 @@
 ---
 
 ## 11. Day Trading the Sessions
-- **Slug:** `day-trading-the-sessions` · **Level:** Advanced · **Ebook:** £21.99 · **Accent:** amber
+- **Slug:** `day-trading-the-sessions` · **Level:** Advanced · **Ebook:** £9.99 · **Accent:** amber
 - **Strategy:** Trading intraday moves around the rhythm of the trading day — the Asian range, the London open expansion and the New York overlap.
 - **Pitch:** The forex day has a structure: Asia builds the range, London breaks it, New York decides whether it holds. This course teaches you to read that rhythm — session ranges, opening drives, overlap volatility — and to build an intraday plan around the hours when your chosen pairs actually move.
 
@@ -230,7 +230,7 @@
 ---
 
 ## 12. Scalping With Precision
-- **Slug:** `scalping-precision` · **Level:** Advanced · **Ebook:** £22.99 · **Accent:** magenta
+- **Slug:** `scalping-precision` · **Level:** Advanced · **Ebook:** £9.99 · **Accent:** magenta
 - **Strategy:** Taking many small, short-duration trades on low timeframes, exploiting micro-structure, spreads and session volatility with strict execution rules.
 - **Pitch:** Scalping is the most demanding discipline in trading — small targets, fast decisions and zero room for sloppy execution. This ebook covers the mechanics honestly: spread and cost mathematics, micro-structure reading, one-setup mastery and the psychological guard-rails that separate structured scalping from impulsive clicking.
 
@@ -250,7 +250,7 @@
 ---
 
 ## 13. News & Fundamentals Trading
-- **Slug:** `news-fundamentals-trading` · **Level:** Advanced · **Ebook:** £22.99 · **Accent:** cyan
+- **Slug:** `news-fundamentals-trading` · **Level:** Advanced · **Ebook:** £9.99 · **Accent:** cyan
 - **Strategy:** Understanding how interest rates, inflation data and central bank policy drive currencies, and trading around high-impact economic releases with defined risk.
 - **Pitch:** Every major forex move ultimately traces back to fundamentals — rates, inflation, growth and the central banks that respond to them. This course teaches you to read the economic calendar intelligently, understand why currencies move on data, and manage the unique risks of trading around releases like NFP and CPI, including when the best trade is to stand aside.
 
@@ -271,7 +271,7 @@
 ---
 
 ## 14. Smart Money Concepts
-- **Slug:** `smart-money-concepts` · **Level:** Advanced · **Ebook:** £24.99 · **Accent:** gold
+- **Slug:** `smart-money-concepts` · **Level:** Advanced · **Ebook:** £9.99 · **Accent:** gold
 - **Strategy:** Analysing order blocks, liquidity pools, fair value gaps and market-structure shifts to frame where institutional order flow is likely to move price.
 - **Pitch:** Smart Money Concepts is the most talked-about methodology in modern retail trading, and this course cuts through the jargon to teach it as a coherent framework — liquidity, order blocks, fair value gaps and structure shifts, each defined precisely and connected to ordinary price action. Learn the model, understand its logic and limits, and integrate it with everything you have studied so far.
 
@@ -292,7 +292,7 @@
 ---
 
 ## 15. Risk Management & Position Sizing (Capstone)
-- **Slug:** `risk-management-position-sizing` · **Level:** Advanced · **Ebook:** £23.99 · **Accent:** green
+- **Slug:** `risk-management-position-sizing` · **Level:** Advanced · **Ebook:** £9.99 · **Accent:** green
 - **Strategy:** The capstone discipline: sizing every position from a fixed risk percentage, managing drawdowns, and building the statistical and psychological framework that keeps a trader in the game.
 - **Pitch:** Strategy tells you where to trade; risk management decides whether you survive long enough for any strategy to matter. This capstone course covers position sizing mathematics, risk-to-reward thinking, drawdown control and the trader's psychology of loss — the material professionals consider the real edge, taught with worked examples and calculators you build yourself.
 

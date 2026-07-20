@@ -662,6 +662,27 @@ img { max-width: 100%; }
   color: var(--accent);
   font-size: 11px;
 }
+.course-bonuses {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #fdf8ec;
+  border: 1px solid #f0dca8;
+  border-radius: 12px;
+}
+.course-bonuses-head {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #b8860b;
+  margin-bottom: 7px;
+}
+.course-bonus {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text);
+  padding: 3px 0;
+}
+.course-bonus b { color: var(--ink); }
 .course-actions { display: flex; gap: 10px; margin-top: 22px; }
 .course-actions .btn-primary { flex: 1; }
 @media (max-width: 720px) {
