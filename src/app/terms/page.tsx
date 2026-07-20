@@ -17,8 +17,9 @@ export default function Terms() {
       <p style={{ fontSize: 13, color: "#94A3B8" }}>Last updated: 20 July 2026</p>
 
       <h2 style={S.h}>What this site is</h2>
-      <p style={S.p}>PIP:Insight publishes educational market analysis, tools
-      and courses. Nothing on this site is financial advice, a personal
+      <p style={S.p}>PIP:Insight is a trading name of Mansell Media Limited,
+      registered in England &amp; Wales. PIP:Insight publishes educational
+      market analysis, tools and courses. Nothing on this site is financial advice, a personal
       recommendation, or an instruction to trade. We are not authorised or
       regulated by the Financial Conduct Authority, and nothing here should be
       read as regulated investment advice. Decisions you make in the markets

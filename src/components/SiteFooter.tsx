@@ -26,7 +26,9 @@ export default function SiteFooter() {
         to trade. Trading involves substantial risk of loss; most retail traders
         lose money. Capital at risk. 18+. Your journal entries are stored on
         your own device, not our servers.
-        © {new Date().getFullYear()} PIP:Insight · pip-insight.co.uk
+        PIP:Insight is a trading name of Mansell Media Limited
+        (England &amp; Wales). © {new Date().getFullYear()} Mansell Media
+        Limited · pip-insight.co.uk
       </p>
     </footer>
   );
