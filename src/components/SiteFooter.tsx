@@ -26,9 +26,10 @@ export default function SiteFooter() {
         to trade. Trading involves substantial risk of loss; most retail traders
         lose money. Capital at risk. 18+. Your journal entries are stored on
         your own device, not our servers.
-        PIP:Insight is a trading name of Mansell Media Limited
-        (England &amp; Wales). © {new Date().getFullYear()} Mansell Media
-        Limited · pip-insight.co.uk
+        PIP:Insight is a trading name of Mansell Media Limited, registered in
+        England &amp; Wales (company no. 17335820). Registered office: Whitfield
+        Buildings, 192–200 Pensby Road, Heswall, Wirral, CH60 7RJ.
+        © {new Date().getFullYear()} Mansell Media Limited · pip-insight.co.uk
       </p>
     </footer>
   );

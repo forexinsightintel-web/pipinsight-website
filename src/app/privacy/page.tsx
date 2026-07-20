@@ -18,8 +18,10 @@ export default function Privacy() {
 
       <h2 style={S.h}>Who we are</h2>
       <p style={S.p}>PIP:Insight is a trading name of Mansell Media Limited,
-      a company registered in England &amp; Wales, which is the data
-      controller for any personal data described below.</p>
+      a company registered in England &amp; Wales (company no. 17335820),
+      registered office Whitfield Buildings, 192–200 Pensby Road, Heswall,
+      Wirral, CH60 7RJ, which is the data controller for any personal data
+      described below.</p>
 
       <h2 style={S.h}>The short version</h2>
       <p style={S.p}>We collect as little as possible, we never sell it, and the
