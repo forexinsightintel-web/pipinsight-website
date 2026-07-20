@@ -95,6 +95,8 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero">
+        {/* sublimated candle layer — decorative, centre-faded so type leads */}
+        <div className="hero-bg" aria-hidden="true" />
         <div className="hero-inner">
           <div className="eyebrow">Every weekday · 06:30 UK</div>
           <h1>Daily Market Analysis.<br/><span>{N_INSTRUMENTS} Instruments. Every Morning.</span></h1>
