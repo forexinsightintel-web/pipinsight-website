@@ -203,12 +203,13 @@ export default function Home() {
               <div className="plan-price">£0<span>/month</span></div>
               <p className="plan-desc">Everything you need to follow the market each morning.</p>
               <ul className="plan-features">
+                <li>✓ Your own Trade Journal — free, private, on your device</li>
+                <li>✓ The free Telegram — winner tiles &amp; the honest tally</li>
+                <li>✓ The London Open — the weekly letter</li>
                 <li>✓ Daily bias across the free instruments</li>
-                <li>✓ Daily market bias &amp; direction analysis</li>
-                <li>✓ PDF reports on X @Forexxinsight</li>
-                <li>✓ Economic calendar highlights</li>
+                <li>✓ The Trading School — all six levels</li>
               </ul>
-              <a href="https://x.com/Forexxinsight" target="_blank" rel="noopener" className="btn btn-outline btn-full">Follow on X</a>
+              <a href="#join" className="btn btn-primary btn-full">Start free — 20 seconds</a>
             </div>
             <div className="plan featured">
               <div className="plan-badge">MOST POPULAR</div>
@@ -221,7 +222,7 @@ export default function Home() {
                 <li>✓ Full daily Trading Desk editorial per instrument</li>
                 <li>✓ Key reaction zones &amp; multi-timeframe structure</li>
                 <li>✓ Full economic calendar with impact ratings</li>
-                <li>✓ Journal Pro with AI insights included</li>
+                <li>✓ <b>PIPPA</b> — your AI desk analyst — reads your journal like a coach</li>
               </ul>
               <span className="btn btn-outline btn-full" style={{ cursor: "default", opacity: .75 }}>Coming Soon — launching next week</span>
               <div className="plan-note">Perfecting the product first · Cancel anytime once live</div>

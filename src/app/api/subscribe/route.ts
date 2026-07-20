@@ -35,7 +35,7 @@ async function beehiivAdd(email: string, source: string): Promise<boolean> {
   }
 }
 
-async function leadsAdd(email: string, source: string): Promise<boolean> {
+async function leadsAdd(email: string, source: string, mobile?: string): Promise<boolean> {
   const token = process.env.LEADS_GH_TOKEN;
   if (!token) return false;
   try {
@@ -53,8 +53,7 @@ async function leadsAdd(email: string, source: string): Promise<boolean> {
           client_payload: {
             email,
             source,
-            consent: "free-tools signup; agreed to receive PIP:Insight emails",
-          },
+            consent: "free-tools signup; agreed to receive PIP:Insight emails", mobile: mobile || "" },
         }),
       },
     );
@@ -71,7 +70,7 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
-  let body: { email?: string; source?: string; website?: string };
+  let body: { email?: string; source?: string; website?: string; mobile?: string };
   try {
     body = await request.json();
   } catch {
@@ -82,6 +81,7 @@ export async function POST(request: Request) {
 
   const email = String(body.email || "").trim().toLowerCase();
   const source = String(body.source || "site").slice(0, 40);
+  const mobile = String(body.mobile || "").replace(/[^0-9+ ]/g, "").slice(0, 20);
   if (!RE.test(email) || email.length > 254) {
     return Response.json(
       { error: "That doesn't look like an email address." },
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
   }
   const [bee, gh] = await Promise.all([
     beehiivAdd(email, source),
-    leadsAdd(email, source),
+    leadsAdd(email, source, mobile || undefined),
   ]);
   if (!bee && !gh) {
     return Response.json(
