@@ -932,3 +932,23 @@ table.jr-play, table.jr-table {
 }
 .course-actions { flex-wrap: wrap; }
 .jr-hbar-label { overflow: hidden; text-overflow: ellipsis; }
+
+
+/* ── refine 20 Jul 06:50: nav on hamburger-less pages + course chip wrap ── */
+@media (max-width: 768px) {
+  .nav-inner:not(:has(.hamburger)) { flex-wrap: wrap; row-gap: 2px; }
+  .nav-inner:not(:has(.hamburger)) .nav-links {
+    display: flex; position: static; inset: auto; background: none;
+    flex-direction: row; justify-content: flex-start; align-items: center;
+    gap: 16px; width: 100%; overflow-x: auto; padding: 2px 2px 10px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; z-index: 1;
+  }
+  .nav-inner:not(:has(.hamburger)) .nav-links::-webkit-scrollbar { display: none; }
+  .nav-inner:not(:has(.hamburger)) .nav-links a {
+    font-size: 13px; font-weight: 700; white-space: nowrap; }
+  .nav-inner:not(:has(.hamburger)) .nav-links .btn {
+    padding: 6px 12px; font-size: 12.5px; }
+  /* FIX 2: course card head — chip and price wrap instead of colliding */
+  .course-head { flex-wrap: wrap; gap: 6px; }
+  .course-level { max-width: 100%; }
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import TapeLedger from "../../components/TapeLedger";
 
@@ -13,6 +14,21 @@ export const metadata: Metadata = {
 export default function TapePage() {
   return (
     <main style={{ background: "#fff", minHeight: "100vh" }}>
+      <nav className="nav">
+        <div className="nav-inner">
+          <Link href="/">
+            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
+          </Link>
+          <div className="nav-links">
+            <Link href="/">Today&apos;s Analysis</Link>
+            <Link href="/journal">Journal</Link>
+            <Link href="/school">School</Link>
+            <Link href="/courses">Courses</Link>
+            <Link href="/tape" style={{ color: "var(--teal)", fontWeight: 700 }}>The Tape</Link>
+            <Link href="/free">Free Tools</Link>
+          </div>
+        </div>
+      </nav>
       <div className="container" style={{ maxWidth: 1000, margin: "0 auto",
         padding: "110px 22px 60px" }}>
         <div style={{ fontSize: 12, letterSpacing: ".14em", fontWeight: 800,
