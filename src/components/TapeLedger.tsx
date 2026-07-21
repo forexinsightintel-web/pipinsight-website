@@ -6,7 +6,7 @@ import analysisIndex from "../../content/analysis/index.json";
 
 type Row = { symbol: string; dir: string; strat: string; trigger?: string;
   ts: string; entry: number; result: string; pips: number | null;
-  banked?: number | null; runner?: number | null;
+  banked?: number | null; runner?: number | null; missed?: number | null;
   mfe: number | null; unit: string; phase?: string; chart?: ChartData };
 
 const GREEN = "#0E9F6E", RED = "#E02424", AMBER = "#B45309", DIM = "#6B7280";
@@ -42,11 +42,13 @@ function Stat({ value, label, color }: { value: string; label: string; color?: s
 
 function outcome(r: Row) {
   if (r.result === "win") {
+    const peak = r.mfe ? ` · PEAK +${Math.round(r.mfe)}` : "";
+    const left = (r.missed && r.missed >= 3) ? ` · LEFT +${Math.round(r.missed)}` : "";
     if (r.banked && r.runner && r.runner > 1)
-      return { text: `BANKED 15 · RUNNER +${Math.round(r.runner)} PIPS`, color: GREEN };
+      return { text: `BANKED +${Math.round(r.banked)} · RAN +${Math.round(r.runner)}${peak}${left}`, color: GREEN };
     if (r.banked)
-      return { text: "BANKED 15 · RUNNER BE", color: GREEN };
-    return { text: `TOOK THE LEVEL +${r.pips}${r.mfe ? ` · RAN ${Math.round(r.mfe)} PIPS` : ""}`, color: GREEN };
+      return { text: `BANKED +${Math.round(r.banked)}${peak}`, color: GREEN };
+    return { text: `+${r.pips}${peak}${left}`, color: GREEN };
   }
   if (r.result === "loss") return { text: `STOPPED ${r.pips} PIPS`, color: RED };
   return { text: `FLAT ${r.pips && r.pips > 0 ? "+" : ""}${r.pips}`, color: DIM };
@@ -134,6 +136,19 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
           </tr>
         </tbody>
       </table>
+
+      {s.validation && (s.validation as { peak_pips?: number }).peak_pips ? (
+        <div style={{ background: "#0A0F1A", borderRadius: 12, padding: "13px 20px",
+          margin: "0 0 20px", display: "flex", justifyContent: "space-between",
+          alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <span style={{ fontFamily: MONO, fontSize: 13, color: "#E2E8F0", fontWeight: 600 }}>
+            <b style={{ color: GREEN }}>Discipline over greed.</b> We bank the green,
+            log the peak, and take profit before the round-trip.</span>
+          <span style={{ fontFamily: NUM, fontSize: 12, color: "#94A3B8", fontWeight: 700 }}>
+            BANKED +{Math.round((s.validation as { banked_pips?: number }).banked_pips || 0).toLocaleString()} ·
+            PEAK +{Math.round((s.validation as { peak_pips?: number }).peak_pips || 0).toLocaleString()} SEEN</span>
+        </div>
+      ) : null}
 
       {winnersOnly && (
         <div style={{ display: "flex", justifyContent: "space-between",
