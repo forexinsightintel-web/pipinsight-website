@@ -1,27 +1,33 @@
 {
- "updated": "21 Jul 08:54 UTC",
+ "updated": "21 Jul 10:49 UTC",
  "summary": {
-  "n": 508,
+  "n": 509,
   "wins": 229,
   "win_pct": 45,
-  "pips": 1376.2,
+  "pips": 1394.9,
   "avg_win": 30.4,
   "best_run": 461.5,
   "avg_run": 53.4,
-  "live_n": 6,
+  "live_n": 7,
   "live_wins": 0,
   "validation": {
    "n": 502,
    "wins": 229,
    "win_pct": 46,
    "pips": 1428.0,
+   "banked_pips": 6966.6,
+   "peak_pips": 12235.7,
+   "left_on_table": 5269.1,
    "days": 60
   },
   "live": {
-   "n": 6,
+   "n": 7,
    "wins": 0,
    "win_pct": 0,
-   "pips": -51.8
+   "pips": -33.1,
+   "banked_pips": 0,
+   "peak_pips": 0,
+   "left_on_table": 0
   }
  },
  "note": "Two records, never blurred. The 60-DAY VALIDATION is a backtest of the exact live rulebook over the prior 60 days \u2014 mechanical, fixed rules, no hindsight on any single trade (though the pair\u2013strategy map was tuned on this window, so live may run softer). LIVE trades are logged the hour they conclude and never edited. Same rules on both: 30-pip first target (half banked, stop locks +25), 25-pip fixed stop, 24-hour timeout. Historical reporting of a mechanical system \u2014 not financial advice.",
@@ -38,6 +44,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -270,6 +277,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -504,6 +512,20 @@
       218.7,
       218.444,
       218.53
+     ],
+     [
+      1784620800,
+      218.53999,
+      218.726,
+      218.444,
+      218.46001
+     ],
+     [
+      1784624400,
+      218.467,
+      218.504,
+      218.366,
+      218.409
      ]
     ],
     "entry": 218.166,
@@ -523,6 +545,7 @@
    "banked": 30.0,
    "runner": 28.2,
    "mfe": 43.2,
+   "missed": 14.1,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -757,6 +780,20 @@
       4084.80005,
       4072.1001,
       4075.69995
+     ],
+     [
+      1784620800,
+      4075.6001,
+      4076.8999,
+      4063.6001,
+      4067.3999
+     ],
+     [
+      1784624400,
+      4067.69995,
+      4074.3999,
+      4065.3999,
+      4070.19995
      ]
     ],
     "entry": 4029.6001,
@@ -777,6 +814,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 33.6,
+   "missed": 6.1,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -1011,6 +1049,20 @@
       4084.80005,
       4072.1001,
       4075.69995
+     ],
+     [
+      1784620800,
+      4075.6001,
+      4076.8999,
+      4063.6001,
+      4067.3999
+     ],
+     [
+      1784624400,
+      4067.69995,
+      4074.3999,
+      4065.3999,
+      4070.19995
      ]
     ],
     "entry": 4016.19995,
@@ -1031,6 +1083,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "live",
    "chart": {
@@ -1158,6 +1211,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "live",
    "chart": {
@@ -1274,6 +1328,22 @@
    }
   },
   {
+   "symbol": "AUD/USD",
+   "dir": "long",
+   "strat": "LDN BRK",
+   "trigger": "Range break",
+   "ts": "2026-07-20 08:00",
+   "entry": 0.70038,
+   "result": "flat",
+   "pips": 18.7,
+   "banked": null,
+   "runner": null,
+   "mfe": null,
+   "missed": null,
+   "unit": "pips",
+   "phase": "live"
+  },
+  {
    "symbol": "USD/JPY",
    "dir": "short",
    "strat": "FIB",
@@ -1285,6 +1355,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -1519,6 +1590,20 @@
       162.618,
       162.51601,
       162.595
+     ],
+     [
+      1784620800,
+      162.59599,
+      162.7,
+      162.577,
+      162.686
+     ],
+     [
+      1784624400,
+      162.677,
+      162.696,
+      162.60899,
+      162.662
      ]
     ],
     "entry": 162.35699,
@@ -1538,6 +1623,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -1665,6 +1751,7 @@
    "banked": 30.0,
    "runner": 28.5,
    "mfe": 43.5,
+   "missed": 14.2,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -1878,6 +1965,41 @@
       1.34412,
       1.34369,
       1.34405
+     ],
+     [
+      1784610000,
+      1.3441,
+      1.34466,
+      1.34394,
+      1.34436
+     ],
+     [
+      1784613600,
+      1.34448,
+      1.3453,
+      1.34448,
+      1.34485
+     ],
+     [
+      1784617200,
+      1.34485,
+      1.34562,
+      1.34374,
+      1.34414
+     ],
+     [
+      1784620800,
+      1.34421,
+      1.34475,
+      1.34293,
+      1.34306
+     ],
+     [
+      1784624400,
+      1.34297,
+      1.34331,
+      1.34255,
+      1.34273
      ]
     ],
     "entry": 1.34584,
@@ -1898,6 +2020,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -2032,6 +2155,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -2376,6 +2500,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 35.2,
+   "missed": 7.7,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -2610,6 +2735,20 @@
       4084.80005,
       4072.1001,
       4075.69995
+     ],
+     [
+      1784620800,
+      4075.6001,
+      4076.8999,
+      4063.6001,
+      4067.3999
+     ],
+     [
+      1784624400,
+      4067.69995,
+      4074.3999,
+      4065.3999,
+      4070.19995
      ]
     ],
     "entry": 4022.0,
@@ -2630,6 +2769,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -2883,6 +3023,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -3129,6 +3270,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -3221,6 +3363,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 30.2,
+   "missed": 2.7,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -3461,6 +3604,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 32.3,
+   "missed": 4.8,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -3708,6 +3852,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -4136,6 +4281,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "live",
    "chart": {
@@ -4459,6 +4605,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 37.1,
+   "missed": 9.6,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -4811,6 +4958,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -5162,6 +5310,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "live",
    "chart": {
@@ -5527,6 +5676,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "live",
    "chart": {
@@ -5885,6 +6035,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "live"
   },
@@ -5900,6 +6051,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 35.8,
+   "missed": 8.3,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -6266,6 +6418,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -6631,6 +6784,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 30.0,
+   "missed": 2.5,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -6976,6 +7130,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -7376,6 +7531,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -7769,6 +7925,7 @@
    "banked": null,
    "runner": null,
    "mfe": 39.7,
+   "missed": 9.7,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -8127,6 +8284,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -8548,6 +8706,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -8899,6 +9058,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -9334,6 +9494,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 31.0,
+   "missed": 3.5,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -9756,6 +9917,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest",
    "chart": {
@@ -10093,6 +10255,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -10535,6 +10698,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -10928,6 +11092,7 @@
    "banked": null,
    "runner": null,
    "mfe": 72.4,
+   "missed": 42.4,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -11314,6 +11479,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 34.3,
+   "missed": 6.8,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -11834,6 +12000,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -12353,6 +12520,7 @@
    "banked": null,
    "runner": null,
    "mfe": 151.5,
+   "missed": 121.5,
    "unit": "pips",
    "phase": "backtest",
    "chart": {
@@ -12697,6 +12865,7 @@
    "banked": 30.0,
    "runner": 28.2,
    "mfe": 43.2,
+   "missed": 14.1,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -12712,6 +12881,7 @@
    "banked": 30.0,
    "runner": 26.5,
    "mfe": 41.5,
+   "missed": 13.2,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12727,6 +12897,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 30.8,
+   "missed": 3.3,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12742,6 +12913,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12757,6 +12929,7 @@
    "banked": 30.0,
    "runner": 27.9,
    "mfe": 42.9,
+   "missed": 13.9,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12772,6 +12945,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 36.7,
+   "missed": 9.2,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12787,6 +12961,7 @@
    "banked": 30.0,
    "runner": 35.0,
    "mfe": 50.0,
+   "missed": 17.5,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -12802,6 +12977,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12817,6 +12993,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -12832,6 +13009,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 39.5,
+   "missed": 12.0,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12847,6 +13025,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12862,6 +13041,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12877,6 +13057,7 @@
    "banked": null,
    "runner": null,
    "mfe": 209.5,
+   "missed": 179.5,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12892,6 +13073,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12907,6 +13089,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -12922,6 +13105,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 31.9,
+   "missed": 4.4,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -12937,6 +13121,7 @@
    "banked": null,
    "runner": null,
    "mfe": 58.8,
+   "missed": 28.8,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12952,6 +13137,7 @@
    "banked": null,
    "runner": null,
    "mfe": 63.4,
+   "missed": 33.4,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12967,6 +13153,7 @@
    "banked": 30.0,
    "runner": 52.8,
    "mfe": 67.8,
+   "missed": 26.4,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12982,6 +13169,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 38.8,
+   "missed": 11.3,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -12997,6 +13185,7 @@
    "banked": 30.0,
    "runner": 38.7,
    "mfe": 53.7,
+   "missed": 19.4,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13012,6 +13201,7 @@
    "banked": null,
    "runner": null,
    "mfe": 71.9,
+   "missed": 41.9,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13027,6 +13217,7 @@
    "banked": 30.0,
    "runner": 58.5,
    "mfe": 73.5,
+   "missed": 29.2,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13042,6 +13233,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 31.8,
+   "missed": 4.3,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13057,6 +13249,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13072,6 +13265,7 @@
    "banked": 30.0,
    "runner": 80.5,
    "mfe": 95.5,
+   "missed": 40.3,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13087,6 +13281,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13102,6 +13297,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13117,6 +13313,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13132,6 +13329,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13147,6 +13345,7 @@
    "banked": 30.0,
    "runner": 30.1,
    "mfe": 45.1,
+   "missed": 15.1,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13162,6 +13361,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13177,6 +13377,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13192,6 +13393,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13207,6 +13409,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13222,6 +13425,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13237,6 +13441,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13252,6 +13457,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13267,6 +13473,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13282,6 +13489,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13297,6 +13505,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 32.3,
+   "missed": 4.8,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13312,6 +13521,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 36.9,
+   "missed": 9.4,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13327,6 +13537,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13342,6 +13553,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13357,6 +13569,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13372,6 +13585,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13387,6 +13601,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13402,6 +13617,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 32.5,
+   "missed": 5.0,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13417,6 +13633,7 @@
    "banked": null,
    "runner": null,
    "mfe": 45.8,
+   "missed": 15.8,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13432,6 +13649,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13447,6 +13665,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 38.9,
+   "missed": 11.4,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13462,6 +13681,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13477,6 +13697,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13492,6 +13713,7 @@
    "banked": 30.0,
    "runner": 32.1,
    "mfe": 47.1,
+   "missed": 16.0,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13507,6 +13729,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13522,6 +13745,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13537,6 +13761,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13552,6 +13777,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 36.4,
+   "missed": 8.9,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13567,6 +13793,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 33.3,
+   "missed": 5.8,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13582,6 +13809,7 @@
    "banked": 30.0,
    "runner": 43.2,
    "mfe": 58.2,
+   "missed": 21.6,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13597,6 +13825,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13612,6 +13841,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13627,6 +13857,7 @@
    "banked": 30.0,
    "runner": 25.0,
    "mfe": 32.6,
+   "missed": 5.1,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13642,6 +13873,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13657,6 +13889,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13672,6 +13905,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13687,6 +13921,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13702,6 +13937,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13717,6 +13953,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13732,6 +13969,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13747,6 +13985,7 @@
    "banked": 30.0,
    "runner": 28.8,
    "mfe": 43.8,
+   "missed": 14.4,
    "unit": "pts",
    "phase": "backtest"
   },
@@ -13762,6 +14001,7 @@
    "banked": 30.0,
    "runner": 42.9,
    "mfe": 57.9,
+   "missed": 21.5,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13777,6 +14017,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13792,6 +14033,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13807,6 +14049,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13822,6 +14065,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13837,6 +14081,7 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
    "phase": "backtest"
   },
@@ -13852,22 +14097,8 @@
    "banked": null,
    "runner": null,
    "mfe": null,
+   "missed": null,
    "unit": "pips",
-   "phase": "backtest"
-  },
-  {
-   "symbol": "XAU/USD",
-   "dir": "short",
-   "strat": "SMC",
-   "trigger": "Break of structure",
-   "ts": "2026-07-08 04:00",
-   "entry": 4066.80005,
-   "result": "loss",
-   "pips": -25.0,
-   "banked": null,
-   "runner": null,
-   "mfe": null,
-   "unit": "pts",
    "phase": "backtest"
   }
  ]
