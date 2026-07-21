@@ -1,0 +1,68 @@
+{
+ "stats": {
+  "backtests": 6872,
+  "markets": 36,
+  "timeframes": 6,
+  "strategies": 18,
+  "oos_survivors": 1648,
+  "forex_1h_plus": 317
+ },
+ "proven_forex": [
+  {
+   "pair": "EUR/CHF",
+   "tf": "1h",
+   "strategy": "Inside Bar",
+   "win": 66.7,
+   "trades": 30
+  },
+  {
+   "pair": "EUR/GBP",
+   "tf": "4h",
+   "strategy": "RSI-2",
+   "win": 65.6,
+   "trades": 32
+  },
+  {
+   "pair": "EUR/GBP",
+   "tf": "4h",
+   "strategy": "ICT Sweep",
+   "win": 63.3,
+   "trades": 30
+  },
+  {
+   "pair": "EUR/JPY",
+   "tf": "4h",
+   "strategy": "ICT Sweep",
+   "win": 63.0,
+   "trades": 27
+  },
+  {
+   "pair": "USD/CHF",
+   "tf": "4h",
+   "strategy": "Stochastic",
+   "win": 61.8,
+   "trades": 34
+  },
+  {
+   "pair": "EUR/AUD",
+   "tf": "4h",
+   "strategy": "London Break",
+   "win": 60.7,
+   "trades": 28
+  },
+  {
+   "pair": "EUR/AUD",
+   "tf": "1h",
+   "strategy": "Bollinger Fade",
+   "win": 60.7,
+   "trades": 28
+  },
+  {
+   "pair": "USD/CHF",
+   "tf": "4h",
+   "strategy": "RSI-2",
+   "win": 60.6,
+   "trades": 33
+  }
+ ]
+}

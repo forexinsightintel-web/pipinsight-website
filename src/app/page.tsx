@@ -22,6 +22,7 @@ import dailyFeed from "../../content/daily/latest.json";
 import analysisIndex from "../../content/analysis/index.json";
 import AnalysisHub from "../components/AnalysisHub";
 import TapeLedger from "../components/TapeLedger";
+import ResearchDesk from "../components/ResearchDesk";
 
 type FeedPair = { pair: string; price: string; bias: string; strength: string };
 const _deco = (bias: string) => bias === "BULLISH"
@@ -134,6 +135,9 @@ export default function Home() {
             <a href="/tape" style={{ color: "#1AAF8B", fontWeight: 800 }}>
               The full tape — every signal, wins and losses &rarr;</a>
           </p>
+          <div style={{ marginTop: 26 }}>
+            <ResearchDesk />
+          </div>
         </div>
       </section>
 
