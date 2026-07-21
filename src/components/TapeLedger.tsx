@@ -60,7 +60,9 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
   const rows = (winnersOnly ? all.filter(r => r.result === "win") : all)
     .slice(0, limit);
   const s = tape.summary as { n: number; wins: number; win_pct: number;
-    pips: number; avg_win?: number; best_run?: number; avg_run?: number };
+    pips: number; avg_win?: number; best_run?: number; avg_run?: number;
+    validation?: { n: number; wins: number; win_pct: number; pips: number; days: number };
+    live?: { n: number; wins: number; win_pct: number; pips: number } };
   if (!rows.length) {
     return <p style={{ color: DIM, fontSize: 14 }}>
       The Tape is warming up — the first settled signals publish here within
@@ -79,6 +81,33 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
         <div style={{ fontFamily: MONO, fontSize: 12, color: DIM, fontWeight: 600 }}>
           MAJORS · YEN CROSSES · GOLD</div>
       </div>
+
+      {/* the two records, never blurred: backtested validation vs live */}
+      {s.validation && s.validation.n > 0 && (
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 18 }}>
+          <div style={{ flex: "1 1 240px", background: "#0A0F1A", borderRadius: 12,
+            padding: "15px 20px", border: "1px solid #1E293B" }}>
+            <div style={{ fontFamily: NUM, fontSize: 10.5, letterSpacing: ".14em",
+              color: "#94A3B8", fontWeight: 800 }}>
+              {s.validation.days}-DAY VALIDATION · BACKTESTED</div>
+            <div style={{ fontFamily: NUM, fontSize: 32, fontWeight: 900, color: GREEN,
+              lineHeight: 1.1, marginTop: 4 }}>
+              +{Math.round(s.validation.pips).toLocaleString()} pips</div>
+            <div style={{ fontFamily: MONO, fontSize: 12, color: "#94A3B8", marginTop: 3 }}>
+              {s.validation.win_pct}% win · {s.validation.n} trades · same rules, no hindsight</div>
+          </div>
+          <div style={{ flex: "1 1 240px", background: "#FFFFFF", borderRadius: 12,
+            padding: "15px 20px", border: "1px solid #E5E7EB" }}>
+            <div style={{ fontFamily: NUM, fontSize: 10.5, letterSpacing: ".14em",
+              color: GREEN, fontWeight: 800 }}>● LIVE · LOGGED IN REAL TIME</div>
+            <div style={{ fontFamily: NUM, fontSize: 32, fontWeight: 900,
+              color: (s.live && s.live.pips >= 0) ? GREEN : RED, lineHeight: 1.1, marginTop: 4 }}>
+              {s.live && s.live.pips >= 0 ? "+" : ""}{Math.round(s.live?.pips || 0).toLocaleString()} pips</div>
+            <div style={{ fontFamily: MONO, fontSize: 12, color: DIM, marginTop: 3 }}>
+              {s.live?.win_pct || 0}% win · {s.live?.n || 0} trades · since launch</div>
+          </div>
+        </div>
+      )}
 
       {/* NYSE-style pair ticker */}
       <div className="tape-ticker">
@@ -139,7 +168,12 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
                   style={{ borderTop: "1px solid #F3F4F6", position: "relative",
                     cursor: r.chart ? "pointer" : "default",
                     background: hover === i ? "#F9FAFB" : "transparent" }}>
-                  <td style={{ padding: "8px", whiteSpace: "nowrap", color: DIM }}>{r.ts}</td>
+                  <td style={{ padding: "8px", whiteSpace: "nowrap", color: DIM }}>{r.ts}
+                    <span style={{ marginLeft: 8, fontSize: 9, fontWeight: 800,
+                      letterSpacing: ".06em", padding: "1px 6px", borderRadius: 4,
+                      background: r.phase === "backtest" ? "#1E293B" : "rgba(14,159,110,.12)",
+                      color: r.phase === "backtest" ? "#94A3B8" : GREEN }}>
+                      {r.phase === "backtest" ? "60D TEST" : "LIVE"}</span></td>
                   <td style={{ padding: "8px", fontWeight: 700, color: "#0A0F1A" }}>
                     {r.dir.toUpperCase()} {r.symbol} @ {r.entry}</td>
                   <td style={{ padding: "8px" }}>
