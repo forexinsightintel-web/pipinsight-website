@@ -121,11 +121,13 @@ export default function Home() {
           <div className="section-header">
             <div className="eyebrow">THE TAPE · EVERY SIGNAL SETTLED IN PUBLIC</div>
             <h2>Logged Live. Shown After.</h2>
-            <p className="section-sub">Our head analyst runs two mechanical
-            plays across the majors and gold — hourly chart, checked every
-            hour. Every signal is logged the hour it fires and publicised
-            only once it has concluded — wins and losses both. No advance
-            calls, ever.</p>
+            <p className="section-sub">Pippa, our head analyst, runs five
+            mechanical plays — Smart Money, ICT, key levels, Fibonacci and the
+            London break — across the majors, gold and Bitcoin, hourly chart,
+            checked every hour. Each play only trades the pairs it&apos;s proven
+            on. Every signal is logged the hour it fires and publicised only
+            once it has concluded — wins and losses both. No advance calls,
+            ever.</p>
           </div>
           <TapeLedger limit={9} winnersOnly />
           <p style={{ marginTop: 16 }}>

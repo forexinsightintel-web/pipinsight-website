@@ -130,7 +130,7 @@ export default function TapeLedger({ limit = 10, winnersOnly = false }:
             <Stat value={String(s.wins)} label="Winners settled" color={GREEN} />
             <Stat value={`${Math.round(s.avg_run || 0)} Pips`} label="Avg winner run" color={GREEN} />
             <Stat value={`${Math.round(s.best_run || 0)} Pips`} label="Best run" color={AMBER} />
-            <Stat value="20 Pips" label="Max risk, every trade" color={AMBER} />
+            <Stat value="25 Pips" label="Max risk, every trade" color={AMBER} />
           </tr>
         </tbody>
       </table>
