@@ -1021,3 +1021,52 @@ table.jr-play, table.jr-table {
   .nl-form button { width: 100%; }
   .nl-deco { opacity: .10; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   SHARPNESS PASS (21 Jul) — one consistent card language, layered
+   soft shadows, a modern featured card, buttons with depth, tighter
+   headings. Fixes the "home-made" tells: mismatched radii, flat
+   cards, the dated cream/gold card.
+   ══════════════════════════════════════════════════════════════════ */
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility; }
+
+/* one shadow + radius language across every card-like surface */
+.card, .gold-card, .pair-card, .plan, .jr-card, .inst-card, .nap-card,
+.movers-card, .value-card, .sport-card {
+  border-radius: 16px;
+  border: 1px solid #E8EDF3;
+  box-shadow: 0 1px 2px rgba(13,17,23,.04), 0 10px 28px rgba(13,17,23,.06);
+}
+.card:hover, .pair-card:hover, .plan:hover {
+  box-shadow: 0 2px 4px rgba(13,17,23,.05), 0 16px 38px rgba(13,17,23,.11);
+  border-color: #DCE4EE;
+}
+
+/* the featured card: retire the cream, keep a whisper of gold */
+.gold-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBFCFE 100%);
+  border: 1px solid #E8EDF3;
+  border-left: 3px solid var(--gold);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(13,17,23,.04), 0 12px 30px rgba(13,17,23,.07);
+}
+
+/* buttons: rounder, bolder, with real depth */
+.btn { border-radius: 11px; font-weight: 700; letter-spacing: .01em; }
+.btn-primary { box-shadow: 0 6px 16px rgba(26,175,139,.26); }
+.btn-primary:hover { box-shadow: 0 9px 22px rgba(26,175,139,.34);
+  transform: translateY(-1px); }
+.btn-lg { border-radius: 12px; }
+
+/* headings: tighter tracking, more designed */
+.section-header h2 { letter-spacing: -0.8px; font-weight: 900; }
+.hero h1, main h1 { letter-spacing: -1.2px; }
+.eyebrow, .section-header .eyebrow { letter-spacing: .18em; }
+
+/* the analysis category pills: crisper inactive state */
+.cat-pill, .tab-pill { box-shadow: 0 1px 2px rgba(13,17,23,.04); }
+
+/* section rhythm: a touch tighter and more even */
+.analysis, .pricing { padding: 66px 0; }
+.section-header { margin-bottom: 40px; }
