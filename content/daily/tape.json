@@ -1,15 +1,15 @@
 {
- "updated": "22 Jul 01:31 UTC",
+ "updated": "22 Jul 02:01 UTC",
  "summary": {
-  "n": 509,
-  "wins": 229,
+  "n": 510,
+  "wins": 230,
   "win_pct": 45,
-  "pips": 1394.9,
+  "pips": 1422.4,
   "avg_win": 30.4,
   "best_run": 461.5,
-  "avg_run": 53.4,
-  "live_n": 7,
-  "live_wins": 0,
+  "avg_run": 53.3,
+  "live_n": 8,
+  "live_wins": 1,
   "validation": {
    "n": 502,
    "wins": 229,
@@ -21,17 +21,33 @@
    "days": 60
   },
   "live": {
-   "n": 7,
-   "wins": 0,
-   "win_pct": 0,
-   "pips": -33.1,
-   "banked_pips": 0,
-   "peak_pips": 0,
-   "left_on_table": 0
+   "n": 8,
+   "wins": 1,
+   "win_pct": 12,
+   "pips": -5.6,
+   "banked_pips": 27.5,
+   "peak_pips": 34.6,
+   "left_on_table": 7.1
   }
  },
  "note": "Two records, never blurred. The 60-DAY VALIDATION is a backtest of the exact live rulebook over the prior 60 days \u2014 mechanical, fixed rules, no hindsight on any single trade (though the pair\u2013strategy map was tuned on this window, so live may run softer). LIVE trades are logged the hour they conclude and never edited. Same rules on both: 30-pip first target (half banked, stop locks +25), 25-pip fixed stop, 24-hour timeout. Historical reporting of a mechanical system \u2014 not financial advice.",
  "rows": [
+  {
+   "symbol": "XAU/USD",
+   "dir": "long",
+   "strat": "ICT",
+   "trigger": "Liquidity sweep",
+   "ts": "2026-07-21 10:00",
+   "entry": 4072.8999,
+   "result": "win",
+   "pips": 27.5,
+   "banked": 30.0,
+   "runner": 25.0,
+   "mfe": 34.6,
+   "missed": 7.1,
+   "unit": "pts",
+   "phase": "live"
+  },
   {
    "symbol": "AUD/JPY",
    "dir": "short",
@@ -892,6 +908,13 @@
       4107.5,
       4081.1001,
       4101.6001
+     ],
+     [
+      1784682000,
+      4102.2998,
+      4128.3999,
+      4100.7998,
+      4123.2998
      ]
     ],
     "entry": 4029.6001,
@@ -14314,22 +14337,6 @@
    "trigger": "Range break",
    "ts": "2026-07-08 06:00",
    "entry": 1.14233,
-   "result": "loss",
-   "pips": -25.0,
-   "banked": null,
-   "runner": null,
-   "mfe": null,
-   "missed": null,
-   "unit": "pips",
-   "phase": "backtest"
-  },
-  {
-   "symbol": "NZD/USD",
-   "dir": "long",
-   "strat": "LDN BRK",
-   "trigger": "Range break",
-   "ts": "2026-07-08 06:00",
-   "entry": 0.57179,
    "result": "loss",
    "pips": -25.0,
    "banked": null,
