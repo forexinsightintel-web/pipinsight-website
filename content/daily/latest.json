@@ -1,9 +1,9 @@
 {
-  "date_str": "MONDAY 27 JULY 2026",
+  "date_str": "TUESDAY 28 JULY 2026",
   "session": "London session",
   "gold": {
     "pair": "XAU/USD",
-    "price": "4,094.60",
+    "price": "4,050.20",
     "bias": "BEARISH",
     "strength": "Moderate",
     "macro": "Macro read in today's video"
@@ -11,51 +11,51 @@
   "pairs": [
     {
       "pair": "EUR/USD",
-      "price": "1.1408",
-      "bias": "NEUTRAL",
+      "price": "1.1379",
+      "bias": "BEARISH",
       "strength": "Weak"
     },
     {
       "pair": "GBP/USD",
-      "price": "1.3354",
-      "bias": "NEUTRAL",
-      "strength": "Weak"
-    },
-    {
-      "pair": "USD/JPY",
-      "price": "163.57",
-      "bias": "BULLISH",
-      "strength": "Moderate"
-    },
-    {
-      "pair": "USD/CHF",
-      "price": "0.8150",
+      "price": "1.3300",
       "bias": "BEARISH",
       "strength": "Moderate"
     },
     {
+      "pair": "USD/JPY",
+      "price": "163.75",
+      "bias": "NEUTRAL",
+      "strength": "Weak"
+    },
+    {
+      "pair": "USD/CHF",
+      "price": "0.8186",
+      "bias": "BULLISH",
+      "strength": "Moderate"
+    },
+    {
       "pair": "AUD/USD",
-      "price": "0.7000",
+      "price": "0.6986",
       "bias": "NEUTRAL",
       "strength": "Weak"
     },
     {
       "pair": "NZD/USD",
-      "price": "0.5797",
+      "price": "0.5776",
       "bias": "BEARISH",
-      "strength": "Moderate"
+      "strength": "Weak"
     },
     {
       "pair": "USD/CAD",
-      "price": "1.4080",
-      "bias": "NEUTRAL",
-      "strength": "Weak"
+      "price": "1.4116",
+      "bias": "BULLISH",
+      "strength": "Moderate"
     },
     {
       "pair": "GBP/JPY",
-      "price": "218.41",
-      "bias": "BULLISH",
-      "strength": "Weak"
+      "price": "217.80",
+      "bias": "BEARISH",
+      "strength": "Moderate"
     }
   ]
 }
