@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 9 of 15
+Trading Foundry University — Playbook 9 of 15
 
 First Edition — 2026
 
@@ -10,7 +10,7 @@ First Edition — 2026
 
 # How to Use This Book
 
-This is the ninth course in the PIP:Insight Forex School, and it deals with one of the most seductive ideas in retail trading: the notion that you can see where the big money sat down, and be waiting when price comes back to the table.
+This is the ninth course in the Trading Foundry University, and it deals with one of the most seductive ideas in retail trading: the notion that you can see where the big money sat down, and be waiting when price comes back to the table.
 
 Supply and demand zone trading, done properly, is a disciplined framework for reading imbalance on a chart. Done badly, it is a religion — complete with mythology about "smart money" that conveniently explains every win and excuses every loss. This book teaches the framework and politely dismantles the mythology. You will learn to mark zones, grade them, refine them across timeframes, and trade the first return to them with defined risk. You will also learn why the story behind the zones matters far less than the behaviour in front of you.
 

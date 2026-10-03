@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 2 of 15
+Trading Foundry University — Playbook 2 of 15
 
 First Edition — 2026
 
@@ -20,7 +20,7 @@ Keep a notebook. Physical or digital, it doesn't matter, but write down every st
 
 Go at your own pace. Nine chapters could be read in a weekend, but the chart work behind them is a month of evenings, and there is no prize for finishing early. Markets will still be there.
 
-Finally: every chapter has a companion video, free on the PIP:Insight YouTube channel, where we mark structure live on real charts. The book gives you the framework; the videos show you the mess of reality. Use both.
+Finally: every chapter has a companion video, free on the Trading Foundry YouTube channel (@thetradingfoundry), where we mark structure live on real charts. The book gives you the framework; the videos show you the mess of reality. Use both.
 
 # Chapter 1 — Why Trend Is the Trader's Compass
 

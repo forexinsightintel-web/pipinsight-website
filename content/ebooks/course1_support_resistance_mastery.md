@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-**PIP:Insight Forex School — Course 1 of 15**
+**Trading Foundry University — Playbook 1 of 15**
 
 *First Edition — 2026*
 
@@ -18,7 +18,7 @@ pip-insight.co.uk
 
 # How to Use This Book
 
-Welcome. If you have watched the PIP:Insight YouTube channel, you already know how we work: no hype, no "secret systems", no promises — just the mechanics of how markets move, explained plainly, so you can build your own judgement. This book is the written companion to Course 1 of our fifteen-course Forex School, and it goes deeper than the videos ever could.
+Welcome. If you have watched the Trading Foundry YouTube channel (@thetradingfoundry), you already know how we work: no hype, no "secret systems", no promises — just the mechanics of how markets move, explained plainly, so you can build your own judgement. This book is the written companion to Course 1 of our fifteen-course Forex School, and it goes deeper than the videos ever could.
 
 Support and resistance is the first course for a reason. Almost everything you will meet later — trend structure, supply and demand, candlestick reading, breakout trading, risk management — stands on top of these nine chapters. Understand *why* price stalls, turns, or accelerates at certain levels and everything else becomes easier. Skip this foundation and everything else is guesswork with extra steps. A few suggestions before you begin:
 
@@ -32,7 +32,7 @@ Support and resistance is the first course for a reason. Almost everything you w
 
 **Go at your own pace.** There is no prize for finishing quickly. Traders who rush foundations pay for it later, in the most expensive classroom there is.
 
-The companion video course is free on the PIP:Insight YouTube channel — the link is in "Continue Your Journey" at the back. The videos show the concepts moving in real time; the book gives you the depth and something to come back to at two in the morning when a chart is confusing you.
+The companion video course is free on the Trading Foundry YouTube channel (@thetradingfoundry) — the link is in "Continue Your Journey" at the back. The videos show the concepts moving in real time; the book gives you the depth and something to come back to at two in the morning when a chart is confusing you.
 
 Right. Kettle on. Let's begin.
 
@@ -497,7 +497,7 @@ After thirty or so logged ideas, invisible patterns become undeniable: perhaps y
 
 # Chapter 9 — The Ten Costliest Mistakes
 
-Every mistake here is one we have made ourselves or watched hundreds of traders make through the PIP:Insight community, ordered roughly by expense. Read this chapter now, then again after your first month of chart work — it will have become uncomfortably specific.
+Every mistake here is one we have made ourselves or watched hundreds of traders make through the Trading Foundry community, ordered roughly by expense. Read this chapter now, then again after your first month of chart work — it will have become uncomfortably specific.
 
 ## 1. Trading the line instead of the zone
 
@@ -623,25 +623,25 @@ If this book has done its job, these now feel less like rules and more like desc
 
 You have finished Course 1 — genuinely finished only when you have also done the chart work, so if you sprinted through, this is your friendly nudge back to Chapter 4 with a charting platform open.
 
-**Watch the companion course.** The full *Support & Resistance Mastery* video playlist is free on our YouTube channel — **YouTube: PIP:Insight** — walking through live charts for every chapter: zones drawn in real time, approaches read candle by candle, role reversals unfolding as they happened. Book plus video is how the material truly sets.
+**Watch the companion course.** The full *Support & Resistance Mastery* video playlist is free on our YouTube channel — **YouTube: @thetradingfoundry** — walking through live charts for every chapter: zones drawn in real time, approaches read candle by candle, role reversals unfolding as they happened. Book plus video is how the material truly sets.
 
 **Next in the Forex School — Course 2: Trend Structure.** Throughout this book we kept borrowing one idea from the future: *market structure*, the skeleton of swing highs and lows that tells you which side is in charge. Course 2, **Trend Structure — Reading the Market's Skeleton**, is devoted entirely to it: identifying trends objectively, mapping swing points, recognising structural shifts, and combining structure with the levels you can now draw. Available at **pip-insight.co.uk**.
 
 **Practise before you commit capital.** Everything here can — and should — be rehearsed on a demo account until the five-stage playbook feels routine. The market will still be there when you are ready.
 
-**Stay in touch.** New lessons and course updates are posted on **X: @ForexInsight**; the full fifteen-course curriculum lives at **pip-insight.co.uk**. If this book helped you, put its ideas to honest work — and tell one other trader still drawing fifty thin lines on their chart.
+**Stay in touch.** New films are posted on YouTube at **@thetradingfoundry**; the full fifteen-course curriculum lives at **pip-insight.co.uk**. If this book helped you, put its ideas to honest work — and tell one other trader still drawing fifty thin lines on their chart.
 
 Thank you for learning with us. Kettle off. Charts open.
 
 ---
 
-**PIP:Insight — Forex education, plainly spoken.**
+**The Trading Foundry — Forex education, plainly spoken.**
 
 Website: **pip-insight.co.uk**
-YouTube: **PIP:Insight**
+YouTube: **@thetradingfoundry**
 X: **@ForexInsight**
 
-*PIP:Insight Forex School — Course 1 of 15: Support & Resistance Mastery. First Edition, 2026. © PIP:Insight. All rights reserved.*
+*Trading Foundry University — Playbook 1 of 15: Support & Resistance Mastery. First Edition, 2026. © The Trading Foundry. All rights reserved.*
 
 > **Educational content only. Not financial advice. Trading involves substantial risk of loss.** Foreign exchange trading carries a high level of risk and may not be suitable for all investors. You could lose some or all of your invested capital. Nothing in this publication constitutes investment advice, a personal recommendation, or an offer or solicitation to buy or sell any financial instrument. All examples are illustrative and educational. Seek independent professional advice where appropriate, and never trade with money you cannot afford to lose.
 

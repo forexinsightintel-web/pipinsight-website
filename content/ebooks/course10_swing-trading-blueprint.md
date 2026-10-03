@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 10 of 15
+Trading Foundry University — Playbook 10 of 15
 
 First Edition — 2026
 
@@ -10,7 +10,7 @@ First Edition — 2026
 
 # How to Use This Book
 
-This is the tenth course in the PIP:Insight Forex School, and it is the one we suspect most readers actually need. Courses one to nine gave you the raw materials: structure, support and resistance, candlesticks, risk. This book assembles them into a complete way of trading for people who have jobs, families, and better things to do at 2pm on a Tuesday than stare at a five-minute chart.
+This is the tenth course in the Trading Foundry University, and it is the one we suspect most readers actually need. Courses one to nine gave you the raw materials: structure, support and resistance, candlesticks, risk. This book assembles them into a complete way of trading for people who have jobs, families, and better things to do at 2pm on a Tuesday than stare at a five-minute chart.
 
 Swing trading means holding positions for days to weeks. That changes almost everything about how you analyse, enter, manage and — crucially — feel about trades. So read this book in order. The chapters build: the case for the style, then the top-down analysis that drives it, then market selection, entries, management, the awkward realities of holding overnight, and finally the routines and records that keep the whole thing honest. Chapter 9 walks a single illustrative trade from weekly chart to journal entry, so everything before it has a payoff.
 

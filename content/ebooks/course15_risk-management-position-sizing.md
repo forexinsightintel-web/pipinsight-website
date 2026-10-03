@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 15 of 15
+Trading Foundry University — Playbook 15 of 15
 
 First Edition — 2026
 
@@ -10,13 +10,13 @@ First Edition — 2026
 
 # How to Use This Book
 
-This is the last course in the PIP:Insight school, and it is the one the other fourteen were building towards. Everything you have studied — structure, zones, candles, indicators, sessions, news — answers one question: *where might I enter?* This book answers the question that actually decides whether you survive: *how much should I have on, and what happens when I'm wrong?*
+This is the last course in the Trading Foundry school, and it is the one the other fourteen were building towards. Everything you have studied — structure, zones, candles, indicators, sessions, news — answers one question: *where might I enter?* This book answers the question that actually decides whether you survive: *how much should I have on, and what happens when I'm wrong?*
 
 That ordering is deliberate. Entries are learnable in weeks. Risk discipline takes longer, because it fights human nature rather than working with it. So read this book differently from the others. The earlier courses rewarded pattern recognition; this one rewards arithmetic and honesty. There are worked examples throughout — account sizes, stop distances, lot calculations, drawdown recovery tables. Do not skim them. Get a calculator, or better a spreadsheet, and reproduce every number yourself. If our figure and your figure disagree, stop and find out why. The maths here is not decoration; it is the course.
 
 Work through the chapters in order. The first half builds the machinery: fixed-percentage risk, position sizing, risk-to-reward, expectancy. The second half builds the defences: drawdown limits, correlation, stop discipline, and the psychology of taking losses without unravelling. Chapter 10 then forces you to write it all down as a one-page risk plan. That written plan is the deliverable of the entire school. A trader with a mediocre entry method and an ironclad risk plan will still be trading in five years. The reverse is rarely true.
 
-Practical suggestions. First, test everything on a demo account or at minimum size before you trust it — these are frameworks for you to validate, not instructions to follow blind. Second, keep a journal from day one of applying this material; the free PIP:Insight journal and discipline tracker exists precisely for logging risk per trade, R-multiples and rule breaches. Third, resist the urge to "improve" the numbers before you have 100 logged trades. The model works when it is boring.
+Practical suggestions. First, test everything on a demo account or at minimum size before you trust it — these are frameworks for you to validate, not instructions to follow blind. Second, keep a journal from day one of applying this material; the free The Trading Foundry journal and discipline tracker exists precisely for logging risk per trade, R-multiples and rule breaches. Third, resist the urge to "improve" the numbers before you have 100 logged trades. The model works when it is boring.
 
 One warning before you start: this book will feel less exciting than the pattern courses. Good. Excitement is expensive in this business.
 
@@ -157,7 +157,7 @@ Two final traps. First, **spread**: your real loss if stopped is stop distance *
 
 From this chapter on, we stop measuring trades in pounds and start measuring them in **R** — where 1R is simply the amount you risked on the trade. If you risked £50 and made £100, that's a +2R trade. If your stop was hit, that's −1R. Scratch the trade at entry, 0R.
 
-R does two valuable things. It makes trades comparable across account sizes, pairs and time — a +2R trade on a £500 account and a +2R trade on a £50,000 account are the *same* trade, executed equally well. And it quietly enforces Chapter 2: you can only measure in R if every trade has a defined risk. A journal kept in R-multiples (the PIP:Insight journal is built around exactly this) becomes a clean record of skill, uncontaminated by deposit sizes and compounding.
+R does two valuable things. It makes trades comparable across account sizes, pairs and time — a +2R trade on a £500 account and a +2R trade on a £50,000 account are the *same* trade, executed equally well. And it quietly enforces Chapter 2: you can only measure in R if every trade has a defined risk. A journal kept in R-multiples (the Trading Foundry journal is built around exactly this) becomes a clean record of skill, uncontaminated by deposit sizes and compounding.
 
 Risk-to-reward, then, is just the R you are *aiming* for. A trade with a 25-pip stop and a 50-pip target is a 2R target — often written 1:2. The reward is measured to your target, the risk to your stop, both from entry.
 
@@ -224,7 +224,7 @@ The same coin has another side: the winning streak. Seven wins in a row is also 
 
 ## Sample size, and the discipline of not knowing
 
-How many trades before you can trust your numbers? There is no magic threshold, but the working guidance we give: below 30 trades, conclude nothing. Around 100, you may cautiously believe the *sign* of your expectancy. By 300, patterns in your data (which sessions, which setups, which pairs) begin to deserve attention. This is genuinely hard to accept, because it means your first months of results — good or bad — are mostly uninformative, and you must keep executing a process you cannot yet prove. Two consolations. First, at 1% risk, the tuition for those months is capped and survivable, which is rather the point of this book. Second, discipline data arrives much faster than profit data: you can know within twenty trades whether you are *following your rules*, and in the early months that is the only statistic that matters. Track it in the free PIP:Insight discipline tracker and grade yourself on adherence, not P&L.
+How many trades before you can trust your numbers? There is no magic threshold, but the working guidance we give: below 30 trades, conclude nothing. Around 100, you may cautiously believe the *sign* of your expectancy. By 300, patterns in your data (which sessions, which setups, which pairs) begin to deserve attention. This is genuinely hard to accept, because it means your first months of results — good or bad — are mostly uninformative, and you must keep executing a process you cannot yet prove. Two consolations. First, at 1% risk, the tuition for those months is capped and survivable, which is rather the point of this book. Second, discipline data arrives much faster than profit data: you can know within twenty trades whether you are *following your rules*, and in the early months that is the only statistic that matters. Track it in the free The Trading Foundry discipline tracker and grade yourself on adherence, not P&L.
 
 **Chapter 5 in one sentence:** Win rate without win size is a vanity metric — think instead in probabilities and distributions, expect losing streaks as a mathematical certainty rather than a verdict, and judge yourself over samples of fifty-plus trades, never over one.
 
@@ -357,7 +357,7 @@ The defences are mechanical, because in-the-moment willpower is precisely what t
 - **The daily stop (Chapter 6) is a tilt-breaker first and a risk rule second.** Three losses, platform closed. Tomorrow's market will be there tomorrow.
 - **A between-trades ritual.** After any loss: stand up, leave the screen for ten minutes, and re-enter only through your written checklist. Tilt needs momentum; a ritual removes it.
 - **Fixed size, enforced in advance.** The revenge trade's weapon is size. If your platform, spreadsheet and rules make 1% the only available bet, revenge is limited to being merely annoying.
-- **Name it in the journal.** Log emotional state alongside every trade in the free PIP:Insight journal and discipline tracker. Traders are routinely astonished at what the "state" column reveals — whole categories of loss that occur only after other losses, only late at night, only after checking P&L mid-trade. You cannot fix a pattern you refuse to record.
+- **Name it in the journal.** Log emotional state alongside every trade in the free The Trading Foundry journal and discipline tracker. Traders are routinely astonished at what the "state" column reveals — whole categories of loss that occur only after other losses, only late at night, only after checking P&L mid-trade. You cannot fix a pattern you refuse to record.
 
 ## Losing well, winning carefully
 
@@ -393,7 +393,7 @@ Your plan should answer eight questions, each in a sentence or two. Illustrative
 
 **6. Stop discipline.** *"Hard stop at broker on every trade at entry. Stops move only toward the trade. Breakeven at +1R; trail per written rule. Any widening or deletion is a red-flag breach, journalled same day."* — Chapter 8.
 
-**7. Journalling.** *"Every trade logged in R in the PIP:Insight journal — setup grade, emotional state, rule adherence. Weekly 30-minute review; monthly stats review at 30+ trades."* — Chapters 5 and 9.
+**7. Journalling.** *"Every trade logged in R in the Trading Foundry journal — setup grade, emotional state, rule adherence. Weekly 30-minute review; monthly stats review at 30+ trades."* — Chapters 5 and 9.
 
 **8. Breach protocol.** *"Any broken rule: flatten the position if still open, log the breach, done trading for the day. Three breaches in a month triggers a size cut to 0.5% for the following month."* — because a plan without consequences is a poster.
 

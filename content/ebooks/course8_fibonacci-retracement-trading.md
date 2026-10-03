@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 8 of 15
+Trading Foundry University — Playbook 8 of 15
 
 First Edition — 2026
 
@@ -12,7 +12,7 @@ First Edition — 2026
 
 Let's clear something up before Chapter 1, because it will save you a lot of grief: Fibonacci retracements are not magic. There is no cosmic ratio hidden in the price of the euro. The tool works — when it works — for two thoroughly unglamorous reasons. First, enough traders and algorithms watch the same levels that price often reacts around them. Second, and more importantly, the tool forces you to wait for a pullback instead of chasing a move that has already happened. Patience, dressed up as mathematics. Once you accept that, everything in this book gets easier.
 
-This is Course 8 of 15 in the PIP:Insight Forex School, and it's pitched at intermediate level. We assume you already understand trend structure, support and resistance, and candlestick basics — those are covered in earlier courses. If you don't yet know what a higher low is, go back and learn it first, because this entire course hangs off swing structure.
+This is Course 8 of 15 in the Trading Foundry University, and it's pitched at intermediate level. We assume you already understand trend structure, support and resistance, and candlestick basics — those are covered in earlier courses. If you don't yet know what a higher low is, go back and learn it first, because this entire course hangs off swing structure.
 
 Read the chapters in order. The book builds deliberately: what the ratios are and why they matter (honestly), how to anchor the tool without fooling yourself, which levels deserve your attention, how the logic flips between uptrends and downtrends, how to project targets, how to stack confluence, how to map fibs across timeframes, how to plan an actual trade around the golden zone, and finally how to audit your own errors. Skipping to Chapter 8 without doing Chapters 2 and 6 is how people end up buying every dip that 61.8% ever printed.
 

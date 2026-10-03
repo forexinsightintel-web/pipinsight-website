@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 14 of 15
+Trading Foundry University — Playbook 14 of 15
 
 First Edition — 2026
 
@@ -10,7 +10,7 @@ First Edition — 2026
 
 # How to Use This Book
 
-This is the fourteenth course in the PIP:Insight Forex School, and it needs a health warning before you turn another page. Smart Money Concepts — SMC to its friends — is the most popular trading framework of the last decade and also the most mythologised. You will find people online who teach it as revealed truth: the banks do this, the algorithm does that, and if you learn the secret handshake the market opens up like a vault. We are not going to do that. We are going to teach you SMC properly — order blocks, liquidity, fair value gaps, structure shifts, premium and discount — while being ruthlessly honest about what it is: a model. A lens. A vocabulary for describing price behaviour that often works because of ordinary, verifiable market mechanics, not because anyone has a hotline to Citibank's flow desk.
+This is the fourteenth course in the Trading Foundry University, and it needs a health warning before you turn another page. Smart Money Concepts — SMC to its friends — is the most popular trading framework of the last decade and also the most mythologised. You will find people online who teach it as revealed truth: the banks do this, the algorithm does that, and if you learn the secret handshake the market opens up like a vault. We are not going to do that. We are going to teach you SMC properly — order blocks, liquidity, fair value gaps, structure shifts, premium and discount — while being ruthlessly honest about what it is: a model. A lens. A vocabulary for describing price behaviour that often works because of ordinary, verifiable market mechanics, not because anyone has a hotline to Citibank's flow desk.
 
 Read the chapters in order. The book is a pyramid: liquidity is the foundation, order blocks and fair value gaps sit on top of it, structure and the dealing range give you context, and Chapter 8 assembles the lot into one repeatable sequence. Skip ahead and the later chapters will feel like jargon soup. Chapter 9 is the one we would make compulsory if we could — it translates every SMC term back into classical technical analysis, so you can see how much of this you already knew under an older name. Chapter 10 turns the model into something you can actually test, which is where believers become traders.
 

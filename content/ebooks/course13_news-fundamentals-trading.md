@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 13 of 15
+Trading Foundry University — Playbook 13 of 15
 
 First Edition — 2026
 
@@ -10,7 +10,7 @@ First Edition — 2026
 
 # How to Use This Book
 
-This is the thirteenth course in the PIP:Insight series, and it assumes you already know your way around a chart. Support and resistance, risk-per-trade, position sizing, the basics of structure — we covered all of that in earlier courses, and we're not going to re-teach it here. What this book adds is the other half of the picture: why price moves at all, and what to do when the economic calendar lights up red.
+This is the thirteenth course in the Trading Foundry series, and it assumes you already know your way around a chart. Support and resistance, risk-per-trade, position sizing, the basics of structure — we covered all of that in earlier courses, and we're not going to re-teach it here. What this book adds is the other half of the picture: why price moves at all, and what to do when the economic calendar lights up red.
 
 Read the chapters in order. The first two build the engine — what fundamentally drives a currency, and why interest rates sit at the centre of everything. Chapters 3 and 4 get practical: reading the calendar and understanding the specific releases that matter. Chapter 5 is the heart of the book, and if you only absorb one idea from these pages, make it that one: markets trade expectations, not headlines. Chapters 6 and 7 deal with the ugly mechanics of news volatility and the three broad ways traders approach it. Chapters 8 through 10 pull it all together into something you can actually run week after week.
 

@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 3 of 15
+Trading Foundry University — Playbook 3 of 15
 
 First Edition — 2026
 
@@ -20,7 +20,7 @@ Keep a notebook. Physical or digital, doesn't matter. When you find a pin bar at
 
 Go at your own pace. The chapters build in order — anatomy first, patterns second, context third, execution fourth — so don't skip ahead to entries and stops before you've done the reading work. There's no prize for finishing fast.
 
-Finally: the companion videos for this course are free on the PIP:Insight YouTube channel. Watch the video for a chapter after you've read it, not instead of reading it. The book does the thinking; the videos do the pointing.
+Finally: the companion videos for this course are free on the Trading Foundry YouTube channel (@thetradingfoundry). Watch the video for a chapter after you've read it, not instead of reading it. The book does the thinking; the videos do the pointing.
 
 # Chapter 1 — How to Read a Candlestick: Anatomy and Meaning
 

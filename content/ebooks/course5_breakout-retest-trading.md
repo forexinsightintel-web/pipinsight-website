@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 5 of 15
+Trading Foundry University — Playbook 5 of 15
 
 First Edition — 2026
 
@@ -10,7 +10,7 @@ First Edition — 2026
 
 # How to Use This Book
 
-This is Course 5 of the PIP:Insight Forex School, and it deals with one of the most seductive ideas in trading: the breakout. Price coils up, tension builds, a level snaps, and the market runs. When it works, it looks effortless. When it doesn't — which is often — it takes your money with a speed that feels personal.
+This is Course 5 of the Trading Foundry University, and it deals with one of the most seductive ideas in trading: the breakout. Price coils up, tension builds, a level snaps, and the market runs. When it works, it looks effortless. When it doesn't — which is often — it takes your money with a speed that feels personal.
 
 So here is how to read this book. Not as a collection of setups to copy, but as a framework to interrogate. Every chapter gives you a claim about how markets behave around broken levels, the reasoning behind it, and a way to check it on your own charts. The checking matters more than the reading. A breakout method you have personally tested across two hundred historical examples is worth more than any method you have merely read about, including this one.
 

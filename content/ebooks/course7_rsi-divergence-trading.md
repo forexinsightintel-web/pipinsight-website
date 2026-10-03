@@ -2,7 +2,7 @@
 
 ## The Complete Course
 
-PIP:Insight Forex School — Course 7 of 15
+Trading Foundry University — Playbook 7 of 15
 
 First Edition — 2026
 
