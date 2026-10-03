@@ -4,7 +4,7 @@ import Link from "next/link";
 import TapeLedger from "../../components/TapeLedger";
 
 export const metadata: Metadata = {
-  title: "The Tape — every call settled in public | PIP:Insight",
+  title: "The Tape — every call settled in public | The Trading Foundry",
   description:
     "Two mechanical strategies on majors and gold, checked hourly. Every " +
     "signal logged the hour it fires, publicised only once concluded — " +
@@ -17,7 +17,7 @@ export default function TapePage() {
       <nav className="nav">
         <div className="nav-inner">
           <Link href="/">
-            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
+            <Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
             <Link href="/#analysis">Today&apos;s Analysis</Link>
@@ -27,7 +27,7 @@ export default function TapePage() {
             <Link href="/tape" style={{ color: "var(--teal)", fontWeight: 700 }}>The Tape</Link>
             <Link href="/glossary">Glossary</Link>
             <Link href="/free">Free Tools</Link>
-            <Link href="/#pricing">Pricing</Link>
+            <Link href="/courses">Playbooks</Link>
           </div>
         </div>
       </nav>

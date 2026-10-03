@@ -53,17 +53,17 @@ export default function CoursesPage() {
       <nav className="nav">
         <div className="nav-inner">
           <Link href="/">
-            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
+            <Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
             <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/school">School</Link>
             <Link href="/courses" style={{ color: "var(--teal)", fontWeight: 700 }}>Courses</Link>
-            <Link href="/tape">The Tape</Link>
+            <a href="https://www.youtube.com/@thetradingfoundry">YouTube</a>
             <Link href="/glossary">Glossary</Link>
             <Link href="/free">Free Tools</Link>
-            <Link href="/#pricing">Pricing</Link>
+            <Link href="/courses">Playbooks</Link>
 
             <Link href="/journal" className="btn btn-primary btn-sm">Trade Journal →</Link>
           </div>
@@ -100,7 +100,7 @@ export default function CoursesPage() {
           <h1>Every Strategy. <span>Taught Properly.</span></h1>
           <p className="courses-sub">
             Each course is a complete ebook with a matching free video series on the
-            PIP:Insight YouTube channel — start with the videos, own the book when
+            The Trading Foundry YouTube channel — start with the videos, own the book when
             you want the full depth. Every book is priced at a pint, not a
             mentorship: no upsells waiting behind the last chapter.
           </p>
@@ -164,7 +164,7 @@ export default function CoursesPage() {
                       </span>
                     )}
                     <a className="btn btn-ghost" target="_blank" rel="noreferrer"
-                      href="https://www.youtube.com/@PIPInsightForexAnalysis">
+                      href="https://www.youtube.com/@thetradingfoundry">
                       ▶ Videos
                     </a>
                   </div>

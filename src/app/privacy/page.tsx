@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — PIP:Insight",
+  title: "Privacy Policy — The Trading Foundry",
   alternates: { canonical: "/privacy" },
 };
 
@@ -12,12 +12,12 @@ const S = { h: { fontSize: 19, fontWeight: 900 as const, margin: "26px 0 8px" },
 export default function Privacy() {
   return (
     <main style={{ maxWidth: 720, margin: "0 auto", padding: "44px 20px 60px" }}>
-      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← PIP:Insight</Link>
+      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← The Trading Foundry</Link>
       <h1 style={{ fontSize: 32, fontWeight: 900, margin: "14px 0 6px" }}>Privacy Policy</h1>
       <p style={{ fontSize: 13, color: "#94A3B8" }}>Last updated: 20 July 2026</p>
 
       <h2 style={S.h}>Who we are</h2>
-      <p style={S.p}>PIP:Insight is a trading name of Mansell Media Limited,
+      <p style={S.p}>The Trading Foundry is a trading name of Mansell Media Limited,
       a company registered in England &amp; Wales (company no. 17335820),
       registered office Whitfield Buildings, 192–200 Pensby Road, Heswall,
       Wirral, CH60 7RJ, which is the data controller for any personal data

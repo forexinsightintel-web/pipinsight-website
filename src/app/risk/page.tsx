@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Risk Disclosure — PIP:Insight",
+  title: "Risk Disclosure — The Trading Foundry",
   alternates: { canonical: "/risk" },
 };
 
 export default function Risk() {
   return (
     <main style={{ maxWidth: 720, margin: "0 auto", padding: "44px 20px 60px" }}>
-      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← PIP:Insight</Link>
+      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← The Trading Foundry</Link>
       <h1 style={{ fontSize: 32, fontWeight: 900, margin: "14px 0 6px" }}>Risk Disclosure</h1>
       <p style={{ fontSize: 15, lineHeight: 1.75, color: "#334155", marginTop: 14 }}>
         Trading foreign exchange, metals and other leveraged products carries a
@@ -18,8 +18,8 @@ export default function Risk() {
         gains, and you can lose more than you expect in fast markets.
       </p>
       <p style={{ fontSize: 15, lineHeight: 1.75, color: "#334155" }}>
-        Everything published by PIP:Insight — analysis, levels, commentary,
-        courses, tools, the public Tape — is educational opinion about how we
+        Everything published by The Trading Foundry — analysis, levels, commentary,
+        courses, tools — is educational opinion about how we
         read markets. It is never a personal recommendation, a signal, or an
         instruction to place any trade. Past performance, including anything
         shown on our public record, is no guide to future results.

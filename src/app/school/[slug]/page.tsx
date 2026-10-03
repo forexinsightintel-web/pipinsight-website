@@ -38,7 +38,7 @@ export async function generateMetadata(
   const data = lessonFile(slug);
   const meta = allLessons().find(x => x.lesson.slug === slug);
   return {
-    title: `${data?.title ?? "Lesson"} — The Trading School | PIP:Insight`,
+    title: `${data?.title ?? "Lesson"} — The Trading School | The Trading Foundry`,
     description: `Free forex education, level ${meta?.level.no}: ${data?.title}. ` +
       "Plain-English lessons with quizzes — from zero to a written trading plan.",
     alternates: { canonical: `/school/${slug}` },

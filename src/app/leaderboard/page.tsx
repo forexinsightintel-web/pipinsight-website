@@ -3,7 +3,7 @@ import Link from "next/link";
 import board from "../../../content/leaderboard.json";
 
 export const metadata: Metadata = {
-  title: "The Leaderboard — PIP:Insight",
+  title: "The Leaderboard — The Trading Foundry",
   description: "Pro traders, ranked by journalled wins. Screen names only — opt-in, aggregate stats, no personal data.",
   alternates: { canonical: "/leaderboard" },
 };
@@ -15,7 +15,7 @@ export default function Leaderboard() {
   const rows = [...(data.rows || [])].sort((a, b) => b.wins - a.wins).slice(0, 50);
   return (
     <main style={{ maxWidth: 860, margin: "0 auto", padding: "44px 20px 80px" }}>
-      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← PIP:Insight</Link>
+      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← The Trading Foundry</Link>
       <h1 style={{ fontSize: 34, fontWeight: 900, margin: "16px 0 6px" }}>
         The Leaderboard</h1>
       <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 6px" }}>

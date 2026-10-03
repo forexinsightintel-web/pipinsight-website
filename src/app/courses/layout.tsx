@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Forex Courses & Ebooks — 15-Course Curriculum | PIP:Insight",
+  title: "Forex Courses & Ebooks — 15-Course Curriculum | The Trading Foundry",
   description: "Fifteen structured strategy courses from support & resistance to advanced execution — free video lessons, complete ebooks, no hype.",
   alternates: { canonical: "/courses" },
 };

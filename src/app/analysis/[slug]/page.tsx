@@ -59,7 +59,7 @@ export default async function InstrumentPage({ params }: {
     <div>
       <nav className="nav">
         <div className="nav-inner">
-          <Link href="/"><Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" /></Link>
+          <Link href="/"><Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" /></Link>
           <div className="nav-links">
             <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal">Journal</Link>
@@ -142,7 +142,7 @@ export default async function InstrumentPage({ params }: {
             <article className="inst-editorial">
               <h2>The Trading Desk</h2>
               <div className="inst-byline">
-                PIP:Insight Analysis Desk · {d.date_str} · editorial market analysis
+                The Trading Foundry Analysis Desk · {d.date_str} · editorial market analysis
               </div>
               {d.editorial
                 ? d.editorial.split(/\n\n+/).map((p, i) => <p key={i}>{p}</p>)

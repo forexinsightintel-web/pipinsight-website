@@ -437,17 +437,17 @@ export default function JournalPage() {
       <nav className="nav">
         <div className="nav-inner">
           <Link href="/">
-            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
+            <Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
             <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal" style={{ color: "var(--teal)", fontWeight: 700 }}>Journal</Link>
             <Link href="/school">School</Link>
             <Link href="/courses">Courses</Link>
-            <Link href="/tape">The Tape</Link>
+            <a href="https://www.youtube.com/@thetradingfoundry">YouTube</a>
             <Link href="/glossary">Glossary</Link>
             <Link href="/free">Free Tools</Link>
-            <Link href="/#pricing">Pricing</Link>
+            <Link href="/courses">Playbooks</Link>
           </div>
         </div>
       </nav>
@@ -456,7 +456,7 @@ export default function JournalPage() {
         <div className="container">
           <div className="jr-hero-row">
             <div>
-              <div className="eyebrow">PIP:INSIGHT TRADE JOURNAL</div>
+              <div className="eyebrow">THE TRADING FOUNDRY TRADE JOURNAL</div>
               <h1>Your Trading, <span style={{ color: "var(--teal)" }}>Measured.</span></h1>
               <p className="jr-hero-sub">
                 The journal is free forever on this device. Pro adds the AI analyst — your trading, read back to you.
@@ -467,7 +467,7 @@ export default function JournalPage() {
               disabled={aiBusy || (proSession !== null && trades.length === 0)}>
               {aiBusy ? "Analysing…"
                 : proSession ? "🤖 Run AI Analysis"
-                : "🤖 AI Analysis — Pro, £9.99/mo"}
+                : "🤖 AI Analysis — coming soon"}
             </button>
             <button className="btn btn-outline btn-lg"
               onClick={postToBoard}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Free Trading Toolkit — Journal, Discipline Tracker & Daily Analysis | PIP:Insight",
+  title: "Free Trading Toolkit — Journal, Discipline Tracker & Daily Analysis | The Trading Foundry",
   description: "One email gets the full toolkit: the browser trading journal, the 31-day discipline tracker download, and daily analysis before the London open.",
   alternates: { canonical: "/free" },
 };

@@ -1,4 +1,4 @@
-// PIP:Insight Journal — core types + statistics engine (client-safe)
+// The Trading Foundry Journal — core types + statistics engine (client-safe)
 
 export type Trade = {
   id: string;

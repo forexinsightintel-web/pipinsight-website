@@ -53,7 +53,7 @@ async function leadsAdd(email: string, source: string, mobile?: string): Promise
           client_payload: {
             email,
             source,
-            consent: "free-tools signup; agreed to receive PIP:Insight emails", mobile: mobile || "" },
+            consent: "free-tools signup; agreed to receive The Trading Foundry emails", mobile: mobile || "" },
         }),
       },
     );

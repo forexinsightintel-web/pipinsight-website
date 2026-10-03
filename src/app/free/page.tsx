@@ -14,8 +14,6 @@ const TEAL = "#1AAF8B";
 const GETS = [
   ["The Trade Journal", "Not a spreadsheet — software. Log trades, get your equity curve, win rates by setup, session and emotion. The AI analyst layer is the Pro upgrade (\u00a39.99/mo).", "Free forever"],
   ["The Discipline Tracker", "A 31-day habit scoreboard for the trading behaviours that actually decide outcomes. Downloadable spreadsheet — works in Excel and Google Sheets.", "Instant download"],
-  ["The Daily Analysis", "27 instruments mapped every morning before the London open — majors, metals, crosses, exotics. Levels, bias, context.", "Every morning"],
-  ["The Tape", "Every settled call on the public record, wins and losses, timestamped. Backtests are homework — the Tape is an exam. Check the ledger before you trust a word we say.", "Always public"],
 ];
 
 export default function FreePage() {
@@ -46,17 +44,17 @@ export default function FreePage() {
       <nav className="nav">
         <div className="nav-inner">
           <Link href="/">
-            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
+            <Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
             <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/school">School</Link>
             <Link href="/courses">Courses</Link>
-            <Link href="/tape">The Tape</Link>
+            <a href="https://www.youtube.com/@thetradingfoundry">YouTube</a>
             <Link href="/glossary">Glossary</Link>
             <Link href="/free" style={{ color: "var(--teal)", fontWeight: 700 }}>Free Tools</Link>
-            <Link href="/#pricing">Pricing</Link>
+            <Link href="/courses">Playbooks</Link>
           </div>
         </div>
       </nav>

@@ -7,7 +7,7 @@ import glossary from "../../../content/glossary.json";
    each term is an SEO landing surface and an internal-link hub. */
 
 export const metadata: Metadata = {
-  title: "Forex Glossary in Plain English — PIP:Insight",
+  title: "Forex Glossary in Plain English — The Trading Foundry",
   description: "Every trading term translated into plain English: pips, " +
     "spreads, leverage, margin, R-multiples and more. Part of the free " +
     "Trading School.",
@@ -25,17 +25,17 @@ export default function GlossaryPage() {
       <nav className="nav">
         <div className="nav-inner">
           <Link href="/">
-            <Image src="/logo.png" alt="PIP:Insight" width={160} height={44} className="logo-img" />
+            <Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
             <Link href="/#analysis">Today&apos;s Analysis</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/school">School</Link>
             <Link href="/courses">Courses</Link>
-            <Link href="/tape">The Tape</Link>
+            <a href="https://www.youtube.com/@thetradingfoundry">YouTube</a>
             <Link href="/glossary" style={{ color: "var(--teal)", fontWeight: 700 }}>Glossary</Link>
             <Link href="/free">Free Tools</Link>
-            <Link href="/#pricing">Pricing</Link>
+            <Link href="/courses">Playbooks</Link>
           </div>
         </div>
       </nav>

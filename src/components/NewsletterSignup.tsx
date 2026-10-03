@@ -48,7 +48,7 @@ export default function NewsletterSignup({ source = "homepage" }:
           </div>
           <div className="nl-sub">Forex · Crypto · Stocks — the bias board,
           the week&apos;s receipts and one lesson worth your coffee. Every
-          call checkable on the public Tape.</div>
+          lesson explained properly.</div>
           <form className="nl-form" onSubmit={submit}>
             <input type="email" required value={email}
               placeholder="your@email.com" aria-label="Email address"

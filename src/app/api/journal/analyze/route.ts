@@ -56,7 +56,7 @@ function stampUsage(sessionId: string, stripeKey: string, request: Request) {
   }).catch(() => {});
 }
 
-const SYSTEM = `You are the AI performance analyst inside PIP:Insight's trading journal. You are given a trader's logged trades (R-multiples, setups, sessions, emotions, plan adherence).
+const SYSTEM = `You are the AI performance analyst inside The Trading Foundry's trading journal. You are given a trader's logged trades (R-multiples, setups, sessions, emotions, plan adherence).
 
 Return ONLY valid JSON: {"insights": [{"title": "...", "severity": "info"|"warning"|"critical", "body": "..."}], "headline": "one-sentence overall read"}
 

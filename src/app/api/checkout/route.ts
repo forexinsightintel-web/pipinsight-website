@@ -40,7 +40,7 @@ export async function POST(request: Request) {
           unit_amount: 999,
           recurring: { interval: "month" },
           product_data: {
-            name: "PIP:Insight Full Access",
+            name: "The Trading Foundry Full Access",
             description: "Every instrument's daily Trading Desk analysis, " +
               "Journal Pro with AI insights, full economic calendar.",
           },
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
           unit_amount: 7900,
           recurring: { interval: "year" },
           product_data: {
-            name: "PIP:Insight Full Access — Annual (Founding Rate)",
+            name: "The Trading Foundry Full Access — Annual (Founding Rate)",
             description: "12 months for the price of 10. Every instrument's " +
               "daily Trading Desk analysis, Journal Pro with AI insights, " +
               "full economic calendar. Founding-member rate, locked in while " +
