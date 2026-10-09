@@ -5,6 +5,9 @@
 // price_data when unset (test mode / local). Requires STRIPE_SECRET_KEY.
 import Stripe from "stripe";
 import catalog from "../../../../content/catalog.json";
+import academy from "../../../../content/academy/index.json";
+
+const PASS_PENCE = 14900;
 
 type Course = {
   course_no: number; slug: string; title: string;
@@ -21,7 +24,7 @@ export async function POST(request: Request) {
   }
   const stripe = new Stripe(key);
   const { kind, slug } = await request.json();
-  const origin = request.headers.get("origin") ?? "https://pip-insight.co.uk";
+  const origin = request.headers.get("origin") ?? (process.env.NEXT_PUBLIC_SITE_URL || "https://pip-insight.co.uk");
 
   if (kind === "journal" || kind === "full-access") {
     const priceId = process.env.STRIPE_PRICE_PRO_MONTHLY;
@@ -84,6 +87,35 @@ export async function POST(request: Request) {
     return Response.json({ url: session.url });
   }
 
+  // Trading Foundry courses and the All-Access Pass. Access is granted by
+  // /api/access/unlock, which verifies the paid session before setting the cookie.
+  if (kind === "course" || kind === "pass") {
+    const courses = (academy as { courses: { slug: string; title: string; subtitle: string; price_gbp: number }[] }).courses;
+    const course = kind === "course" ? courses.find((c) => c.slug === slug && c.price_gbp > 0) : null;
+    if (kind === "course" && !course) return Response.json({ error: "Unknown course." }, { status: 404 });
+    const back = kind === "course" ? `/courses/${course!.slug}` : "/courses";
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      metadata: { kind, slug: course ? course.slug : "all" },
+      custom_text: { submit: { message:
+        "Instant access after payment. By purchasing you consent to immediate " +
+        "delivery of digital content. 30-day no-quibble refund." } },
+      line_items: [{
+        quantity: 1,
+        price_data: {
+          currency: "gbp",
+          unit_amount: course ? Math.round(course.price_gbp * 100) : PASS_PENCE,
+          product_data: course
+            ? { name: `${course.title} — Trading Foundry course`, description: course.subtitle.slice(0, 200) }
+            : { name: "Trading Foundry All-Access Pass", description: "Every Trading Foundry course and playbook, including future courses. Lifetime access." },
+        },
+      }],
+      success_url: `${origin}/api/access/unlock?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}${back}`,
+    });
+    return Response.json({ url: session.url });
+  }
+
   if (kind === "ebook") {
     const course = (catalog as Course[]).find((c) => c.slug === slug);
     if (!course) return Response.json({ error: "Unknown course." }, { status: 404 });
@@ -106,8 +138,8 @@ export async function POST(request: Request) {
           },
         },
       }],
-      success_url: `${origin}/courses?purchased=${course.slug}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/courses`,
+      success_url: `${origin}/playbooks?purchased=${course.slug}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/playbooks`,
     });
     return Response.json({ url: session.url });
   }

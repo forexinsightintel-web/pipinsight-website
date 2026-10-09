@@ -1,33 +1,17 @@
 import type { MetadataRoute } from "next";
-import idx from "../../content/analysis/index.json";
-import lessons from "./school/written.json";
+import lessons from "./(legacy)/school/written.json";
+import { COURSES, getLessons } from "../lib/academy";
 
-const BASE = "https://pip-insight.co.uk";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://pip-insight.co.uk";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const core: MetadataRoute.Sitemap = [
-    { url: `${BASE}/`, changeFrequency: "hourly", priority: 1 },
-    { url: `${BASE}/tape`, changeFrequency: "hourly", priority: 0.9 },
-    { url: `${BASE}/journal`, changeFrequency: "daily", priority: 0.8 },
-    { url: `${BASE}/courses`, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${BASE}/free`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/school`, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${BASE}/glossary`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/privacy`, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${BASE}/terms`, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${BASE}/risk`, changeFrequency: "yearly", priority: 0.3 },
-  ];
-  const cats = (idx as { categories: Record<string, { slug: string }[]> })
-    .categories;
-  const instruments = Object.values(cats).flat().map((i) => ({
-    url: `${BASE}/analysis/${i.slug}`,
-    changeFrequency: "daily" as const,
-    priority: 0.8,
-  }));
-  const school = (lessons as string[]).map((slug) => ({
-    url: `${BASE}/school/${slug}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-  return [...core, ...instruments, ...school];
+  const core: MetadataRoute.Sitemap = ["/", "/courses", "/playbooks", "/films", "/pricing", "/school", "/journal", "/free", "/glossary", "/privacy", "/terms", "/risk"]
+    .map((p, i) => ({ url: `${BASE}${p}`, changeFrequency: "weekly" as const, priority: i === 0 ? 1 : 0.7 }));
+  const courses = COURSES.flatMap((c) => [
+    { url: `${BASE}/courses/${c.slug}`, changeFrequency: "weekly" as const, priority: 0.9 },
+    // free lessons are public and indexable; paid ones are noindex
+    ...getLessons(c.slug).filter((l) => l.free || c.price_gbp === 0).map((l) => ({ url: `${BASE}/courses/${c.slug}/${l.slug}`, changeFrequency: "monthly" as const, priority: 0.6 })),
+  ]);
+  const school = (lessons as string[]).map((slug) => ({ url: `${BASE}/school/${slug}`, changeFrequency: "monthly" as const, priority: 0.5 }));
+  return [...core, ...courses, ...school];
 }

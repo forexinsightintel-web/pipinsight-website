@@ -69,6 +69,8 @@ export async function GET(request: Request) {
     if (s.payment_status !== "paid")
       return new Response("Payment not completed.", { status: 402 });
     slug = String(s.metadata?.slug || "");
+    // The All-Access Pass unlocks every playbook: the book is chosen with ?book=<slug>.
+    if (s.metadata?.kind === "pass") slug = url.searchParams.get("book") || "";
     const pi = s.payment_intent;
     if (pi && typeof pi !== "string") {
       piId = pi.id;
