@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "../../../components/tf/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — The Trading Foundry",
@@ -11,10 +12,10 @@ const S = { h: { fontSize: 19, fontWeight: 900 as const, margin: "26px 0 8px" },
 
 export default function Privacy() {
   return (
-    <main style={{ maxWidth: 720, margin: "0 auto", padding: "44px 20px 60px" }}>
-      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← The Trading Foundry</Link>
-      <h1 style={{ fontSize: 32, fontWeight: 900, margin: "14px 0 6px" }}>Privacy Policy</h1>
-      <p style={{ fontSize: 13, color: "#94A3B8" }}>Last updated: 20 July 2026</p>
+    <main className="tf-page"><SiteHeader variant="light" /><article className="legal">
+      <div className="k" style={{ color: "var(--ink50)" }}>LEGAL · PRIVACY</div>
+            <h1 style={{ fontSize: 32, fontWeight: 900, margin: "14px 0 6px" }}>Privacy Policy</h1>
+      <p style={{ fontSize: 13, color: "#94A3B8" }}>Last updated: 10 October 2026</p>
 
       <h2 style={S.h}>Who we are</h2>
       <p style={S.p}>The Trading Foundry is a trading name of Mansell Media Limited,
@@ -34,13 +35,14 @@ export default function Privacy() {
       includes a one-click unsubscribe, and unsubscribing is permanent.</p>
       <p style={S.p}><b>Journal data</b> — your trades, notes and emotions are
       stored in your browser&apos;s local storage on your own device. We cannot
-      see them. If you use the Pro AI analysis, the trades you submit are sent
+      see them. If you use the AI journal analysis, the trades you submit are sent
       to our server and on to our AI provider (Anthropic) solely to generate
       your analysis; they are not stored by us afterwards.</p>
-      <p style={S.p}><b>Leaderboard (optional, Pro)</b> — if you choose to
-      post your record, we publish only your chosen screen name and aggregate
-      statistics (trade count, wins, net R). Never your trades, name or email.
-      Entries can be removed on request.</p>
+      <p style={S.p}><b>Course access cookie</b> — when you buy a course or
+      the All-Access Pass we set one strictly necessary cookie (tf_access) that
+      records which courses are unlocked in your browser, signed so it cannot be
+      altered. It holds the courses you bought and the email used at checkout,
+      nothing else. Lesson progress is stored only in your own browser.</p>
       <p style={S.p}><b>Payments</b> — handled entirely by Stripe. We never see
       or store card details. Stripe shares with us only what is needed to
       deliver what you bought (payment status and a reference). When you
@@ -60,6 +62,6 @@ export default function Privacy() {
       deleted. Contact us via any of our official social profiles or the
       contact address on our About information, and we&apos;ll action it
       within 30 days.</p>
-    </main>
+    </article></main>
   );
 }

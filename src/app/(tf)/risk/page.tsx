@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "../../../components/tf/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Risk Disclosure — The Trading Foundry",
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function Risk() {
   return (
-    <main style={{ maxWidth: 720, margin: "0 auto", padding: "44px 20px 60px" }}>
-      <Link href="/" style={{ fontSize: 13, fontWeight: 700 }}>← The Trading Foundry</Link>
-      <h1 style={{ fontSize: 32, fontWeight: 900, margin: "14px 0 6px" }}>Risk Disclosure</h1>
+    <main className="tf-page"><SiteHeader variant="light" /><article className="legal">
+      <div className="k" style={{ color: "var(--ink50)" }}>LEGAL · RISK</div>
+            <h1 style={{ fontSize: 32, fontWeight: 900, margin: "14px 0 6px" }}>Risk Disclosure</h1>
       <p style={{ fontSize: 15, lineHeight: 1.75, color: "#334155", marginTop: 14 }}>
         Trading foreign exchange, metals and other leveraged products carries a
         substantial risk of loss and is not suitable for everyone. The majority
@@ -18,11 +19,11 @@ export default function Risk() {
         gains, and you can lose more than you expect in fast markets.
       </p>
       <p style={{ fontSize: 15, lineHeight: 1.75, color: "#334155" }}>
-        Everything published by The Trading Foundry — analysis, levels, commentary,
-        courses, tools — is educational opinion about how we
+        Everything published by The Trading Foundry — films, courses, playbooks,
+        tools — is educational material about how we
         read markets. It is never a personal recommendation, a signal, or an
-        instruction to place any trade. Past performance, including anything
-        shown on our public record, is no guide to future results.
+        instruction to place any trade. Training charts are illustrative and built from synthetic price data; they
+        are not records of real trades or results. Past performance is no guide to future results.
       </p>
       <p style={{ fontSize: 15, lineHeight: 1.75, color: "#334155" }}>
         Never trade with money you cannot afford to lose. If you are unsure
@@ -31,6 +32,6 @@ export default function Risk() {
         behaviour around trading is affecting you, support is available at
         BeGambleAware.org. 18+ only.
       </p>
-    </main>
+    </article></main>
   );
 }

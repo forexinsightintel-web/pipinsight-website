@@ -47,14 +47,15 @@ export default function FreePage() {
             <Image src="/logo.png" alt="The Trading Foundry" width={160} height={44} className="logo-img" />
           </Link>
           <div className="nav-links">
-            <Link href="/#analysis">Today&apos;s Analysis</Link>
+            <Link href="/films">Films</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/school">School</Link>
             <Link href="/courses">Courses</Link>
+            <Link href="/pricing">Pricing</Link>
             <a href="https://www.youtube.com/@thetradingfoundry">YouTube</a>
             <Link href="/glossary">Glossary</Link>
             <Link href="/free" style={{ color: "var(--teal)", fontWeight: 700 }}>Free Tools</Link>
-            <Link href="/courses">Playbooks</Link>
+            <Link href="/playbooks">Playbooks</Link>
           </div>
         </div>
       </nav>

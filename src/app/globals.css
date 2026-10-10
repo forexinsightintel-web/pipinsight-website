@@ -11,14 +11,14 @@ html {
 }
 
 :root {
-  --teal:    #1AAF8B;
-  --teal-lt: #e8f9f4;
-  --teal-dk: #13896D;
-  --gold:    #D4A017;
+  --teal:    #12A36E;
+  --teal-lt: #E7F5EE;
+  --teal-dk: #0E8559;
+  --gold:    #E8B04A;
   --gold-lt: #fdf6e3;
-  --red:     #E8476A;
-  --red-lt:  #fef0f3;
-  --ink:     #0D1117;
+  --red:     #E0413A;
+  --red-lt:  #FDEDEC;
+  --ink:     #0B0D10;
   --ink2:    #161B22;
   --border:  #E2E8F0;
   --muted:   #64748B;
@@ -33,7 +33,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Tight', 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

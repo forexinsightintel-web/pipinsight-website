@@ -27,7 +27,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   const minutes = lessons.reduce((n, l) => n + (l.minutes || 0), 0);
   const free = c.price_gbp === 0;
   const first = lessons[0]?.slug || '';
-  const includes = [`${c.films.length} film${c.films.length === 1 ? '' : 's'} on YouTube`, `${lessons.length} written lessons (${c.words.toLocaleString('en-GB')} words)`, `${c.chart_count} annotated training charts`, `${drills} trade-or-wait practice drills`, `${quiz} quiz questions with answers explained`, 'One-page strategy passport', 'Lifetime access on any device'];
+  const includes = [`${c.films.length} film${c.films.length === 1 ? '' : 's'} on YouTube`, `${lessons.length} written lessons (${c.words.toLocaleString('en-GB')} words)`, `${c.chart_count} annotated training charts`, `${drills} trade-or-wait practice drills`, `${quiz} quiz questions with answers explained`, 'One-page strategy passport', 'Course playbook PDF (the whole course, printable)', 'Lifetime access on any device'];
   return (
     <main className="tf-page">
       <SiteHeader variant="over" active="/courses" />
@@ -60,6 +60,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
         <aside className="buy"><img src={`/media/thumbs/${c.art}.webp`} alt={`${c.title} film thumbnail`} /><div className="in">
           <BuyBox slug={slug} price={c.price_gbp} free={free} owned={owned} firstLesson={first} />
           <ul>{includes.map((i) => <li key={i}>{i}</li>)}</ul>
+          {free || owned ? <a className="btn btn-line" style={{ width: '100%', marginTop: 16 }} href={`/api/course/pdf?slug=${slug}`}>Download the course playbook ↓</a> : null}
           {!free && !owned ? <div className="k" style={{ color: 'var(--ink50)', marginTop: 18, fontSize: 10.5 }}>30-DAY REFUND · SECURE STRIPE CHECKOUT · <a href="/restore" style={{ textDecoration: 'underline' }}>ALREADY BOUGHT? RESTORE ACCESS</a></div> : null}
         </div></aside>
       </div></section>
