@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { cookies } from 'next/headers';
 import SiteHeader from '../../../../../components/tf/SiteHeader';
+import FilmEmbed from '../../../../../components/tf/FilmEmbed';
 import { DrillsAndProgress, LessonQuiz, CompleteButton } from '../../../../../components/tf/LessonClient';
 import { getCourse, getLessons } from '../../../../../lib/academy';
 import { COOKIE, verify, canRead } from '../../../../../lib/access';
@@ -34,6 +35,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
           <div className="k" style={{ color: 'var(--ink50)' }}>{L.module_title.toUpperCase()} · LESSON {L.n} OF {lessons.length} · {L.minutes} MIN</div>
           <h1 className="d">{L.title}<span className="g">.</span></h1><span className="bar" />
           <p className="lsum">{L.summary}</p>
+          {L.film ? <div style={{ margin: '6px 0 34px' }}><div className="k" style={{ color: 'var(--ink50)', marginBottom: 12 }}>{L.episode ? `WATCH EPISODE ${L.episode} FIRST · FREE ON YOUTUBE` : 'WATCH THE FILM FIRST · FREE ON YOUTUBE'}</div><FilmEmbed id={L.film} title={L.title} /></div> : null}
           {open ? <>
             <div className="prose" dangerouslySetInnerHTML={{ __html: L.html }} />
             <LessonQuiz quiz={L.quiz} />
@@ -43,7 +45,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
             <div className="prose teaser" dangerouslySetInnerHTML={{ __html: teaser }} />
             <div className="paywall"><div className="k" style={{ color: 'var(--gold)' }}>THIS LESSON IS PART OF THE FULL COURSE</div>
               <h2 className="d" style={{ marginTop: 12 }}>Unlock {c.title.replace(/ — .*$/, '').replace(/:.*$/, '')}<span className="g">.</span></h2>
-              <p>{lessons.length} lessons, {c.chart_count} annotated charts, practice drills and quizzes. One payment of £{c.price_gbp}, yours for good. Lesson 1 is free to read.</p>
+              <p>{lessons.length} lessons, {c.chart_count} annotated charts, practice drills and quizzes. One payment of £{c.price_gbp.toFixed(2)}{c.ebooks?.length ? `, ${c.ebooks.length > 1 ? `all ${c.ebooks.length} companion ebooks` : 'its companion ebook'} included` : ''}, yours for good. Lesson 1 is free to read.</p>
               <div className="row"><a className="btn btn-gold" href={`/courses/${slug}`}>See the course <span className="arr">→</span></a><a className="btn btn-ghost" href={`/courses/${slug}/${lessons[0].slug}`}>Read lesson 1 free</a><a className="btn btn-ghost" href="/restore">Restore access</a></div></div>
           </>}
           <p className="disclaim">Education only, not financial advice. Charts are illustrative training examples using synthetic price data, not real market history or results.</p>

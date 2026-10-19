@@ -127,7 +127,7 @@ export default function Home({ courses, wall, books, totals, bookCount }: Props)
             </div>
             <div className="deck" id="deck" aria-hidden="true">
               <div className="dk dk1"><img src="/media/thumbs/breakout.webp" alt="" /><div className="dkb"><span className="yt">▶</span><span>FILM · 15:54</span></div></div>
-              <div className="dk dk2"><div className="dkc"><span className="pill o">COURSE</span><b className="d">Trend<br />pullback<span className="g">.</span></b><span className="mono">11 LESSONS · £39</span><div className="pb"><i /></div></div></div>
+              <div className="dk dk2"><div className="dkc"><span className="pill o">COURSE</span><b className="d">Trend<br />pullback<span className="g">.</span></b><span className="mono">11 LESSONS · £49.99</span><div className="pb"><i /></div></div></div>
               <div className="dk dk3"><img src="/media/pages/p1.webp" alt="" /></div>
             </div>
           </div>
@@ -188,7 +188,7 @@ export default function Home({ courses, wall, books, totals, bookCount }: Props)
         <div className="tiers">
           <div className="tier"><div className="k" style={{ color: 'var(--ink50)' }}>PLAYBOOK</div><div className="price">{books[0]?.price}<span style={{ fontSize: 22, color: 'var(--ink50)' }}>+</span></div><ul><li>One illustrated playbook</li><li>37–42 pages, PDF</li><li>Companion film QR codes</li><li>Yours to keep and print</li></ul><a className="btn btn-line" href="/playbooks">Browse playbooks</a></div>
           <div className="tier best"><div className="k" style={{ color: 'var(--gold)' }}>ALL-ACCESS PASS · BEST VALUE</div><div className="price">£149</div><ul><li>All {totals.courses - 1} paid courses + the free one</li><li>All {bookCount} playbooks</li><li>Every future course</li><li>Drills, quizzes &amp; passports</li></ul><a className="btn btn-gold" href="/pricing">Get all access <span className="arr">→</span></a></div>
-          <div className="tier"><div className="k" style={{ color: 'var(--ink50)' }}>SINGLE COURSE</div><div className="price">£39<span style={{ fontSize: 22, color: 'var(--ink50)' }}> –£49</span></div><ul><li>The film + 10–12 lessons</li><li>Drills, quizzes &amp; passport</li><li>Lifetime access</li><li>Read on any device</li></ul><a className="btn btn-line" href="/courses">Choose a course</a></div>
+          <div className="tier"><div className="k" style={{ color: 'var(--ink50)' }}>SINGLE COURSE</div><div className="price">£49.99</div><ul><li>The films + 10–12 lessons</li><li>Its ebooks included</li><li>Drills, quizzes &amp; passport</li><li>Lifetime access</li></ul><a className="btn btn-line" href="/courses">Choose a course</a></div>
         </div>
         <div className="guar"><span>30-day refund</span><span>Secure checkout by Stripe</span><span>Forex From Zero is free</span></div>
       </div></section>

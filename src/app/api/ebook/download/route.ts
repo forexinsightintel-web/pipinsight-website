@@ -10,6 +10,9 @@
 import fs from "fs";
 import path from "path";
 import Stripe from "stripe";
+import { cookies } from "next/headers";
+import { COOKIE, verify, canRead } from "../../../../lib/access";
+import academy from "../../../../../content/academy/index.json";
 
 const FILES: Record<string, string> = {
   "breakout-retest-trading":
@@ -42,7 +45,25 @@ const FILES: Record<string, string> = {
     "content/ebooks/course10_swing-trading-blueprint.pdf",
   "trend-following-market-structure":
     "content/ebooks/course2_trend-following-market-structure.pdf",
+  "smc-1-market-structure": "content/ebooks/smc/smc-1-market-structure.pdf",
+  "smc-2-liquidity": "content/ebooks/smc/smc-2-liquidity.pdf",
+  "smc-3-fair-value-gaps": "content/ebooks/smc/smc-3-fair-value-gaps.pdf",
+  "smc-4-order-blocks": "content/ebooks/smc/smc-4-order-blocks.pdf",
+  "smc-5-top-down": "content/ebooks/smc/smc-5-top-down.pdf",
+  "smc-6-complete-strategy": "content/ebooks/smc/smc-6-complete-strategy.pdf",
 };
+
+// Course buyers (signed access cookie) get the ebooks their course includes; pass holders get all.
+async function cookieDownload(book: string): Promise<Response> {
+  const access = verify((await cookies()).get(COOKIE)?.value);
+  const courses = (academy as { courses: { slug: string; ebooks?: string[] }[] }).courses;
+  const ok = access.s.includes("all") || courses.some((c) => (c.ebooks || []).includes(book) && canRead(access, c.slug));
+  if (!ok || !FILES[book]) return new Response("Buy the course or the ebook to download this.", { status: 402 });
+  const p = path.join(process.cwd(), FILES[book]);
+  if (!fs.existsSync(p)) return new Response("File missing.", { status: 500 });
+  return new Response(fs.readFileSync(p), { headers: { "Content-Type": "application/pdf",
+    "Content-Disposition": `attachment; filename="Trading-Foundry-${book}.pdf"` } });
+}
 
 // Bonus stack: any paid ebook session unlocks the bonuses too.
 const BONUSES: Record<string, string> = {
@@ -52,10 +73,12 @@ const BONUSES: Record<string, string> = {
 };
 
 export async function GET(request: Request) {
+  const url = new URL(request.url);
+  if (!url.searchParams.get("session_id") && url.searchParams.get("book")) return cookieDownload(url.searchParams.get("book") || "");
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) return new Response("Downloads not configured.", { status: 503 });
-  const url = new URL(request.url);
   const sid = url.searchParams.get("session_id") || "";
+  if (!sid && url.searchParams.get("book")) return cookieDownload(url.searchParams.get("book") || "");
   if (!sid) return new Response("Missing session.", { status: 400 });
   let slug = "";
   let piId = "";
@@ -109,7 +132,7 @@ export async function GET(request: Request) {
   }
   const fname = bonus
     ? path.basename(rel)
-    : `PIP-Insight-${slug}.pdf`;
+    : `Trading-Foundry-${slug}.pdf`;
   return new Response(fs.readFileSync(p), {
     headers: {
       "Content-Type": "application/pdf",

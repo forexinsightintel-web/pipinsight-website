@@ -119,8 +119,8 @@ export async function POST(request: Request) {
   if (kind === "ebook") {
     const course = (catalog as Course[]).find((c) => c.slug === slug);
     if (!course) return Response.json({ error: "Unknown course." }, { status: 404 });
-    const ebookPriceId = process.env[
-      `STRIPE_PRICE_EBOOK_${course.slug.toUpperCase().replace(/-/g, "_")}`];
+    // Always charge the catalogue price shown on the site (old per-book Stripe price IDs are ignored).
+    const ebookPriceId = "";
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       metadata: { slug: course.slug },
@@ -133,7 +133,7 @@ export async function POST(request: Request) {
           currency: "gbp",
           unit_amount: Math.round(course.ebook_price_gbp * 100),
           product_data: {
-            name: `${course.title} — Complete Course Ebook`,
+            name: `${course.title} — Trading Foundry ebook`,
             description: course.pitch.slice(0, 200),
           },
         },

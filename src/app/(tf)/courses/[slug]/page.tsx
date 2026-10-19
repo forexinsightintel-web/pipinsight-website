@@ -6,6 +6,7 @@ import BuyBox from '../../../../components/tf/BuyBox';
 import FilmEmbed from '../../../../components/tf/FilmEmbed';
 import { COURSES, getCourse, getLessons, CLIP } from '../../../../lib/academy';
 import { COOKIE, verify, canRead } from '../../../../lib/access';
+import { ALL_BOOKS } from '../../../../lib/playbooks';
 
 export function generateStaticParams() { return COURSES.map((c) => ({ slug: c.slug })); }
 
@@ -61,6 +62,8 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           <BuyBox slug={slug} price={c.price_gbp} free={free} owned={owned} firstLesson={first} />
           <ul>{includes.map((i) => <li key={i}>{i}</li>)}</ul>
           {free || owned ? <a className="btn btn-line" style={{ width: '100%', marginTop: 16 }} href={`/api/course/pdf?slug=${slug}`}>Download the course playbook ↓</a> : null}
+          {owned && c.ebooks?.length ? <div style={{ marginTop: 18 }}><div className="k" style={{ color: 'var(--ink50)', marginBottom: 8 }}>YOUR EBOOKS · INCLUDED WITH THE COURSE</div>
+            {c.ebooks.map((b) => { const p = ALL_BOOKS.find((x) => x.slug === b); return p ? <a key={b} className="btn btn-line" style={{ width: '100%', marginTop: 8, justifyContent: 'space-between' }} href={`/api/ebook/download?book=${b}`}>{p.title} <span>↓</span></a> : null; })}</div> : null}
           {!free && !owned ? <div className="k" style={{ color: 'var(--ink50)', marginTop: 18, fontSize: 10.5 }}>30-DAY REFUND · SECURE STRIPE CHECKOUT · <a href="/restore" style={{ textDecoration: 'underline' }}>ALREADY BOUGHT? RESTORE ACCESS</a></div> : null}
         </div></aside>
       </div></section>

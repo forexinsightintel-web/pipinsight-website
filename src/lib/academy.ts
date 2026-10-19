@@ -4,11 +4,11 @@ import fs from "fs";
 import path from "path";
 import indexData from "../../content/academy/index.json";
 
-export type LessonMeta = { slug: string; n: number; title: string; summary: string; minutes: number; free: boolean };
+export type LessonMeta = { slug: string; n: number; title: string; summary: string; minutes: number; free: boolean; film?: string | null; episode?: number | null };
 export type Module = { title: string; lessons: LessonMeta[] };
 export type Film = { id: string; title: string };
 export type Course = {
-  slug: string; title: string; subtitle: string; level: string; price_gbp: number; hours?: number;
+  slug: string; title: string; subtitle: string; level: string; price_gbp: number; ebooks?: string[]; hours?: number;
   films: Film[]; outcomes: string[]; who_for?: string[]; prerequisites?: string[]; includes?: string[];
   passport?: Record<string, string>; art: string; lesson_count: number; chart_count: number; words: number; modules: Module[];
 };
@@ -31,5 +31,5 @@ export const CLIP: Record<string, string> = {
   scalp: "/media/clip_scalp.mp4", pullback: "/media/clip_pullback.mp4", breakout: "/media/clip_breakout.mp4", rsi: "/media/clip_rsi.mp4",
 };
 export const LEVEL_KEY = (l: string) => (/beginner/i.test(l) && !/intermediate/i.test(l) ? "beg" : /advanced/i.test(l) ? "adv" : /all/i.test(l) ? "all" : "int");
-export const price = (c: Course) => (c.price_gbp ? `£${c.price_gbp}` : "Free");
+export const price = (c: Course) => (c.price_gbp ? `£${Number.isInteger(c.price_gbp) ? c.price_gbp : c.price_gbp.toFixed(2)}` : "Free");
 export const PASS_PRICE = 149;

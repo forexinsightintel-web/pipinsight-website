@@ -22,7 +22,7 @@ export default function BuyBox({ slug, price, free, owned, firstLesson }: { slug
   );
   return (
     <>
-      <div className="price" style={{ fontSize: 54 }}>£{price}</div>
+      <div className="price" style={{ fontSize: 54 }}>£{Number.isInteger(price) ? price : price.toFixed(2)}</div>
       <div className="k" style={{ color: 'var(--ink50)', marginTop: 4 }}>ONE-OFF · LIFETIME ACCESS</div>
       <button className="btn btn-gold" style={{ width: '100%', marginTop: 20 }} disabled={!!busy} onClick={() => go('course')}>{busy === 'course' ? 'Opening secure checkout…' : <>Buy the course <span className="arr">→</span></>}</button>
       <a className="btn btn-line" style={{ width: '100%', marginTop: 10 }} href={`/courses/${slug}/${firstLesson}`}>Read lesson 1 free</a>
