@@ -45,7 +45,7 @@ export default async function Playbooks({ searchParams }: { searchParams: Promis
           </div>))}</div>
         <div className="tiers" style={{ gridTemplateColumns: '1fr', maxWidth: 760, margin: '90px auto 0' }}>
           <div className="tier best" style={{ transform: 'none' }}><div className="k" style={{ color: 'var(--gold)' }}>ALL-ACCESS PASS</div><div className="price">£149</div>
-            <ul><li>Every playbook here, plus every future one</li><li>All 9 Trading Foundry courses</li><li>Every ebook a course includes, and every one sold on its own</li><li>Lifetime access, one payment</li></ul>
+            <ul><li>Every playbook here, plus every future one</li><li>All 8 paid courses, plus the free one</li><li>Every ebook a course includes, and every one sold on its own</li><li>Lifetime access, one payment</li></ul>
             {access.s.includes('all') ? <span className="pill g">YOU HAVE THE PASS</span> : <BuyButton kind="pass" label={<>Get the All-Access Pass <span className="arr">→</span></>} />}</div>
         </div>
         <p className="disclaim">Education only, not financial advice. Instant digital delivery; 30-day no-quibble refund. Playbook downloads can be re-opened from the link on this page or in your Stripe receipt.</p>

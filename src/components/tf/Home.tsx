@@ -72,7 +72,7 @@ export default function Home({ courses, wall, books, totals, bookCount }: Props)
       tx.strokeStyle = '#E8B04A'; tx.lineWidth = 2.2 * dp; tx.beginPath(); pts.forEach((q, i) => (i ? tx.lineTo(q[0], q[1]) : tx.moveTo(q[0], q[1]))); tx.stroke(); };
 
     // scenes
-    const zs = $<HTMLElement>('#zs'), zov = $<HTMLElement>('.zover'), zhead = $<HTMLElement>('.zhead'), zsec = $<HTMLElement>('.zoom');
+    const zs = $<HTMLElement>('#zs'), zov = $<HTMLElement>('.zover'), zhead = $<HTMLElement>('.zhead'), zsec = $<HTMLElement>('.zoom'), zvid = document.querySelector<HTMLVideoElement>('#zs video');
     const hz = $<HTMLElement>('.hz'), ht = $<HTMLElement>('#ht'), hbi = $<HTMLElement>('#hbi'), hcs = $$('.hc');
     const ins = $<HTMLElement>('.inside'), story = $<HTMLCanvasElement>('#story'), iss = $$('.is'), ipi = $<HTMLElement>('#ipi');
     const bk = $<HTMLElement>('.books5'), leaves = $$('.leaf'), book = $<HTMLElement>('#book');
@@ -82,7 +82,7 @@ export default function Home({ courses, wall, books, totals, bookCount }: Props)
     const setStep = (p: number) => { const k = p < 0.26 ? 0 : p < 0.38 ? 1 : p < 0.5 ? 2 : p < 0.64 ? 3 : p < 0.92 ? 4 : 5; iss.forEach((s, i) => s.classList.toggle('on', i === k)); ipi.style.width = p * 100 + '%'; const target = k === 5 ? 1 : 0; lossMode += (target - lossMode) * 0.18; if (Math.abs(target - lossMode) < 0.002) lossMode = target; };
     const onScroll = () => {
       if (desk()) {
-        const zp = prog(zsec); const s = lerp(0.42, 1, seg(zp, 0, 0.6)); zs.style.transform = `scale(${s}) translateY(${lerp(30, 0, seg(zp, 0, 0.6))}%)`; zs.style.borderRadius = lerp(40, 0, seg(zp, 0.3, 0.6)) + 'px'; zov.style.opacity = String(seg(zp, 0.55, 0.75)); zhead.style.opacity = String(1 - seg(zp, 0.12, 0.32));
+        const zp = prog(zsec); const s = lerp(0.42, 1, seg(zp, 0, 0.6)); zs.style.transform = `scale(${s}) translateY(${lerp(30, 0, seg(zp, 0, 0.6))}%)`; zs.style.borderRadius = lerp(40, 0, seg(zp, 0.3, 0.6)) + 'px'; zov.style.opacity = String(seg(zp, 0.62, 0.78)); if (zvid) zvid.style.opacity = String(1 - 0.95 * seg(zp, 0.45, 0.62)); zhead.style.opacity = String(1 - seg(zp, 0.12, 0.32));
         const hp = prog(hz); const max = ht.scrollWidth - window.innerWidth + 80; ht.style.transform = `translateX(${-hp * max}px)`; hbi.style.width = hp * 100 + '%';
         const mid = window.innerWidth / 2; hcs.forEach((c) => { const r = c.getBoundingClientRect(); const live = r.left < mid && r.right > mid; if (live !== c.classList.contains('live')) { c.classList.toggle('live', live); const v = c.querySelector('video') as HTMLVideoElement | null; if (v) { if (live) { if (!v.src) v.src = v.dataset.src || ''; v.play().catch(() => {}); } else v.pause(); } } });
         lastSp = prog(ins);
@@ -174,7 +174,7 @@ export default function Home({ courses, wall, books, totals, bookCount }: Props)
 
       <section className="books5" id="playbooks"><div className="bstick"><div className="wrap bgrid">
         <div><div className="k" style={{ color: 'var(--gold)' }}>03 · THE PLAYBOOKS</div><h2 className="d" style={{ fontSize: 'clamp(52px,7vw,116px)', marginTop: 16 }}>Keep it<span className="g">.</span><br />Print it<span className="g">.</span></h2><span className="bar" />
-          <p className="bl">{bookCount} illustrated strategy playbooks, 37–42 pages each, designed like the films. Every course includes its playbook, or buy them on their own.</p>
+          <p className="bl">{bookCount} illustrated strategy playbooks, 28–42 pages each, designed like the films. Every course includes its playbook, or buy them on their own.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 28 }}><a className="btn btn-gold" href="/playbooks">Browse the playbooks <span className="arr">→</span></a></div></div>
         <div className="stage3d"><div className="book3d" id="book">
           {[[1, 2], [3, 4], [5, 6], [7, 8]].map(([f, b], i) => <div className="leaf" key={i} style={{ zIndex: 6 - i }}><div className="f"><img src={`/media/pages/p${f}.webp`} alt="" /></div><div className="bk"><img src={`/media/pages/p${b}.webp`} alt="" /></div></div>)}
@@ -186,7 +186,7 @@ export default function Home({ courses, wall, books, totals, bookCount }: Props)
       <section className="cream" id="pricing"><div className="wrap">
         <div className="sechead"><h2 className="d">Pay once<span className="g">.</span><br />Keep it<span className="g">.</span></h2><p>No subscriptions, no countdown timers, no fake discounts. One-off prices with lifetime access.</p></div>
         <div className="tiers">
-          <div className="tier"><div className="k" style={{ color: 'var(--ink50)' }}>PLAYBOOK</div><div className="price">{books[0]?.price}<span style={{ fontSize: 22, color: 'var(--ink50)' }}>+</span></div><ul><li>One illustrated playbook</li><li>37–42 pages, PDF</li><li>Companion film QR codes</li><li>Yours to keep and print</li></ul><a className="btn btn-line" href="/playbooks">Browse playbooks</a></div>
+          <div className="tier"><div className="k" style={{ color: 'var(--ink50)' }}>PLAYBOOK</div><div className="price">{books[0]?.price}<span style={{ fontSize: 22, color: 'var(--ink50)' }}>+</span></div><ul><li>One illustrated playbook</li><li>28–42 pages, PDF</li><li>Companion film QR codes</li><li>Yours to keep and print</li></ul><a className="btn btn-line" href="/playbooks">Browse playbooks</a></div>
           <div className="tier best"><div className="k" style={{ color: 'var(--gold)' }}>ALL-ACCESS PASS · BEST VALUE</div><div className="price">£149</div><ul><li>All {totals.courses - 1} paid courses + the free one</li><li>All {bookCount} playbooks</li><li>Every future course</li><li>Drills, quizzes &amp; passports</li></ul><a className="btn btn-gold" href="/pricing">Get all access <span className="arr">→</span></a></div>
           <div className="tier"><div className="k" style={{ color: 'var(--ink50)' }}>SINGLE COURSE</div><div className="price">£49.99</div><ul><li>The films + 10–12 lessons</li><li>Its ebooks included</li><li>Drills, quizzes &amp; passport</li><li>Lifetime access</li></ul><a className="btn btn-line" href="/courses">Choose a course</a></div>
         </div>

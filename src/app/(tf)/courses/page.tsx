@@ -12,7 +12,7 @@ export default function Courses() {
     <main className="tf-page">
       <SiteHeader variant="over" active="/courses" />
       <section className="phero"><video autoPlay muted loop playsInline src="/media/hero_broll.mp4" aria-hidden="true" /><div className="wrap">
-        <div className="k" style={{ color: 'var(--gold)' }}>TRADING FOUNDRY UNIVERSITY · COURSES</div>
+        <div className="k" style={{ color: 'var(--gold)' }}>THE COURSES · ONE STRATEGY EACH</div>
         <h1 className="d">The courses<span className="g">.</span></h1><span className="bar" />
         <p>One strategy per course, taught start to finish: the film, written lessons, annotated charts, practice drills that hide the future, quizzes and a one-page strategy passport.</p>
         <div className="stats"><div><b>{TOTALS.courses}</b>courses</div><div><b>{TOTALS.lessons}</b>lessons</div><div><b>{TOTALS.charts}</b>annotated charts</div><div><b>1</b>free beginner course</div></div>

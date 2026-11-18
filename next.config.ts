@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
       { source: "/leaderboard", destination: "/courses", permanent: true },
       { source: "/analysis", destination: "/courses", permanent: true },
       { source: "/analysis/:path*", destination: "/courses", permanent: true },
+      // The old Free School and Free Toolkit pages are replaced by the complete free course.
+      { source: "/school", destination: "/courses/forex-from-zero", permanent: true },
+      { source: "/school/:path*", destination: "/courses/forex-from-zero", permanent: true },
+      { source: "/free", destination: "/courses/forex-from-zero", permanent: true },
       // old ebook receipts pointed at /courses?purchased=…&session_id=…
       { source: "/courses", has: [{ type: "query", key: "purchased" }], destination: "/playbooks", permanent: false },
     ];

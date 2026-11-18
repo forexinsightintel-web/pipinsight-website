@@ -235,7 +235,7 @@ details[open] summary::after{content:"–"}
 details p{margin:0 0 26px;color:var(--ink70);max-width:720px}
 
 footer{background:var(--night);color:var(--paper56);padding-block:80px 40px;font-size:14px}
-.fcols{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+.fcols{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:32px}
 .fcols b{display:block;color:var(--paper);font:800 11px var(--mono);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
 .fcols a{display:block;padding:5px 0}
 .fcols a:hover{color:var(--paper)}
@@ -453,3 +453,7 @@ footer{background:var(--night);color:var(--paper56);padding-block:80px 40px;font
 .kr{font-family:var(--display);font-stretch:100%;font-weight:600;text-transform:none;letter-spacing:-.06em}
 .kr .g{font-family:var(--serif);font-style:italic;font-weight:400}
 .logo{font-family:var(--display);font-stretch:100%;font-weight:700;letter-spacing:.16em}
+
+/* audit fixes 18 Nov: hero tape labels never wrap over the chart on phones */
+@media (max-width:700px){.tick .lbl .pill{white-space:nowrap;font-size:10px}.tick .lbl .pill.l{display:none}}
+.zscreen video{transition:opacity .2s linear}

@@ -7,7 +7,7 @@ const LINKS = [
   { href: '/courses', label: 'Courses' },
   { href: '/playbooks', label: 'Playbooks' },
   { href: '/pricing', label: 'Pricing' },
-  { href: '/school', label: 'Free School' },
+  { href: '/glossary', label: 'Glossary' },
 ];
 
 export default function SiteHeader({ variant = 'over', active }: { variant?: 'over' | 'light'; active?: string }) {
