@@ -24,7 +24,7 @@ export async function POST(request: Request) {
   }
   const stripe = new Stripe(key);
   const { kind, slug } = await request.json();
-  const origin = request.headers.get("origin") ?? (process.env.NEXT_PUBLIC_SITE_URL || "https://pip-insight.co.uk");
+  const origin = request.headers.get("origin") ?? (process.env.NEXT_PUBLIC_SITE_URL || "https://www.tradingfoundry.co.uk");
 
   if (kind === "journal" || kind === "full-access") {
     const priceId = process.env.STRIPE_PRICE_PRO_MONTHLY;

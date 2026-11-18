@@ -24,7 +24,7 @@ async function beehiivAdd(email: string, source: string): Promise<boolean> {
           email,
           reactivate_existing: true,
           send_welcome_email: true,
-          utm_source: "pip-insight.co.uk",
+          utm_source: "tradingfoundry.co.uk",
           utm_medium: source,
         }),
       },

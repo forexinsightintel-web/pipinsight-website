@@ -29,7 +29,7 @@ export default function SiteFooter() {
         The Trading Foundry is a trading name of Mansell Media Limited, registered in
         England &amp; Wales (company no. 17335820). Registered office: Whitfield
         Buildings, 192–200 Pensby Road, Heswall, Wirral, CH60 7RJ.
-        © {new Date().getFullYear()} Mansell Media Limited · pip-insight.co.uk
+        © {new Date().getFullYear()} Mansell Media Limited · tradingfoundry.co.uk
       </p>
     </footer>
   );

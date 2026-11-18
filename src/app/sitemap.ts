@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { COURSES, getLessons } from "../lib/academy";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://pip-insight.co.uk";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tradingfoundry.co.uk";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = ["/", "/courses", "/playbooks", "/films", "/pricing", "/glossary", "/privacy", "/terms", "/risk"]

@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       { source: "/school", destination: "/courses/forex-from-zero", permanent: true },
       { source: "/school/:path*", destination: "/courses/forex-from-zero", permanent: true },
       { source: "/free", destination: "/courses/forex-from-zero", permanent: true },
+      // The Foundry Journal is switched off until the new version is ready.
+      { source: "/journal", destination: "/", permanent: false },
+      { source: "/journal/:path*", destination: "/", permanent: false },
       // old ebook receipts pointed at /courses?purchased=…&session_id=…
       { source: "/courses", has: [{ type: "query", key: "purchased" }], destination: "/playbooks", permanent: false },
     ];
