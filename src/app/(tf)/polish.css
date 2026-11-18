@@ -1,0 +1,138 @@
+/* Layout polish, Nov 2026 audit. Loaded LAST so it wins over base/site/theme/home.
+   Every rule here fixes something found by checking the site at phone, tablet and laptop sizes. */
+
+/* ---------- homepage ---------- */
+/* base.css gives every <section> 120px padding; the 3D hero must sit flush or its copy drops below the fold */
+.tfh .x-hero{padding:0}
+/* headline sized by screen height as well as width so both lines and the buttons fit on short laptop screens */
+@media (min-width:1061px){
+  .tfh .x-h1{font-size:clamp(64px,min(8.4vw,14.5vh),118px)}
+  .tfh .x-hcopy{bottom:max(40px,7vh)}
+  .tfh .x-hcopy .x-wrap{grid-template-columns:minmax(0,1fr) 400px}
+}
+@media (max-width:1060px){
+  .tfh .x-hcopy{bottom:max(28px,5vh)}
+  .tfh .x-h1{font-size:clamp(46px,12.5vw,84px)}
+  .tfh .x-hr p{margin-bottom:20px}
+}
+/* the "story" lines get a soft dark backing so candles behind them never fight the words */
+.tfh .x-story p{text-shadow:0 2px 30px rgba(5,5,6,.9),0 0 60px rgba(5,5,6,.7)}
+/* section rhythm: less dead space between sections */
+.tfh .x-sec{padding-block:120px}
+@media (max-width:1060px){.tfh .x-sec{padding-block:84px}.tfh .x-final{padding-block:100px 90px}}
+@media (max-width:600px){.tfh .x-sec{padding-block:68px}}
+/* journal phones on small screens: one phone, bigger, nothing stacked on top of anything */
+@media (max-width:600px){
+  .tfh .x-p1{display:none}
+  .tfh .x-stage{transform:scale(.82);height:640px;margin-bottom:-90px}
+  .tfh .x-p2{left:50%;margin-left:-155px}
+  .tfh .x-toast{left:50%;margin-left:-150px;top:560px}
+}
+/* glows must never widen the page (older iPhones ignore overflow:clip on <html>) */
+.tfh .x-sec,.tfh .x-final{position:relative;overflow-x:clip}
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
+/* LEARN | PLAN | EXECUTE | IMPROVE fits on a phone */
+@media (max-width:800px){
+  .tfh .x-tagline,.tf-tag{font-size:12px!important;letter-spacing:.14em!important}
+  .tfh .x-tagline i,.tf-tag i{margin:0 .45em!important}
+}
+.tfh .x-trust{row-gap:10px}
+@media (max-width:600px){.tfh .x-trust{flex-direction:column;align-items:center;gap:10px}}
+/* the counters never run into each other */
+.tfh .x-nrow{grid-template-columns:repeat(3,auto);justify-content:start;column-gap:clamp(22px,4vw,56px)}
+
+/* ---------- header ---------- */
+.tn-solid{background:rgba(10,11,14,.94)!important}
+.tn-open{background:rgba(10,11,14,.98)!important}
+@media (min-width:1061px){
+  .tn .tn-logo{margin-right:18px!important;padding-right:18px;box-shadow:inset -1px 0 0 rgba(255,255,255,.1)}
+}
+
+/* ---------- inner-page heroes: film clips stay as moving texture, never as legible text ---------- */
+.phero video,.chero video{filter:blur(14px) saturate(1.15);transform:scale(1.12);opacity:.34}
+
+/* ---------- small labels readable on phones ---------- */
+@media (max-width:800px){
+  .k,.mono,.qn,.ltoc .mt,.passport b,.call b,.prose .call b,.film-card span,.fcard .mono,.les em,.cpill,.pill,.meta span,.drill .ans b,.prose th,.tfh .x-badge,.tfh .x-ann .x-tag em,.tfh .x-ch{font-size:12px!important;letter-spacing:.08em!important}
+  .tn-wm{font-size:12px!important;letter-spacing:.08em!important}
+}
+@media (max-width:370px){.tn-wm{font-size:11.5px!important;letter-spacing:.05em!important}}
+
+/* ---------- course page ---------- */
+/* buy box: fits a laptop screen; the thumbnail only shows when there is room for it */
+@media (min-width:1061px){
+  .buy{top:96px!important}
+  .buy .buy-cover{display:none}
+}
+@media (min-width:1061px) and (min-height:1000px){.buy .buy-cover{display:block}}
+.buy ul{gap:9px!important}
+.buy li{display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.buy li::before{margin-right:0!important;flex:none}
+.buy .bnote{margin-top:18px;font-size:13px;line-height:1.55;color:var(--mute)}
+.buy .bnote a{color:var(--tx);text-decoration:underline;text-underline-offset:3px}
+.learn div{line-height:1.5}
+/* strategy passport: readable body text, not a wall of bold */
+.passport{background:rgba(255,255,255,.035)!important;box-shadow:inset 0 0 0 1px var(--line);gap:26px 30px!important}
+.passport div{font-weight:400!important;font-size:15.5px!important;line-height:1.6;color:rgba(244,244,241,.86)}
+@media (min-width:1061px) and (max-width:1300px){.passport{grid-template-columns:repeat(2,1fr)!important}}
+/* curriculum rows: icon, title, badge and time line up on every screen */
+.les{align-items:flex-start;padding:14px 0!important}
+.les a{display:grid!important;grid-template-columns:22px minmax(0,1fr);column-gap:12px;row-gap:6px;align-items:start;flex:1;min-width:0;line-height:1.4}
+.les .lic{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;margin-top:-1px;background:rgba(255,255,255,.07)}
+.les .lic.pl{background:rgba(33,230,161,.16);color:var(--green)}
+.les .lic svg{width:11px;height:11px}
+.les .ltt{min-width:0}
+.les .pill{grid-column:2;justify-self:start;margin:0!important}
+.les em{padding-top:2px}
+/* related films on a phone: one clean column */
+@media (max-width:600px){.films-row{grid-template-columns:1fr}}
+
+/* ---------- lessons ---------- */
+/* tables fit the screen on phones instead of being cut off */
+@media (max-width:700px){
+  .prose table{display:table!important;table-layout:fixed;font-size:14px!important}
+  .prose th{white-space:normal!important;font-size:11.5px!important;letter-spacing:.06em!important;padding:10px 8px!important}
+  .prose td{padding:10px 8px!important;word-break:break-word}
+}
+/* the lesson list on laptops scrolls on its own with a visible hint, instead of being cut off */
+.ltoc{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent}
+
+/* ---------- films ---------- */
+.fcard .mono{font:500 13px/1.5 var(--body)!important;letter-spacing:0!important;text-transform:none}
+.fcard .mono b{font-weight:600}
+
+/* ---------- glossary ---------- */
+.gloss{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))!important}
+
+/* ---------- 404 ---------- */
+.nf{min-height:70vh;display:flex;align-items:center;padding-block:160px 100px!important}
+.nf .d{font-size:clamp(56px,9vw,128px)}
+.nf p{color:var(--mute);font-size:19px;max-width:520px;margin:24px 0 0}
+.nf .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+
+/* scroll hint never sits on the headline */
+.tfh .x-cue{display:none}
+/* narrow phones: drop "THE" from the header wordmark so it never touches the button */
+@media (max-width:400px){.tn .tn-the{display:none}}
+
+/* films page: shorts as vertical cards (their real cover), not squashed 16:9 crops */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;margin-top:28px}
+.scard{display:block;border-radius:18px;overflow:hidden;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line);transition:transform .25s}
+.scard:hover{transform:translateY(-4px)}
+.scard img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.scard div{padding:12px 14px 14px;font-weight:600;font-size:14.5px;line-height:1.3;color:var(--tx)}
+@media (max-width:600px){.sgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+
+/* 404 content lines up with every other page */
+.nf .wrap{width:100%}
+/* less dead space between a page title and its content */
+.phero{padding-bottom:56px!important}
+.phero + section.cream{padding-top:56px}
+@media (max-width:700px){.phero{padding-top:128px!important;padding-bottom:40px!important}.phero + section.cream{padding-top:40px}}
+/* strategy passport: two roomy columns on desktop */
+@media (min-width:1061px){.passport{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+/* play icon in the curriculum clearly visible */
+.les .lic.pl svg{width:12px;height:12px;margin-left:2px}
+
+/* sections fade in a touch quicker, so nothing looks empty while scrolling on slower phones */
+.tfh .x-rv{transform:translateY(28px);transition-duration:.85s}

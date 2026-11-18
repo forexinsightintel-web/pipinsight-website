@@ -24,7 +24,7 @@ export default function SiteHeader({ variant = 'over', active }: { variant?: 'ov
       <header className={`tn${solid ? ' tn-solid' : ''}${open ? ' tn-open' : ''}`}>
         <a className="tn-logo" href="/" aria-label="The Trading Foundry, home">
           <img src="/media/brand/mark-96.png" alt="" width={30} height={30} />
-          <span className="tn-wm">THE <b>TRADING</b> <em>FOUNDRY</em></span>
+          <span className="tn-wm"><span className="tn-the">THE </span><b>TRADING</b> <em>FOUNDRY</em></span>
         </a>
         <nav className="tn-links" aria-label="Site">
           {LINKS.map((l) => <a key={l.href} href={l.href} className={active === l.href ? 'on' : undefined} aria-current={active === l.href ? 'page' : undefined}>{l.label}</a>)}

@@ -15,6 +15,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return c ? { title: c.title, description: c.subtitle, openGraph: { images: [`/media/thumbs/${c.art}.webp`] } } : {};
 }
 
+const PLAY = <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4L10 6z" fill="currentColor" /></svg>;
+const LOCK = <svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2.2" y="5.2" width="7.6" height="5.6" rx="1.2" fill="rgba(244,244,241,.55)" /><path d="M3.9 5.2V3.9a2.1 2.1 0 0 1 4.2 0v1.3" fill="none" stroke="rgba(244,244,241,.55)" strokeWidth="1.2" /></svg>;
+
 const PASS: [string, string][] = [['market', 'MARKET'], ['wait_for', 'WAIT FOR'], ['trigger', 'TRIGGER'], ['stop', 'STOP'], ['target', 'TARGET'], ['avoid', 'AVOID']];
 
 export default async function CoursePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -52,19 +55,19 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           <h2 className="d" style={{ fontSize: 44, marginTop: 64 }}>Curriculum<span className="g">.</span></h2>
           <div className="mods">{c.modules.map((m, mi) => (
             <details className="mod" key={mi} open={mi === 0}><summary>{m.title}</summary>
-              {m.lessons.map((l) => <div className="les" key={l.slug}><a href={`/courses/${slug}/${l.slug}`}>{l.free || owned ? '▶' : <span className="lock">🔒</span>} {l.title}{l.free && !free ? <span className="pill g" style={{ marginLeft: 8 }}>FREE PREVIEW</span> : null}</a><em>{l.minutes} MIN</em></div>)}
+              {m.lessons.map((l) => <div className="les" key={l.slug}><a href={`/courses/${slug}/${l.slug}`}>{l.free || owned ? <span className="lic pl" aria-label="Open">{PLAY}</span> : <span className="lic" aria-label="Locked">{LOCK}</span>}<span className="ltt">{l.title}</span>{l.free && !free ? <span className="pill g">FREE PREVIEW</span> : null}</a><em>{l.minutes} MIN</em></div>)}
             </details>))}</div>
           {c.films.length > 1 ? <><h2 className="d" style={{ fontSize: 44, marginTop: 64 }}>Related films<span className="g">.</span></h2>
             <div className="films-row">{c.films.map((f) => <a className="film-card" key={f.id} href={`https://www.youtube.com/watch?v=${f.id}`} target="_blank" rel="noopener"><img src={`https://i.ytimg.com/vi/${f.id}/mqdefault.jpg`} alt="" loading="lazy" /><div>{f.title}<span>WATCH ON YOUTUBE →</span></div></a>)}</div></> : null}
           <p className="disclaim">Education only, not financial advice. Every chart in this course is an illustrative training example using synthetic price data. Trading foreign exchange on margin carries a high level of risk.</p>
         </div>
-        <aside className="buy"><img src={`/media/thumbs/${c.art}.webp`} alt={`${c.title} film thumbnail`} /><div className="in">
+        <aside className="buy"><img className="buy-cover" src={`/media/thumbs/${c.art}.webp`} alt={`${c.title} film thumbnail`} /><div className="in">
           <BuyBox slug={slug} price={c.price_gbp} free={free} owned={owned} firstLesson={first} />
           <ul>{includes.map((i) => <li key={i}>{i}</li>)}</ul>
           {free || owned ? <a className="btn btn-line" style={{ width: '100%', marginTop: 16 }} href={`/api/course/pdf?slug=${slug}`}>Download the course playbook ↓</a> : null}
           {owned && c.ebooks?.length ? <div style={{ marginTop: 18 }}><div className="k" style={{ color: 'var(--ink50)', marginBottom: 8 }}>YOUR EBOOKS · INCLUDED WITH THE COURSE</div>
             {c.ebooks.map((b) => { const p = ALL_BOOKS.find((x) => x.slug === b); return p ? <a key={b} className="btn btn-line" style={{ width: '100%', marginTop: 8, justifyContent: 'space-between' }} href={`/api/ebook/download?book=${b}`}>{p.title} <span>↓</span></a> : null; })}</div> : null}
-          {!free && !owned ? <div className="k" style={{ color: 'var(--ink50)', marginTop: 18, fontSize: 10.5 }}>30-DAY REFUND · SECURE STRIPE CHECKOUT · <a href="/restore" style={{ textDecoration: 'underline' }}>ALREADY BOUGHT? RESTORE ACCESS</a></div> : null}
+          {!free && !owned ? <p className="bnote">30-day refund · Secure checkout by Stripe<br />Already bought? <a href="/restore">Restore access</a></p> : null}
         </div></aside>
       </div></section>
     </main>

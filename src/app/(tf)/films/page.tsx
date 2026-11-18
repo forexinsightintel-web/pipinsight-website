@@ -25,6 +25,10 @@ export default async function Films() {
   const fresh = await latest();
   const seen = new Set<string>();
   const list = [...fresh, ...saved].filter(([id]) => (seen.has(id) ? false : (seen.add(id), true)));
+  const clean = (t: string) => t.replace(/\s*#[\p{L}\p{N}_-]+/gu, '').replace(/\s{2,}/g, ' ').trim();
+  const isShort = (t: string) => /#/.test(t);
+  const longs = list.filter(([, t]) => !isShort(t));
+  const shorts = list.filter(([, t]) => isShort(t));
   const courseFor = (id: string) => COURSES.find((c) => c.films.some((f) => f.id === id));
   return (
     <main className="tf-page">
@@ -35,13 +39,25 @@ export default async function Films() {
         <p>Word-timed graphics, a calm voice and every trade shown with its losing version. Watch free on YouTube; each film links to the course that goes deeper.</p>
         <div className="row" style={{ display: 'flex', gap: 12, marginTop: 30, flexWrap: 'wrap' }}><a className="btn btn-gold" href="https://www.youtube.com/@thetradingfoundry?sub_confirmation=1"><span className="yt dark">▶</span> Subscribe on YouTube</a></div>
       </div></section>
-      <section className="cream" style={{ paddingTop: 60 }}><div className="wrap"><div className="fgrid">
-        {list.map(([id, title]) => { const c = courseFor(id); return (
+      <section className="cream" style={{ paddingTop: 56 }}><div className="wrap">
+        <div className="fgrid" style={{ marginTop: 0 }}>
+        {longs.map(([id, title]) => { const c = courseFor(id); return (
           <a className="fcard" key={id} href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener">
             <img src={`https://i.ytimg.com/vi/${id}/mqdefault.jpg`} alt="" loading="lazy" />
-            <div className="b"><h3>{title}</h3><span className="mono">WATCH ON YOUTUBE →{c ? <> · <b>COURSE: {c.title.replace(/ — .*$/, '').replace(/:.*$/, '').toUpperCase()}</b></> : null}</span></div>
+            <div className="b"><h3>{clean(title)}</h3><span className="mono">Watch on YouTube →{c ? <> · <b>Course: {c.title.replace(/ — .*$/, '').replace(/:.*$/, '')}</b></> : null}</span></div>
           </a>); })}
-      </div></div></section>
+        </div>
+        {shorts.length ? <>
+          <h2 className="d" style={{ fontSize: 44, marginTop: 88 }}>Shorts<span className="g">.</span></h2>
+          <p style={{ color: 'var(--mute)', margin: '12px 0 0', maxWidth: 560 }}>One idea in under a minute. New ones most weeks.</p>
+          <div className="sgrid">
+          {shorts.map(([id, title]) => (
+            <a className="scard" key={id} href={`https://www.youtube.com/shorts/${id}`} target="_blank" rel="noopener">
+              <img src={`https://i.ytimg.com/vi/${id}/oar2.jpg`} alt="" loading="lazy" />
+              <div>{clean(title)}</div>
+            </a>))}
+          </div></> : null}
+      </div></section>
     </main>
   );
 }

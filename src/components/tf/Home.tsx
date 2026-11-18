@@ -44,7 +44,7 @@ export default function Home({ cards }: { cards: HomeCard[] }) {
         const f = (t: number) => { const k = Math.min(1, (t - s) / 1600); n.textContent = Math.round(to * (1 - Math.pow(1 - k, 4))).toLocaleString('en-GB'); if (k < 1) requestAnimationFrame(f); };
         requestAnimationFrame(f);
       });
-    }), { threshold: 0.18 });
+    }), { threshold: 0, rootMargin: '0px 0px -12% 0px' });
     qa('.x-rv,#stage').forEach((e) => io.observe(e));
     offs.push(() => io.disconnect());
 
