@@ -79,7 +79,7 @@
 .les{align-items:flex-start;padding:14px 0!important}
 .les a{display:grid!important;grid-template-columns:22px minmax(0,1fr);column-gap:12px;row-gap:6px;align-items:start;flex:1;min-width:0;line-height:1.4}
 .les .lic{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;margin-top:-1px;background:rgba(255,255,255,.07)}
-.les .lic.pl{background:rgba(33,230,161,.16);color:var(--green)}
+.les .lic.go{background:rgba(33,230,161,.16);color:var(--green)}
 .les .lic svg{width:11px;height:11px}
 .les .ltt{min-width:0}
 .les .pill{grid-column:2;justify-self:start;margin:0!important}
@@ -132,7 +132,7 @@
 /* strategy passport: two roomy columns on desktop */
 @media (min-width:1061px){.passport{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 /* play icon in the curriculum clearly visible */
-.les .lic.pl svg{width:12px;height:12px;margin-left:2px}
+.les .lic.go svg{width:12px;height:12px;margin-left:2px}
 
 /* sections fade in a touch quicker, so nothing looks empty while scrolling on slower phones */
 .tfh .x-rv{transform:translateY(28px);transition-duration:.85s}

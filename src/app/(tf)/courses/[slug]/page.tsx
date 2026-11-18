@@ -55,7 +55,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
           <h2 className="d" style={{ fontSize: 44, marginTop: 64 }}>Curriculum<span className="g">.</span></h2>
           <div className="mods">{c.modules.map((m, mi) => (
             <details className="mod" key={mi} open={mi === 0}><summary>{m.title}</summary>
-              {m.lessons.map((l) => <div className="les" key={l.slug}><a href={`/courses/${slug}/${l.slug}`}>{l.free || owned ? <span className="lic pl" aria-label="Open">{PLAY}</span> : <span className="lic" aria-label="Locked">{LOCK}</span>}<span className="ltt">{l.title}</span>{l.free && !free ? <span className="pill g">FREE PREVIEW</span> : null}</a><em>{l.minutes} MIN</em></div>)}
+              {m.lessons.map((l) => <div className="les" key={l.slug}><a href={`/courses/${slug}/${l.slug}`}>{l.free || owned ? <span className="lic go" aria-label="Open">{PLAY}</span> : <span className="lic" aria-label="Locked">{LOCK}</span>}<span className="ltt">{l.title}</span>{l.free && !free ? <span className="pill g">FREE PREVIEW</span> : null}</a><em>{l.minutes} MIN</em></div>)}
             </details>))}</div>
           {c.films.length > 1 ? <><h2 className="d" style={{ fontSize: 44, marginTop: 64 }}>Related films<span className="g">.</span></h2>
             <div className="films-row">{c.films.map((f) => <a className="film-card" key={f.id} href={`https://www.youtube.com/watch?v=${f.id}`} target="_blank" rel="noopener"><img src={`https://i.ytimg.com/vi/${f.id}/mqdefault.jpg`} alt="" loading="lazy" /><div>{f.title}<span>WATCH ON YOUTUBE →</span></div></a>)}</div></> : null}
